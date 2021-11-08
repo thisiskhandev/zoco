@@ -1,0 +1,39 @@
+label.style-global {
+    width: 100%;
+}
+
+.single-select-global.allwidth-global {
+    width: 100% !important;
+}
+
+.twoSelect-width {
+    width: 49% !important;
+}
+
+.margin-left {
+    margin-left: 2%;
+}
+
+.margin-left-date {
+    margin-left: 1%;
+}
+
+.select-btn-width {
+    width: 80% !important;
+}
+
+.checkbox-types-div{
+    display:  -webkit-inline-box;
+    margin-right: 20px;
+}
+
+.activity-info-checkbox ::ng-deep .multiple-selector-align-checkbox {
+    width: 50% !important; 
+    float: left;
+    padding-left: 0px !important;
+}
+
+.row-special {
+    margin-left: -15px;
+    margin-right: -15px;
+}

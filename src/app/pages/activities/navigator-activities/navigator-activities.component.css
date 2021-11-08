@@ -1,0 +1,12 @@
+#infoFloatSection {
+    text-align: right;
+    position: fixed;
+    top: 77px;
+    right: 10px;
+    width: 180px;
+    margin: 10px;
+}
+
+#btn-preview {
+    right: 0px;
+}

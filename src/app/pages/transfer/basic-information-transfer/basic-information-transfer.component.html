@@ -1,0 +1,9 @@
+<form [formGroup]="formGroup">
+  <app-form-header title="{{basicInformationTransferEnum.pageTitle}}" subtitle="{{basicInformationTransferEnum.pageSubtitle}}"></app-form-header>
+  <div class="card-body">
+    <app-name-details   [model]="model.nameDetails" ></app-name-details>
+    <app-address-info   [model]="model.addressInfo" ></app-address-info>
+    <app-contact-phones [model]="model.contactPhones" ></app-contact-phones>
+  </div>
+    <app-contact-info [model]="model.contactInfo" [maxContacts]="this.maxContacts"></app-contact-info>  
+</form>

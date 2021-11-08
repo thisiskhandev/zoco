@@ -1,0 +1,36 @@
+/***** GENERAL STYLES FOR ALL HOTEL COMPONENTS */
+
+.ng2-auto-complete-wrapper {
+    display: inline-block;
+}
+
+ul{
+    padding-left: 0px; 
+}
+
+li{
+    padding-top: 15px;
+}
+
+.btn-remove-phone{
+    margin-bottom: 6px;
+}
+
+#main-div {
+    margin-top: 0px;
+    margin-right: 10px;
+}
+
+.card-body {
+    padding: 25px;
+}
+/* TODO: FIN - Borrar cuando se modifique la pantalla*/
+
+.customer-types-div{
+    display:  -webkit-inline-box;
+}
+
+.hotel-caption {
+    color: #707070;
+    font-size: 12px;
+}

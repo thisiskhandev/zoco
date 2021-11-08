@@ -1,0 +1,77 @@
+<div class="separator-global"></div>
+
+<div class="card-body">
+    <div class="row mainrow-global">
+        <div class="col-sm-6 form-colums-global">
+            <div class="row">
+                <div class="title">{{viewDetailsRatesEnum.title}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <button type="button" class="btn btn-global btn-size" (click)="loadRates(this.transferId)"
+                    routerLink="/base-navigator/transfers/rates" >{{viewDetailsRatesEnum.buttonRates}}
+                </button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="table-container">
+        <mat-table #table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="{{viewDetailsRatesEnum.id}}">
+                <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsRatesEnum.idTitle}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element[viewDetailsRatesEnum.id]}} </mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="{{viewDetailsRatesEnum.vehicle}}">
+                <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsRatesEnum.vehicleTitle}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element[viewDetailsRatesEnum.vehicle]}} </mat-cell>
+            </ng-container>
+            
+            <ng-container matColumnDef="{{viewDetailsRatesEnum.origin}}">
+                <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsRatesEnum.originTitle}}</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element[viewDetailsRatesEnum.origin]}} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="{{viewDetailsRatesEnum.destination}}">
+                <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsRatesEnum.destinationTitle}}</mat-header-cell>
+                <mat-cell *matCellDef="let element" class="align-hour"> {{element[viewDetailsRatesEnum.destination]}} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="{{viewDetailsRatesEnum.serviceMode}}">
+                <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsRatesEnum.serviceModeTitle}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element[viewDetailsRatesEnum.serviceMode]}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="{{viewDetailsRatesEnum.people}}">
+                <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsRatesEnum.peopleTitle}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element[viewDetailsRatesEnum.people]}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="{{viewDetailsRatesEnum.taxes}}">
+                <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsRatesEnum.taxesTitle}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element[viewDetailsRatesEnum.taxes]}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="{{viewDetailsRatesEnum.extraCharges}}">
+                <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsRatesEnum.extraChargesTitle}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element[viewDetailsRatesEnum.extraCharges]}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="{{viewDetailsRatesEnum.parkingPrice}}">
+                <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsRatesEnum.parkingPriceTitle}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element[viewDetailsRatesEnum.parkingPrice]}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="{{viewDetailsRatesEnum.totalPrice}}">
+                <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsRatesEnum.totalPriceTitle}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element[viewDetailsRatesEnum.totalPrice]}} </mat-cell>
+            </ng-container>
+       
+            <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
+            <mat-row *matRowDef="let element; columns: displayedColumns;" ></mat-row>
+
+        </mat-table> 
+    </div>
+</div>

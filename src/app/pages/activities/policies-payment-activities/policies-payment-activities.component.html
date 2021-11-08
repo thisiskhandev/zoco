@@ -1,0 +1,8 @@
+<app-form-header title="{{policiesPaymentEnum.title}}" subtitle="{{policiesPaymentEnum.subtitle}}"></app-form-header>
+<br>
+
+<form class="remove-scrollbar-global" (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+  <app-taxes-setup [model]="model.taxesSetup"></app-taxes-setup>
+  <app-payment-methods [model]="model.paymentMethods"></app-payment-methods>
+  <app-age-range [model]="model.ageRange"></app-age-range>
+</form>

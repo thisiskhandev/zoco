@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "baseUrl": "",
+    "downlevelIteration": true,
+    "paths": {
+      "@shared/*": [ "app/shared/*"],
+      "@baseNavigator-shared/*": [ "app/pages/base-navigator/shared/*"],
+      "@commons/*": [ "app/pages/common/*"],
+      "@hotel/*": [ "app/pages/hotel/*"]
+    },
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es6", "dom"],
+    "mapRoot": "./",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "outDir": "../dist/out-tsc",
+    "sourceMap": true,
+    "target": "es2015",
+    "typeRoots": [
+      "../node_modules/@types"
+    ]
+  },
+  "angularCompilerOptions": { 
+    "fullTemplateTypeCheck": true, 
+    "strictInjectionParameters": true, 
+    "enableIvy": true 
+  },
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
+}

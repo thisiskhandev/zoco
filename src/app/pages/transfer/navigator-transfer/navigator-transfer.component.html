@@ -1,0 +1,26 @@
+<mat-tab-group #tabs class="tabgroup-global" (selectChange)="getIdTab($event.index)">
+    <mat-tab label="Transfer Basic Info" >
+        <app-basic-information-transfer [completeInfo]="completeInfo"></app-basic-information-transfer>
+    </mat-tab>
+    <mat-tab label="Vehicules Features" disabled>
+        <app-features-transfer [completeInfo]="completeInfo" [transferId]="transferId"> </app-features-transfer>
+    </mat-tab>
+    <mat-tab label="Transfer Drivers" disabled>
+        <app-drivers-transfer [completeInfo]="completeInfo" [transferId]="transferId"> </app-drivers-transfer>
+    </mat-tab>
+    <mat-tab label="Transfer Policies" disabled>
+        <app-policies-transfer [completeInfo]="completeInfo" [transferId]="transferId"></app-policies-transfer>
+    </mat-tab>
+    <mat-tab label="Transfer Services Rates" disabled>
+        <app-rate-setup-transfer [completeInfo]="completeInfo" [transferId]="transferId" [vehiclesOptions]="this.vehiclesList"></app-rate-setup-transfer>
+    </mat-tab>
+	<mat-tab label="Transfer Service Settings" disabled>
+        <app-setting-transfer [completeInfo]="completeInfo" [transferId]="transferId" [vehiclesOptions]="this.vehiclesList" [driverOptions]="this.driversList" ></app-setting-transfer>
+    </mat-tab>    
+</mat-tab-group>
+<div #infoFloatSection id="infoFloatSection">
+    <button class="btn btn-global" id="btn-preview">Preview</button>
+    <div #infoFloatMessage class="info-float-global">
+        <span>After your complete registration you'll be able to make changes to your listing before it goes live</span>
+    </div>
+</div>

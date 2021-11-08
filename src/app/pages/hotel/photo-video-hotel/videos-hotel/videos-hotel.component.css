@@ -1,0 +1,96 @@
+ngx-dropzone-image-preview>img {
+  width: 100% !important;
+}
+
+:host ::ng-deep img {
+  max-width: 100% !important;
+}
+
+ngx-dropzone-image-preview {
+  min-width: 100px;
+  max-width: 25%;
+}
+
+ngx-dropzone-image-preview>ngx-dropzone-label {
+  width: 100%;
+  top: 75%;
+  font-size: 0.85rem;
+  text-align: left;
+  background-color: #fff;
+}
+
+.alto-500px {
+  height: 500px;
+}
+
+.alto-3rem {
+  height: 3rem;
+}
+
+.subtitle_drag {
+  font-size: 0.8rem;
+  color: #eb394d;
+}
+
+.adorno {
+  height: 12px;
+  width: 18px;
+  border-right: 2px solid black
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.columna_opciones_1 {
+  width: 150px;
+  cursor: pointer;
+}
+
+.columna_opciones_2 {
+  width: 150px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.columna_opciones_3 {
+  width: 150px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.columna_opciones_4 {
+  width: 150px;
+  color: #eb394d;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-save {
+  width: 122px;
+  height: 32px;
+  border-radius: 15px;
+  font-size: 12px;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: "Muli";
+  text-align: center;
+  background-color: #8b8b8b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  margin-left: -16px;
+}
+
+.dotted_input {
+  border: 2px dashed #717386;
+  border-radius: 5px;
+  height: 3rem;
+  width: 100%;
+}
+
+.URL_text {
+  padding-top: 12px;
+  font-size: 1.5rem;
+}

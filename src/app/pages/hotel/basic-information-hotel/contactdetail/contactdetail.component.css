@@ -1,0 +1,24 @@
+#leyend-contact{
+    font-size: 15px;
+}
+
+.row label {
+    font-size: 15px;
+}
+
+.ng2-auto-complete-wrapper {
+    display: inline-block;
+}
+  
+/*Sustituye el ancho del estilo global*/
+label.style-global {
+width: 100%;
+}
+
+.single-select-global.allwidth-global {
+width: 100% !important;
+}
+
+.label-radio-title {
+    width: 100%;
+}

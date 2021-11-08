@@ -1,0 +1,62 @@
+<form class="sub-component-form"  [formGroup]="formGroup" >
+    <h3>Base price per night</h3>
+    <div class="row" >
+        <p id="room-price-desc-text" class="col-md-12 mb-1 price-summary-div">This is the lowest price that we automatically apply to this room for all dates. Before
+            your property goes live, you can set seasonal on your property dashboard.
+        </p>
+    </div>
+    <div class="row pt-2" >
+            <p class="col-md-12 style-global">
+                Price for {{guestsOccupancy}} people
+            </p>
+         </div>
+    <div  class="row pl-3" >
+        <div class="col-md-4 h-50 row">
+            <input id="room-price-unit-text" class="col-md-6 style-global" type="text" disabled="disabled" value="US$/per night" >
+            <input class="col-md-6 style-global" type="text" formControlName="roomPrice"  maxlength="{{roomPriceEnum.roomPriceMaxSize}}" name="roomPrice" [(ngModel)]="model"  required> 
+            <span class="col-md-12 error-global" *ngIf="formGroup.get('roomPrice').touched && formGroup.get('roomPrice').hasError('invalidNumber')">Only numeric caracters</span>
+            <span class="col-md-12 error-global" *ngIf="formGroup.get(roomPriceEnum.roomPrice).touched && formGroup.get(roomPriceEnum.roomPrice).hasError('required')">Cannot be empty</span>
+            <span class="col-md-12 error-global" *ngIf="formGroup.get(roomPriceEnum.roomPrice).touched && formGroup.get(roomPriceEnum.roomPrice).hasError('maxLength')">This field cannot have more than {{roomPriceEnum.roomPriceMaxSize}} characters</span>
+        </div>
+        <div class="col-md-7 ml-5 pl-0 pr-0 h-75 price-summary-div row">
+                <div class="row col-md-12 h-25 pt-4 mb-0 ">
+                    <p  class="ml-3 font-weight-bold style-global">
+                        Price summary for: {{establishmentName}}
+                    </p>
+                </div>
+                <div class="col-md-12 row mb-0 ">
+                    <div class="col-md-6">
+                        <p id="layout-number-guest" class="style-global  mb-0 pb-0">
+                                Number of guest
+                        </p>
+                        <div *ngIf="guestsOccupancy <= 3" >
+                            <img *ngFor="let bedMeasure of guestsOccupancyArray;"  class="pl-1 layout-user" src="assets/img/app/layout-user-price-summary.png" >
+                        </div>
+                        <img *ngIf="guestsOccupancy > 3" class="layout-user" src="assets/img/app/layout-user-price-summary.png" > 
+                        <span *ngIf="guestsOccupancy > 3" id="layout-number-guest" class="style-global  mb-0 pb-0">
+                                x {{guestsOccupancy}}
+                        </span>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="col-md-12 mb-0 style-global">
+                                Price
+                        </p>
+                        <p id="price-text" class="col-md-12 mb-0 style-global">
+                                US$ {{model}}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-12 row mb-0 pt-5 pb-4">
+
+                    <p id="price-summary-text" class="col-md-12">After you have access to your USBlick property dashboard, 
+                        we'll ask you to double-check your price information before your property goes live on our website.
+                    </p>
+                </div>
+        </div>
+    </div>  
+
+    <div class="row pl-3" >
+       
+    </div>
+</form>

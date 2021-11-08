@@ -1,0 +1,115 @@
+<form class="sub-component-form" [formGroup]="formGroupInternet">
+
+    <div class="section-label-global">Internet</div>
+    <div class="row">
+        <p class="col-md-8 section-description">Internet access is important for many travelers. Free wi-fi is a huge selling point, too!</p>
+    </div>
+    <div class="row pt-3">
+        <p class="col-md-6">Is internet availabe to guests?: <a class="required-global">*</a> </p>
+    </div>
+
+    <div class="row pl-3">
+        <!-- HasInternet Select -->
+        <select class="col-md-3 single-select-global" formControlName="hasInternet"> 
+          <option disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+          <option *ngFor="let optionInternet of this.hasInternetOptions;" value="{{optionInternet.id}}" >{{optionInternet.desc}}</option>
+        </select>
+        <span class="col-md-3 error-global" *ngIf="formGroupInternet.get('hasInternet').touched && formGroupInternet.get('hasInternet').invalid">Select an option</span>
+    </div>
+
+    <div *ngIf="formGroupInternet.get('hasInternet').value == internetEnum.internetFree || formGroupInternet.get('hasInternet').value == internetEnum.internetPaid">
+        <div class="row pt-3">
+            <p class="col-md-6">What type of internet?: <a class="required-global">*</a></p>
+        </div>
+        <div class="row pl-3">
+            <!-- internetConnectType Select -->
+            <select class="col-md-3 single-select-global" formControlName="internetConnectType">
+                <option disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+                <option *ngFor="let connectType of this.internetConnectTypes;" value="{{connectType.id}}">{{connectType.connect_type}}</option>
+              </select>
+
+            <span class="col-md-3 error-global" *ngIf="formGroupInternet.get('internetConnectType').touched && formGroupInternet.get('internetConnectType').invalid">Select a connection type</span>
+        </div>
+        <div class="row pt-3">
+            <p class="col-md-6">Where?: <a class="required-global">*</a></p>
+        </div>
+        <div class="row pl-3">
+            <!-- internetPlaces Select -->
+            <select class="col-md-3 single-select-global" formControlName="internetPlaces"> 
+                <option disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+                <option *ngFor="let place of this.internetPlacesList;" value="{{place.id}}" >{{place.internet_place}}</option>
+              </select>
+
+            <span class="col-md-3 error-global" *ngIf="formGroupInternet.get('internetPlaces').touched && formGroupInternet.get('internetPlaces').invalid">Select an internet place</span>
+        </div>
+    </div>
+
+    <div *ngIf="formGroupInternet.get('hasInternet').value == internetEnum.internetPaid">
+        <div class="row pt-3">
+            <p class="col-md-6">Price for Internet (per day) ($): <a class="required-global">*</a></p>
+        </div>
+        <div class="row pl-3">
+            <!-- internetPrice Input -->
+            <input class="row col-md-3 ml-0 style-global" formControlName="internetPrice" type="text" placeholder="Write a price" />
+
+            <span class="col-md-3 error-global" *ngIf="formGroupInternet.get('internetPrice').touched && formGroupInternet.get('internetPrice').invalid">The field is invalid</span>
+        </div>
+    </div>
+
+</form>
+
+
+
+<!-- <div>
+    <form class="sub-component-form" #formGroupInternet="ngForm">
+        <div class="section-label-global">Internet</div>
+        <div class="row">
+            <p class="col-md-8 section-description">Internet access is important for many travelers. Free wi-fi is a huge selling point, too!</p>
+        </div>
+        <div class="row pt-3">
+            <p class="col-md-6">Is internet availabe to guests?: <a class="required-global">*</a> </p>
+        </div>
+        <div class="row pl-3">
+            <select class="col-md-3 single-select-global" name="hasInternet" #hasInternet="ngModel" [(ngModel)]="model.hasInternet" (change)="clearModel()" required> 
+        <option disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+        <option *ngFor="let optionInternet of this.hasInternetOptions;" value="{{optionInternet.id}}" >{{optionInternet.desc}}</option>
+      </select>
+            <span class="col-md-3 error-global" *ngIf="hasInternet.touched && hasInternet.invalid">Select an option</span>
+        </div>
+
+        <div *ngIf="hasInternet.value == internetEnum.internetFree || hasInternet.value == internetEnum.internetPaid">
+            <div class="row pt-3">
+                <p class="col-md-6">What type of internet?: <a class="required-global">*</a></p>
+            </div>
+            <div class="row pl-3">
+                <select class="col-md-3 single-select-global" name="internetConnectType" #internetConnectType="ngModel" [(ngModel)]="model.internetConnectType" [required]="hasInternet.value == internetEnum.internetFree || hasInternet.value == internetEnum.internetPaid">
+          <option disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+          <option *ngFor="let connectType of this.internetConnectTypes;" value="{{connectType.id}}">{{connectType.connect_type}}</option>
+        </select>
+                <span class="col-md-3 error-global" *ngIf="internetConnectType.touched && internetConnectType.invalid">Select a connection type</span>
+            </div>
+            <div class="row pt-3">
+                <p class="col-md-6">Where?: <a class="required-global">*</a></p>
+            </div>
+            <div class="row pl-3">
+                <select class="col-md-3 single-select-global" name="internetPlaces" #internetPlaces="ngModel" [(ngModel)]="model.internetPlaces" [required]="hasInternet.value == internetEnum.internetFree || hasInternet.value == internetEnum.internetPaid"> 
+          <option disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+          <option *ngFor="let place of this.internetPlacesList;" value="{{place.id}}" >{{place.internet_place}}</option>
+        </select>
+                <span class="col-md-3 error-global" *ngIf="internetPlaces.touched && internetPlaces.invalid">Select an internet place</span>
+            </div>
+        </div>
+
+        <div *ngIf="hasInternet.value == internetEnum.internetPaid">
+            <div class="row pt-3">
+                <p class="col-md-6">Price for Internet (per day) ($): <a class="required-global">*</a></p>
+            </div>
+            <div class="row pl-3">
+                <input class="row col-md-3 ml-0 style-global" type="text" maxlength="{{internetEnum.internetPriceInputMaxSize}}" name="internetPrice" #internetPrice="ngModel" [(ngModel)]="model.internetPrice" placeholder="Write a price" [required]="hasInternet.value == internetEnum.internetPaid"
+                    pattern="0*[1-9][0-9]*$" />
+                <span class="col-md-3 error-global" *ngIf="internetPrice.touched && internetPrice.invalid">The field is invalid</span>
+            </div>
+        </div>
+
+    </form>
+</div> -->

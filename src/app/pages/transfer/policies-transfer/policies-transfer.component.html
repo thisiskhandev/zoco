@@ -1,0 +1,9 @@
+<app-form-header title="{{policiesTransferEnum.title}}" subtitle="{{policiesTransferEnum.subtitle}}"></app-form-header>
+<br>
+
+<form class="remove-scrollbar-global" (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+  <app-taxes-setup [model]="model.taxesSetup" ></app-taxes-setup>
+  <app-payment-methods [model]="model.paymentMethods"></app-payment-methods>
+  <app-extra-charges [model]="model.extraCharges"></app-extra-charges>
+  <app-wait-time [model]="model.waitTime"></app-wait-time>
+</form>

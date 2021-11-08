@@ -1,0 +1,11 @@
+<div class="main-div">
+  <app-form-header title="{{viewDetailsActivityEnum.title}}" subtitle="{{model.nameActivity}}"></app-form-header>
+
+  <form>
+    <div class="card-body">
+      <app-view-activity-info [model]="model.viewActivityInfo"></app-view-activity-info>
+      <app-view-sub-activity-info [model]="model.viewSubActivityInfoList"></app-view-sub-activity-info>
+      <app-view-general-info [model]="model.viewGeneralInfo"></app-view-general-info>
+    </div>
+  </form>
+</div>

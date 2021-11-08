@@ -1,0 +1,30 @@
+<div class="card-body">
+    <form #formGroup="ngForm">
+        <div class="separator-global"></div>
+        <div class="section-label-global">Activity description general</div>
+
+        <div class="row mainrow-global">
+            <div class="col-sm-6 form-colums-global">
+                <div class="row">
+                    <label class="style-global">Activities description details: <a class="required-global">*</a></label>
+                </div>
+                <div class="row">
+                    <textarea class="style-global allwidth-global" rows="4" cols="100" maxlength="{{generalDesEnum.textMaxSize}}" name="description" #description="ngModel" [(ngModel)]="model.description" placeholder="Write a description of this activity here" required></textarea>
+                    <span class="error-global" *ngIf="description.touched && description.invalid">Cannot be empty</span>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label class="style-global">Tips:  <a class="required-global">*</a></label>
+                </div>
+                <div class="row">
+                    <textarea class="style-global allwidth-global" rows="4" cols="100" maxlength="{{generalDesEnum.textMaxSize}}" name="tips" #tips="ngModel" [(ngModel)]="model.tips" placeholder="Write some tips for this activity" required></textarea>
+                    <span class="error-global" *ngIf="tips.touched && tips.invalid">Cannot be empty</span>
+                </div>
+            </div>
+        </div>
+
+        <app-photo-gallery [photoGalleryArray]="model.photoGalleryArray" [id]="this.activityId"></app-photo-gallery>
+
+    </form>
+</div>

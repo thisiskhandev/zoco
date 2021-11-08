@@ -1,0 +1,60 @@
+<div class="card-body">
+  <form #formGroup="ngForm">
+    <div class="section-label-global">Taxes setup</div>
+    
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Will Vat Tax be applied to the prices?<a class="required-global">*</a></label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <mat-radio-group name="vatTax" #vatTax="ngModel" [(ngModel)]="model.vatTax" class="col-md-6" required>
+        <label class="label-buttons-global">
+          <mat-radio-button value="true">YES</mat-radio-button>
+        </label>
+        <label class="label-buttons-global">
+          <mat-radio-button value="false">NO</mat-radio-button>
+        </label>
+      </mat-radio-group>
+    </div>
+
+    <div class="row" *ngIf="vatTax.value == taxesSetupEnum.true">
+      <label class="col-md-4 style-global">What will be the percentage of VAT? <a class="required-global">*</a></label>
+      <select class="col-md-4 single-select-global" name="percentageVat" #percentageVat="ngModel" 
+        [(ngModel)]="model.percentageVat" [required]="vatTax.value == taxesSetupEnum.true"> 
+        <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+        <option *ngFor="let option of this.percentageOptions; let y = index;" value="{{option.name}}" >{{option.name}}</option>
+      </select>
+    </div> 
+  
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Will City Tax be applied to the prices?<a class="required-global">*</a></label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <mat-radio-group name="cityTax" #cityTax="ngModel" [(ngModel)]="model.cityTax" class="col-md-6">
+        <label class="label-buttons-global">
+          <mat-radio-button value="true">YES</mat-radio-button>
+        </label>
+        <label class="label-buttons-global">
+          <mat-radio-button value="false">NO</mat-radio-button>
+        </label>
+      </mat-radio-group>
+    </div>
+    
+    <div class="row" *ngIf="cityTax.value == taxesSetupEnum.true">         
+      <label class="col-md-4 style-global">City Tax amount<a class="required-global">*</a></label>
+      <div class="input-group-prepend" >
+        <span class="input-group-text input-group-text-price" id="basic-addon3" >US $</span>
+      </div>
+      <input class="style-price" id="basic-url" aria-describedby="basic-addon3" type="text" maxlength="{{taxesSetupEnum.numberMaxSize}}" name="amountCityTax" 
+        #amountCityTax="ngModel" [(ngModel)]="model.amountCityTax" placeholder="0" [required]="cityTax.value == taxesSetupEnum.true" pattern="{{taxesSetupEnum.regexNumbers}}"> 
+    </div>  
+ 
+  </form>
+</div>

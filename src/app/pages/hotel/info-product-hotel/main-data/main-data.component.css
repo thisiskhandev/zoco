@@ -1,0 +1,8 @@
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: none;
+  display: none;
+}
+b.colon {
+  margin-top: 8px;
+  font-size: 18px;
+}

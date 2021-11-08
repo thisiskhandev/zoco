@@ -1,0 +1,32 @@
+<div class="table-container">
+  <mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="{{listRatesEnum.activityColumn}}">
+      <mat-header-cell *matHeaderCellDef>{{listRatesEnum.activityTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.nameSubActivity}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="{{listRatesEnum.typeColumn}}">
+      <mat-header-cell *matHeaderCellDef>{{listRatesEnum.typeTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.namePersonType}}</mat-cell>        
+    </ng-container>
+    
+    <ng-container matColumnDef="{{listRatesEnum.priceColumn}}">
+      <mat-header-cell *matHeaderCellDef>{{listRatesEnum.priceTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.price}}</mat-cell>        
+    </ng-container>
+
+    <ng-container matColumnDef="{{listRatesEnum.action}}">
+      <mat-header-cell *matHeaderCellDef >{{listRatesEnum.actionTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element; let y = index" class="align-icons">
+        <button mat-button (click)="this.delete( element[listRatesEnum.activityColumn], element[listRatesEnum.typeColumn], y )">
+          <mat-icon class="icon-delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
+    <mat-row [ngClass]="{ 'highlight-grey': index % listRatesEnum.valueTwo == listRatesEnum.valueOne }" *matRowDef="let row; columns: displayedColumns; let index = index" ></mat-row> 
+      
+  </mat-table>
+</div>

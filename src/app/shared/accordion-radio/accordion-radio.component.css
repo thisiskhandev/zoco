@@ -1,0 +1,89 @@
+.mypanel {
+  background-color: white;
+  color: #222;
+}
+
+.mypanel .title {
+  background-color: #ccc;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  /* border-bottom: 1px solid #666; */
+  border-radius: 5px 5px 0px 0px;
+}
+
+.mypanel .body {
+  padding: 10px;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.mypanel .body > .content {
+  padding-bottom: 1rem;
+}
+
+.mypanel .body.hidden {
+  display: none;
+}
+
+.body {
+  transition: all 2s ease-out !important;
+}
+
+/* input[type="radio"] {
+  height: 20px;
+  width: 20px;
+} */
+
+input[type="checkbox"]:checked {
+  color: darkgray;
+}
+
+.form-check-label {
+  padding-left: 1rem;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  margin-top: 1px;
+  margin-right: 1rem;
+  border: 1px solid #6c757d;
+  border-radius: 50%;
+  outline: none;
+  /* box-shadow: 0 0 5px 0px gray inset; */
+}
+
+/* input[type='checkbox']:hover {
+  box-shadow: 0 0 5px 0px orange inset;
+} */
+
+input[type='checkbox']:before {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+  border-radius: 50%;
+}
+
+input[type='checkbox']:checked:before {
+  background: #ec394e;
+}
+
+.caret-accordion {
+  margin-top: -4px;
+}
+
+.title_accordion_radio_group {
+
+}
+
+.body_accordion_group {
+  padding-top: 0px !important;
+  padding-bottom: 4px !important;
+}
+
+.bg_accordion_radio {
+  background-color: #efefef !important;
+}

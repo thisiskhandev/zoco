@@ -1,0 +1,75 @@
+<form [formGroup]="formGroup">
+
+    <div class="row">
+        <div class="col-12">
+            <label class="label-form">{{labelName}}</label>
+        </div>
+    </div>
+
+    <div formArrayName="phones" *ngFor="let phoneItem of getPhones().controls; let i = index;" required>
+        <div [formGroupName]="i">
+            <div class="row">
+                <div class="col-4">
+                    <select class="form-control input-style single-select-global" formControlName="callingCode">
+                        <option *ngIf="!this.phones || this.phones.length == phoneEnum.valueZero" [selected]="true" disabled hidden value="{{selectUndefinedOptionValue}}" >Codigo</option>
+                        <option *ngFor="let country of this.countries; let y = index;" value="{{country.callingCode}}">{{country.countryName}} - {{country.callingCode}}</option>
+                    </select>
+                    <span class="error-global span-width" *ngIf="phoneItem.get('callingCode').touched && phoneItem.get('callingCode').hasError('required')">Select a Calling Code</span>
+                </div>
+                <div class="col-8">
+                    <input class="form-control input-style" type="text" maxlength="{{phoneEnum.phoneNumberMaxSize}}" value="" formControlName="phone" placeholder="Numero" autocomplete="none" required>
+                    <span class="error-global span-width ml-5" *ngIf="phoneItem.get('phone').touched && phoneItem.get('phone').hasError('required')">Cannot be empty</span>
+                    <span class="error-global span-width ml-5" *ngIf="phoneItem.get('phone').touched && phoneItem.get('phone').hasError('invalidcellphone')">Only numeric caracters</span>
+                    <span class="error-global span-width ml-5" *ngIf="phoneItem.get('phone').touched && phoneItem.get('phone').hasError('maxLength')">This field cannot have more than 25 characters</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<!-- <form [formGroup]="formGroup">
+    <div class="">
+        <label class="label-form">Phones:</label>
+    </div>
+    <div class="">
+        <div formArrayName="phones" *ngFor="let phoneItem of getPhones().controls; let i = index;" required>
+            <div [formGroupName]="i">
+                <select class="form-control input-style single-select-global allwidth-global" formControlName="callingCode" name="countryName" [(ngModel)]="this.countryName" (change)="sendForm()">
+                  <option *ngIf="!this.phones || this.phones.length == phoneEnum.valueZero" [selected]="true" disabled hidden value="{{selectUndefinedOptionValue}}" >  Select a calling code  </option>
+                  <option *ngFor="let country of this.countries; let y = index;" value="{{country.callingCode}}">{{country.countryName}} - {{country.callingCode}}</option>
+                </select>
+                <input class="form-control input-style style-global" type="text" maxlength="{{phoneEnum.phoneNumberMaxSize}}" value="" formControlName="phone" placeholder="Write a phone number" (change)="sendForm()" autocomplete="none" required>
+            </div>
+            <span class="error-global span-width" *ngIf="phoneItem.get('callingCode').touched && phoneItem.get('callingCode').hasError('required')">Select a Calling Code</span>
+            <span class="error-global span-width ml-5" *ngIf="phoneItem.get('phone').touched && phoneItem.get('phone').hasError('required')">Cannot be empty</span>
+            <span class="error-global span-width ml-5" *ngIf="phoneItem.get('phone').touched && phoneItem.get('phone').hasError('invalidcellphone')">Only numeric caracters</span>
+            <span class="error-global span-width ml-5" *ngIf="phoneItem.get('phone').touched && phoneItem.get('phone').hasError('maxLength')">This field cannot have more than 25 characters</span>
+        </div>
+    </div>
+</form> -->
+
+<!-- <form [formGroup]="formGroup">
+    <div class="row">
+        <label class="style-global">Phones: <a class="required-global">*</a></label>
+    </div>
+    <div class="row">
+        <div formArrayName="phones" *ngFor="let phoneItem of getPhones().controls; let i = index;" required>
+            <div [formGroupName]="i">
+                <select class="single-select-global allwidth-global" formControlName="callingCode" name="countryName" [(ngModel)]="this.countryName">
+                  <option *ngIf="!this.phones || this.phones.length == phoneEnum.valueZero" [selected]="true" disabled hidden value="{{selectUndefinedOptionValue}}" >  Select a calling code  </option>
+                  <option *ngFor="let country of this.countries; let y = index;" value="{{country.callingCode}}">{{country.countryName}} - {{country.callingCode}}</option>
+                </select>
+                <input class="style-global" type="text" maxlength="{{phoneEnum.phoneNumberMaxSize}}" value="" formControlName="phone" placeholder="Write a phone number" autocomplete="none" required>
+                <span *ngIf="i == phoneEnum.valueZero && this.maxPhoneItems > phoneEnum.valueOne">
+                  <button type="button" class="btn btn-global" (click)="addPhone($event)">+</button>
+                </span>
+                <button type="button" *ngIf="i !== 0" class="btn btn-danger btn-sm btn-remove-phone" (click)="removePhone(i)">X</button>
+            </div>
+            <span class="error-global span-width" *ngIf="phoneItem.get('callingCode').touched && phoneItem.get('callingCode').hasError('required')">Select a Calling Code</span>
+            <span class="error-global span-width ml-5" *ngIf="phoneItem.get('phone').touched && phoneItem.get('phone').hasError('required')">Cannot be empty</span>
+            <span class="error-global span-width ml-5" *ngIf="phoneItem.get('phone').touched && phoneItem.get('phone').hasError('invalidcellphone')">Only numeric caracters</span>
+            <span class="error-global span-width ml-5" *ngIf="phoneItem.get('phone').touched && phoneItem.get('phone').hasError('maxLength')">This field cannot have more than 25 characters</span>
+        </div>
+    </div>
+</form> -->

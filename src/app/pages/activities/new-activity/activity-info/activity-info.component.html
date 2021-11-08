@@ -1,0 +1,86 @@
+<div class="card-body">
+  <form #formGroup="ngForm">
+
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Name of Tour or activity: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" name="name" #name="ngModel" [(ngModel)]="model.name" type="text" 
+            placeholder="Name of Tour or activity" maxlength="{{activityInfoEnum.textMaxSize}}" autocomplete="none" required>
+          <span class="error-global" *ngIf="name.touched && name.invalid">Cannot be empty</span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label class="style-global">Duration: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <select class="single-select-global twoSelect-width" name="duration" #duration="ngModel" [(ngModel)]="model.duration" required> 
+            <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let val of this.vector;" value="{{val}}" >{{val}}</option>
+          </select>      
+          <select class="single-select-global twoSelect-width margin-left" name="timeOption" #timeOption="ngModel" [(ngModel)]="model.timeOption" required> 
+            <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let option of this.timeOptions; let y = index;" value="{{option.id}}" >{{option.name}}</option>
+          </select>
+          <span class="error-global twoSelect-width" *ngIf="duration.touched && duration.invalid">Select a duration</span>
+          <span class="error-global twoSelect-width margin-left" *ngIf="timeOption.touched && timeOption.invalid">Select a time option</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Destination City: <a class="required-global">*</a></label>
+        </div>       
+        <div class="row-special">
+          <input class="style-global allwidth-global" ngui-auto-complete name="destinationCity" [(ngModel)]="this.destinationCity" type="text"
+            value-formatter="name" placeholder="Destination" maxlength="{{activityInfoEnum.textMaxSize}}" [source]="observableSource.bind(this)" display-property-name="name" 
+            (valueChanged)="myCallback($event)" [list-formatter]="myListFormatter" accept-user-input="false" autocomplete="off" required>
+          <span class="error-global" *ngIf="destinationCity.touched && destinationCity.invalid">This field is required.</span>
+        </div>        
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label class="style-global">Type of schedule: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <select class="single-select-global allwidth-global" name="schedule" #schedule="ngModel" [(ngModel)]="model.schedule" required> 
+            <option [selected]="true" disabled hidden value="null" >Select a schedule</option>
+            <option *ngFor="let option of this.typeScheduleOptions; let y = index;" value="{{option.id}}" >{{option.name}}</option>
+          </select>
+          <span class="error-global" *ngIf="schedule.touched && schedule.invalid">Select a schedule</span>
+        </div>
+      </div>  
+    </div>
+
+
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Validity Date: <a class="required-global">*</a></label>
+        </div>       
+        <div class="row-special">
+          <input class="style-global twoSelect-width" type="date" name="validFrom" #validFrom="ngModel" [(ngModel)]="model.validFrom" placeholder="null">
+          <input class="style-global twoSelect-width margin-left-date" type="date" name="validUntil" #validUntil="ngModel" [(ngModel)]="model.validUntil" placeholder="null">
+        </div>        
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label class="style-global">Highlights: </label>
+        </div>
+        <div class=" activity-info-checkbox">
+          <app-multiple-selector
+            [model]="model.highlightTypes"
+            [itemsTypes]="this.highlightTypes" 
+            [requiredField]="this.requiredField">
+          </app-multiple-selector>         
+        </div>
+      </div>  
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,54 @@
+<div class="table-container">
+    <mat-table #table [dataSource]="dataSource" matSort>
+  
+      <ng-container matColumnDef="{{ListTransferEnum.company_col}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >{{ListTransferEnum.company_name}}</mat-header-cell>
+        <mat-cell *matCellDef="let element" routerLink="/base-navigator/transfer/view-details-transfer/{{element[ListTransferEnum.id_col]}}" 
+        [ngClass]="{'active-link': true}"> {{element[ListTransferEnum.company_col]}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="{{ListTransferEnum.address_col}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >{{ListTransferEnum.address}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+          <img src="assets/img/app/location.png">
+          {{element[ListTransferEnum.address_col]}} 
+        </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="{{ListTransferEnum.city_col}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >{{ListTransferEnum.city}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element[ListTransferEnum.city_col]}} </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="{{ListTransferEnum.state_col}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >{{ListTransferEnum.state}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element[ListTransferEnum.state_col]}} </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="{{ListTransferEnum.contact_col}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >{{ListTransferEnum.contact}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element[ListTransferEnum.contact_col]}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="{{ListTransferEnum.total_col}}">
+          <mat-header-cell *matHeaderCellDef mat-sort-header >{{ListTransferEnum.total}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element[ListTransferEnum.total_col]}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="{{ListTransferEnum.action_col}}">
+        <mat-header-cell *matHeaderCellDef >Action</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="align-icons">
+          <button mat-button  (click)="edit(element[ListTransferEnum.id_col])" routerLink="/base-navigator/transfers">
+            <mat-icon class="icon-edit" >edit</mat-icon>
+          </button>
+          <button mat-button (click)="this.delete(element[ListTransferEnum.id_col], element[ListTransferEnum.company_col])">
+            <mat-icon class="icon-delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
+      <mat-row *matRowDef="let element; columns: displayedColumns;" ></mat-row>
+    </mat-table>
+</div>
+<br>

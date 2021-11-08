@@ -1,0 +1,75 @@
+.title {
+    font-size: 18pt;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    min-width: 100%;
+}
+  
+.mat-table {
+    max-height: 500px;
+}
+
+.mat-header-cell {
+    flex: 1;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    background-color: #e9ecef;   
+    text-align: center;
+    color: rgba(0, 0, 0, 0.788);
+    justify-content: left;
+    padding-left: 12px;
+    font-weight: bold;
+}
+
+.mat-cell {
+    font-size: 13px;
+}
+
+.mat-header-row {
+    padding: 0px 0px;
+    border-bottom-style: none;
+    text-align: center;
+}
+
+.mat-row {
+    border-bottom-style: dashed;
+    padding: 0px 0px 0px 20px;
+}
+
+.mat-column-id {
+    flex: 0 0 4%;
+}
+
+.mat-column-people {
+    flex: 0 0 6%;
+}
+
+.mat-column-taxes {
+    flex: 0 0 6%;
+}
+
+.mat-column-extraCharges {
+    flex: 0 0 9%;
+}
+
+.mat-column-parkingPrice {
+    flex: 0 0 9%;
+}
+
+.mat-column-totalPrice {
+    flex: 0 0 9%;
+}
+
+.btn-size {
+    margin-top: 20px;
+    margin-left: 30%;
+    width: 100%;
+}

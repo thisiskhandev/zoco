@@ -1,0 +1,24 @@
+<form class="sub-component-form" #formGroup="ngForm" >
+    <h3>Waive some Cancellation Fees</h3>
+
+    <div class="row" >
+        <p class="col-md-12">Save yourself time dealing with certain cancellations! Select an option below:</p>
+    </div>
+
+    <div class="row" >
+        <mat-checkbox color="accent" class="col-md-2 mt-2" name="hasGracePeriodBoolean" [(ngModel)]="this.hasGracePeriodBoolean" (change)="hasGracePeriodChangeEvent()" [checked]="model.hasGracePeriod == cancellationFeesEnum.trueString " > Grace Period</mat-checkbox>
+    </div>
+
+    <div class="row" >
+        <p class="col-md-12">Waive cancellation fees for guests who cancel their bookings 1, 4, or 24 hours after they book (excluding last-minute bookings made up to 48 hours before check-in).</p>
+    </div>
+    
+    <div class="row pl-3" *ngFor="let option of this.gracePeriodRadioOptions; let i=index;" >  
+        <label class="radio-button-div row" >{{option.name}}>
+            <input class="col-md-6 style-global" type="radio" name="gracePeriod" [(ngModel)]="model.gracePeriod"
+                [value]="getId(option.id)" [checked]="option.id === model.gracePeriod" [disabled]="!this.hasGracePeriodBoolean" />
+            <span class="checkmark"></span>
+        </label>
+    </div>
+    
+ </form> 

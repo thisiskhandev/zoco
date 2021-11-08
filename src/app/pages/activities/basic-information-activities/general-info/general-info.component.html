@@ -1,0 +1,105 @@
+<div class="card-body">
+  <form #formGroup="ngForm">
+
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Provider name: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" name="providerName" #providerName="ngModel" [(ngModel)]="model.providerName" type="text" placeholder="Provider name" autocomplete="none" required>
+          <span class="error-global" *ngIf="providerName.touched && providerName.errors?.required">Cannot be empty</span>
+        </div>
+      </div>
+      <div class="col-sm-6">  
+        <div class="row">
+          <label class="style-global">Fiscal data: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global"  name="fiscalData" #fiscalData="ngModel" [(ngModel)]="model.fiscalData" type="text" placeholder="Fiscal Data" autocomplete="none" required>
+          <span class="error-global" *ngIf="fiscalData.touched && fiscalData.errors?.required">Cannot be empty</span>
+        </div>
+      </div>
+    </div>  
+    
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Home address: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" #autocomplete name="homeAddress" #homeAddress="ngModel" [(ngModel)]="model.homeAddress" type="text" placeholder="Address" required>
+          <span class="error-global" *ngIf="homeAddress.touched && homeAddress.errors?.required">Cannot be empty</span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label class="style-global" id="countryLabel">Country: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" name="country" #country="ngModel" [(ngModel)]="model.country" type="text" placeholder="Country" maxlength="{{generalInfoEnum.inputMaxSize}}" autocomplete="none" required>
+          <span class="error-global" *ngIf="country.touched && country.errors?.required">Cannot be empty</span>    
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global" id="stateLabel">State: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" name="state" #state="ngModel" [(ngModel)]="model.state" type="text" placeholder="State" maxlength="{{generalInfoEnum.inputMaxSize}}" autocomplete="none" required>
+          <span class="error-global" *ngIf="state.touched && state.errors?.required">Cannot be empty</span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label class="style-global">City: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" name="city" #city="ngModel" [(ngModel)]="model.city" type="text" placeholder="City" maxlength="{{generalInfoEnum.inputMaxSize}}" autocomplete="none" required>
+          <span class="error-global" *ngIf="city.touched && city.errors?.required">Cannot be empty</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mainrow-global">
+      <div class="col-sm-6  form-colums-global">
+          <div class="row">
+            <label class="style-global">Zip Code: <a class="required-global">*</a></label>
+          </div>
+          <div class="row">
+            <input class="style-global allwidth-global" name="zipCode" #zipCode="ngModel" [(ngModel)]="model.zipCode" type="text" placeholder="Zip code" maxlength="{{generalInfoEnum.inputMaxSize}}" autocomplete="none" required>
+            <span class="error-global" *ngIf="zipCode.touched && zipCode.errors?.required">Cannot be empty</span>
+          </div>
+        </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label class="style-global">E-mail: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" type="text"  maxlength="{{generalInfoEnum.inputMaxSize}}" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Write an e-mail" autocomplete="none" pattern="{{customValidator.emailRegexpString}}" required>
+          <span class="error-global" *ngIf="email.touched && email.errors?.required">Cannot be empty</span>
+          <span class="error-global" *ngIf="email.touched && email.errors?.pattern">Provide a valid email</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Responsible Name: <a class="required-global">*</a></label>    
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" type="text"  maxlength="{{generalInfoEnum.inputMaxSize}}" name="responsibleName" #responsibleName="ngModel" [(ngModel)]="model.responsibleName" placeholder="Write a responsible name" required>
+          <span class="error-global" *ngIf="responsibleName.touched && responsibleName.errors?.required">Cannot be empty</span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <app-phone [maxPhoneItems]="this.maxPhoneItems"></app-phone>
+      </div>
+    </div>
+  
+  </form>
+</div>

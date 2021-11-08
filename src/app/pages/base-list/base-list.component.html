@@ -1,0 +1,47 @@
+<div class="body-list">
+    <h5>Group homepage</h5>
+    <hr class="line-subtitle-style" />
+    <br><br>
+    <div>
+        <h4>{{titleList}}</h4>
+    </div>
+    <div class="row, text-right">
+        <button id="submit-button-global" class="btn btn-global" routerLink="/base-navigator/{{idList}}" (click)="clearCookies()">+ New</button>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Filter list by:</span>
+        </div>
+        <input type="text" class="form-control-filter" id="basic-url" aria-describedby="basic-addon3" (keyup)="applyFilter($event.target.value)">
+    </div>
+    <!-- <h5>Group homepage</h5>
+  <hr class="line-subtitle-style" />
+  <br><br>
+  <div>
+      <h4>{{titleList}}</h4>
+  </div>
+  <div class="row, text-right">
+    <button id="submit-button-global" class="btn btn-global" routerLink="/base-navigator/{{idList}}" (click)="clearCookies()">+ New</button>
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon3">Filter list by:</span>
+    </div>
+    <input type="text" class="form-control-filter" id="basic-url" aria-describedby="basic-addon3"  (keyup)="applyFilter($event.target.value)">
+  </div>  -->
+
+    <ng-template [ngIf]="idList === baseListEnum.hotelList ">
+        <app-list-hotel #categoryList></app-list-hotel>
+    </ng-template>
+    <ng-template [ngIf]="idList === baseListEnum.transferList ">
+        <app-list-transfer #categoryList></app-list-transfer>
+    </ng-template>
+    <ng-template [ngIf]="idList === baseListEnum.activityList ">
+        <app-list-activities #categoryList></app-list-activities>
+    </ng-template>
+
+    <mat-paginator [length]="baseListEnum.length" [pageSize]="baseListEnum.pageSize" [pageSizeOptions]="pageSizeOptions">
+    </mat-paginator>
+</div>
+<!-- <mat-paginator [length]="baseListEnum.length" [pageSize]="baseListEnum.pageSize" [pageSizeOptions]="pageSizeOptions" >
+  </mat-paginator> -->

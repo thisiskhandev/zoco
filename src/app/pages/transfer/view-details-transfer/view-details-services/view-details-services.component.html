@@ -1,0 +1,90 @@
+<div class="separator-global"></div>
+
+<div class="card-body">
+    <div class="row mainrow-global">
+        <div class="col-sm-6 form-colums-global">
+            <div class="row">
+                <div class="title">{{this.vehicleName}} {{viewDetailsServicesEnum.completeTitle}}</div>                
+                <button type="button" class="btn btn-global button-align" (click)="loadSettings(this.transferId)"
+                    routerLink="/base-navigator/transfers/settings" >{{viewDetailsServicesEnum.buttonSettings}}
+                </button>
+                
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row-services">
+                <label class="extraInfo-title">{{viewDetailsServicesEnum.driversTitle}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="row mainrow-global">
+        <div class="col-sm-6 form-colums-global">
+            <div class="row">
+                <div class="table-container">
+                    <mat-table #table [dataSource]="dataSource" matSort>
+                        <ng-container matColumnDef="{{viewDetailsServicesEnum.plate}}">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsServicesEnum.plateTitle}}</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element[viewDetailsServicesEnum.plate]}} </mat-cell>
+                        </ng-container>                
+                        <ng-container matColumnDef="{{viewDetailsServicesEnum.children}}">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsServicesEnum.childrenTitle}}</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element[viewDetailsServicesEnum.children]}} </mat-cell>
+                        </ng-container>                    
+                        <ng-container matColumnDef="{{viewDetailsServicesEnum.pets}}">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsServicesEnum.petsTitle}}</mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element[viewDetailsServicesEnum.pets]}} </mat-cell>
+                        </ng-container>            
+                        <ng-container matColumnDef="{{viewDetailsServicesEnum.door}}">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsServicesEnum.doorTitle}}</mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="align-hour"> {{element[viewDetailsServicesEnum.door]}} </mat-cell>
+                        </ng-container>            
+                        <ng-container matColumnDef="{{viewDetailsServicesEnum.stop}}">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsServicesEnum.stopTitle}}</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element[viewDetailsServicesEnum.stop]}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="{{viewDetailsServicesEnum.availability}}">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewDetailsServicesEnum.availabilityTitle}}</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element[viewDetailsServicesEnum.availability]}} </mat-cell>
+                        </ng-container>         
+                        <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
+                        <mat-row *matRowDef="let element; columns: displayedColumns;" 
+                            [ngClass]="{'highlight-pink': selectedRow == element.id}" (click)="highlight(element)" >
+                        </mat-row>                
+                    </mat-table>
+                </div>
+            </div>            
+        </div>
+        <div class="col-sm-6">
+            <div class="row-services">
+                <textarea class="textarea-style" disabled>{{this.driversAsigned}}</textarea>
+            </div>
+            <div class="row-services">
+                <button type="button" class="btn btn-global btn-drivers" (click)="loadDrivers(this.transferId)"
+                    routerLink="/base-navigator/transfers/drivers" >{{viewDetailsServicesEnum.buttonDrivers}}
+                </button>
+            </div>
+            <div class="row-services">
+                <label class="extraInfo-title">{{viewDetailsServicesEnum.bagsTitle}}</label>
+            </div>
+            <div class="row-services background-label">
+                <label class="name-label">{{viewDetailsServicesEnum.weight}}: </label>
+                <label class="description-label">{{this.bagsWeight}}</label>
+            </div>
+            <div class="row-services">
+                <label class="dimentions-title">{{viewDetailsServicesEnum.dimentions}}:</label>
+            </div>
+            <div class="row-services">
+                <label class="background-mini-label margin-label">{{viewDetailsServicesEnum.length}}: {{this.length}}</label>
+                <label class="background-mini-label margin-label">{{viewDetailsServicesEnum.width}}: {{this.width}}</label>                
+                <label class="background-mini-label">{{viewDetailsServicesEnum.heigth}}: {{this.height}}</label>                
+            </div>
+            <div class="row-services background-label margin-top">
+                <label class="name-label">{{viewDetailsServicesEnum.schedule}}: </label>
+                <label class="description-label">{{this.scheduleType}}
+                    <img *ngIf="this.scheduleType == viewDetailsServicesEnum.day" src="assets/img/app/sunny.svg" class="image-style" >
+                    <img *ngIf="this.scheduleType == viewDetailsServicesEnum.night" src="assets/img/app/moon.svg" class="image-style" >
+                </label>
+            </div>
+        </div>        
+    </div>
+</div>

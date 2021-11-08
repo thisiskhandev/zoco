@@ -1,0 +1,10 @@
+<div class="mypanel mb-1">
+  <div class="title {{bsBackground}} {{bsText}}" (click)="toggle.emit()">
+    {{title}}
+    <fa-icon [icon]="faCaretDown" rotate="{{opened ? 180 : 0}}" [inverse]="whiteChevron" class="float-right caret-accordion" size="2x" *ngIf="useCaret"></fa-icon>
+    <span class="float-right mr-4">{{subtitle}}</span>
+  </div>
+  <div class="body" [ngClass]="{'hidden': !opened}">
+    <ng-content></ng-content>
+  </div>
+<div>

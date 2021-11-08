@@ -1,0 +1,39 @@
+label.style-global {
+    width: 100%;
+}
+
+.checkbox-margin {
+    margin-right: 60px;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #BA005D !important;
+}
+
+.material-icons {
+    font-size: 46px;
+    color: #BB005E !important;
+}
+
+.design-exclude-tax {
+    background-color: #F2F2F2;
+    border-radius: 18px;
+    padding: 2% 2% 2% 2%;
+    width: 100%;
+}
+
+.size-icon {
+    width: 10%;
+}
+
+.size-label {
+    width: 86%;
+    color: #666666;
+    font-weight: bold;
+}
+
+.exclude-taxes-checkbox ::ng-deep .multiple-selector-align-checkbox {
+    width: 30% !important; 
+    float: left;
+    padding-left: 0px !important;
+}

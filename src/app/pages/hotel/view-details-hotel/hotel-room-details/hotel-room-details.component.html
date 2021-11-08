@@ -1,0 +1,70 @@
+<div class="row" > 
+    <h6 class="col-md-12 style-global ">{{DetailsHotelEnum['rooms']}} {{hotelDetails.quantityRooms}} </h6>
+</div>
+<div class="row" > 
+    <h6 class="col-md-8 style-global ">{{DetailsHotelEnum['types']}} {{hotelDetails.establishment_name}} 
+    <button mat-button routerLink="">
+        <mat-icon class="icon-edit" >edit</mat-icon>
+    </button>
+  </h6>
+</div>
+<div class="table-container" *ngIf="hotelDetails && hotelDetails.listRooms && hotelDetails.listRooms.length > utilities.emptyLength">
+    <mat-table #table [dataSource]="hotelDetails.listRooms">
+        <ng-container matColumnDef="{{DetailsHotelEnum['room_type']}}">
+          <mat-header-cell *matHeaderCellDef class="align-text-left">{{DetailsHotelEnum['type']}}</mat-header-cell>
+          <mat-cell *matCellDef="let element" class="align-text-left"> {{element[DetailsHotelEnum.room_type]}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="{{DetailsHotelEnum['room_name']}}">
+          <mat-header-cell *matHeaderCellDef class="align-text-left" >{{DetailsHotelEnum['name']}}</mat-header-cell>
+          <mat-cell *matCellDef="let element" class="align-text-left"> {{element[DetailsHotelEnum.room_name]}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="{{DetailsHotelEnum['number_of_this_room']}}">
+          <mat-header-cell *matHeaderCellDef >{{DetailsHotelEnum['number']}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element[DetailsHotelEnum.number_of_this_room]}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="{{DetailsHotelEnum['living_quantity']}}">
+            <mat-header-cell *matHeaderCellDef >{{DetailsHotelEnum['living']}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element[DetailsHotelEnum.living_quantity]}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="{{DetailsHotelEnum['bath_quantity']}}">
+            <mat-header-cell *matHeaderCellDef >{{DetailsHotelEnum['bath']}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element[DetailsHotelEnum.bath_quantity]}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="{{DetailsHotelEnum['size']}}">
+            <mat-header-cell *matHeaderCellDef>{{DetailsHotelEnum['sizeTitle']}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element[DetailsHotelEnum.size]}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="{{DetailsHotelEnum['measure']}}">
+            <mat-header-cell *matHeaderCellDef >{{DetailsHotelEnum['measureTitle']}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element[DetailsHotelEnum.measure]}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="{{DetailsHotelEnum['max_occupancy']}}">
+          <mat-header-cell *matHeaderCellDef>{{DetailsHotelEnum['occupancy']}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <div  *ngIf="element.roomPeopleQuantity <= maxGuestIconToShow" > 
+                    <img *ngFor="let dummy of ' '.repeat(element.roomPeopleQuantity).split('')" src="assets/img/app/layout-user.png" class="occupancy-icon">
+                </div>
+                <div *ngIf="element.roomPeopleQuantity > maxGuestIconToShow" >
+                    <img src="assets/img/app/layout-user.png" class="occupancy-icon"> x {{element.roomPeopleQuantity}}
+                </div>
+            </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="{{DetailsHotelEnum['price']}}" >
+          <mat-header-cell *matHeaderCellDef>{{DetailsHotelEnum['priceTitle']}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element[DetailsHotelEnum.price]}} </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"   ></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="highlightedRows = []; highlightedRows.push(row)"
+          [style.background]="highlightedRows.indexOf(row) != -1 ? 'lightblue' : ''"></mat-row>
+    </mat-table>
+</div>
+<br>

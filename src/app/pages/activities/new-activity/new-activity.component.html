@@ -1,0 +1,9 @@
+<app-form-header title="{{newActivityEnum.title}}" subtitle="{{newActivityEnum.subtitle}}"></app-form-header>
+<br>
+
+<form class="remove-scrollbar-global" (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+  <app-activity-info [model]="model.activityInfo"></app-activity-info>
+  <app-features [model]="model.features"></app-features>
+  <app-itinerary [model]="model.itinerary"></app-itinerary>
+  <app-general-description [model]="model.generalDescription" [activityId]="this.activityId"></app-general-description>
+</form>

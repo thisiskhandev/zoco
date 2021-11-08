@@ -1,0 +1,20 @@
+<!-- <div class="mt-2 card">
+</div> -->
+
+<div id="" class="">
+    <div class="card-body">
+
+        <h4 class="titulo-cr">CREAR</h4>
+
+        <button (click)="show()">Show</button>
+
+        <app-description></app-description>
+
+        <app-how-to-get (items)="setItems($event, true)" [title]="InfoPropertyHotelEnum.howToGetTitle" [getHowToGetServices]="true"></app-how-to-get>
+
+        <app-how-to-get (items)="setItems($event, false)" [title]="InfoPropertyHotelEnum.nearbyAttractionsTitle" [getHowToGetServices]="false"></app-how-to-get>
+
+        <app-amenities [hotelCompleteInfo]="hotelCompleteInfo"></app-amenities>
+
+    </div>
+</div>

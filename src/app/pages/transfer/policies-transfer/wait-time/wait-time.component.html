@@ -1,0 +1,43 @@
+<div class="card-body">
+  <form #formGroup = "ngForm">
+    <div class="separator-global"></div>
+    <div class="section-label-global">{{waitTimeEnum.title}}</div>
+
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Max wait time provider (international) <a class="required-global">*</a></label>
+        </div>
+        <div class="row">        
+          <input class="style-global allwidth-global" name="maxWaitTime" #maxWaitTime="ngModel" [(ngModel)]="model.maxWaitTime" 
+            type="text" placeholder="Max wait time provider" maxlength="{{waitTimeEnum.textMaxSize}}" autocomplete="none" required>
+          <span class="error-global" *ngIf="maxWaitTime.touched && maxWaitTime.invalid">Cannot be empty</span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label class="style-global">Max client time provider(domestic) <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" name="maxClientTime" #maxClientTime="ngModel" [(ngModel)]="model.maxClientTime" 
+            type="text" placeholder="Max client provider" maxlength="{{waitTimeEnum.textMaxSize}}" autocomplete="none" required>
+          <span class="error-global" *ngIf="maxClientTime.touched && maxClientTime.invalid">Cannot be empty</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Max client waiting time <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" name="maxClientWaitingTime" #maxClientWaitingTime="ngModel" [(ngModel)]="model.maxClientWaitingTime" 
+            type="text" placeholder="Max client waiting time" maxlength="{{waitTimeEnum.textMaxSize}}" autocomplete="none" required>
+          <span class="error-global" *ngIf="maxClientWaitingTime.touched && maxClientWaitingTime.invalid">Cannot be empty</span>
+        </div>
+      </div>
+    </div>     
+      
+  </form>
+</div>

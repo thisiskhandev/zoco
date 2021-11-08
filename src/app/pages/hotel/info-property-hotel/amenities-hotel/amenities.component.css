@@ -1,0 +1,56 @@
+.amenitie_select {
+    width: 200px;
+    overflow: hidden;
+    border: 1px solid #000;
+    position: relative;
+    padding: 10px 0;
+}
+
+.amenitie_select:after {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #ec394e;
+    position: absolute;
+    top: 40%;
+    right: 5px;
+    content: "";
+    z-index: 98;
+}
+
+.amenitie_select select {
+    width: 220px;
+    border: 0;
+    position: relative;
+    z-index: 99;
+    background: none;
+}
+
+.plus-btn {
+    padding-left: 0px;
+}
+
+.amenities_accordions {
+    /* display: flex; */
+    flex-flow: column wrap;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: auto;
+    /* height: 355px; */
+}
+
+.amenities_radio_accordion {
+    width: 49%;
+}
+
+.amenitie_param_label {
+    font-weight: 400;
+    padding-right: 0px;
+    padding-top: 0.5rem;
+}
+
+.amenitie_param_row {
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+}

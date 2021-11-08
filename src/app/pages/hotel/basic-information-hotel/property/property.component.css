@@ -1,0 +1,55 @@
+.rating-star {
+    float: left;
+    margin: 0px 0 0;
+    outline: 0;
+}
+
+.rating {
+    outline: 0;
+}
+
+ngb-rating.rating-star {
+    outline: 0;
+}
+
+.customer-types-div {
+    display: -webkit-inline-box;
+    margin-right: 20px;
+}
+
+#rowHaveStarRating {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.row label {
+    font-size: 15px;
+}
+
+
+/*Sustituye el ancho del estilo global*/
+
+label.style-global {
+    width: 100%;
+}
+
+.single-select-global.allwidth-global {
+    width: 100% !important;
+}
+
+.triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #F0F0F0;
+    margin-left: 15px;
+}
+
+.section-description {
+    padding: 10px;
+}
+
+::ng-deep .mat-radio-label, .label-buttons-global{
+    margin: 0px !important;
+}

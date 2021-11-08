@@ -1,0 +1,15 @@
+<div>
+    <ng-template [ngIf]="idCategory === baseNavigatorEnum.categoryHotel ">
+        <app-navigator-hotel #categoryNavigator></app-navigator-hotel>
+    </ng-template>
+    <ng-template [ngIf]="idCategory === baseNavigatorEnum.categoryActivities">
+        <app-navigator-activities #categoryNavigator></app-navigator-activities>
+    </ng-template>    
+    <ng-template [ngIf]="idCategory === baseNavigatorEnum.categoryTransfer">
+        <app-navigator-transfer #categoryNavigator></app-navigator-transfer>
+    </ng-template>    
+ </div>
+ <div class="continue">
+    <button type="button" class="btn btn-save mr-3">GUARDAR</button> 
+    <button type="button" id="continue" class="btn btn-save btn-continue" (click)="continue($event)">CONTINUAR</button>
+</div>

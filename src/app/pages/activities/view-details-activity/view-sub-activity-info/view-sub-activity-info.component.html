@@ -1,0 +1,66 @@
+<app-form-header title="{{viewSubActivityInfoEnum.title}}" subtitle="{{viewSubActivityInfoEnum.subTitle}}"></app-form-header>
+<br>
+
+<div class="row mainrow-global">
+    <div class="col-sm-6 form-colums-global">
+        <div class="row">
+
+            <div class="table-container">
+                <mat-table #table [dataSource]="dataSource" matSort>
+                        
+                    <ng-container matColumnDef="{{viewSubActivityInfoEnum.id}}">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewSubActivityInfoEnum.idSubActivityTitle}}</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element[viewSubActivityInfoEnum.id]}} </mat-cell>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="{{viewSubActivityInfoEnum.name}}">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewSubActivityInfoEnum.nameTitle}}</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element[viewSubActivityInfoEnum.name]}} </mat-cell>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="{{viewSubActivityInfoEnum.date}}">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewSubActivityInfoEnum.dateTitle}}</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element[viewSubActivityInfoEnum.date]}} </mat-cell>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="{{viewSubActivityInfoEnum.startTime}}">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewSubActivityInfoEnum.startTimeTitle}}</mat-header-cell>
+                        <mat-cell *matCellDef="let element" class="align-hour"> {{element[viewSubActivityInfoEnum.startTime]}} </mat-cell>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="{{viewSubActivityInfoEnum.endTime}}">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header >{{viewSubActivityInfoEnum.endTimeTitle}}</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element[viewSubActivityInfoEnum.endTime]}} </mat-cell>
+                    </ng-container>
+                
+                    <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
+                    <mat-row *matRowDef="let element; columns: displayedColumns;" 
+                        [ngClass]="{'highlight-pink': selectedRowIndex == element.id}" (click)="highlight(element)" >
+                    </mat-row>
+                
+                </mat-table>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-6">
+        <div class="row">
+            <label class="name-label">{{viewSubActivityInfoEnum.details}}</label>
+        </div>
+        <div class="row">
+            <textarea class="textarea-style" [(ngModel)]="subActivitydetails" disabled></textarea>
+        </div>
+
+        <div class="row background-label">
+            <label class="name-label">{{viewSubActivityInfoEnum.rates}}:</label>
+        </div>
+        <div *ngFor="let option of ratesList;">
+            <label class="description-label">{{option.personType}}: </label>
+            <label>{{option.price}}$</label>
+        </div>
+
+    </div>
+</div>
+

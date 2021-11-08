@@ -1,0 +1,24 @@
+#confirm-dialog {
+    padding: 0px;    
+}
+
+#confirm-body {
+    padding: 20px;
+}
+
+#buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+h3 {
+    padding: 10px;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    background-color: #cccccc;
+}
+
+button {
+    width: 100px;
+    margin-right: 10px;
+}

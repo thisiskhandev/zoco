@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup">  
+  
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title-subsection-global">{{name}}<div *ngIf="requiredField == utilitiesConst.trueString"><a class="required-global">*</a></div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-multiple-selector
+        [model]="this.model"
+        [itemsTypes]="this.itemsTypes" 
+        [requiredField]="this.requiredField">
+      </app-multiple-selector>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</form>

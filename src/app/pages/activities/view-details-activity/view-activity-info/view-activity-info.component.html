@@ -1,0 +1,77 @@
+<app-form-header title="{{viewActivityInfoEnum.title}}" subtitle="{{viewActivityInfoEnum.subTitle}}"></app-form-header>
+<br>
+
+<div class="row mainrow-global">
+  <div class="col-sm-6 form-colums-global">
+    <div class="row background-label">
+      <label class="name-label">{{viewActivityInfoEnum.duration}}:</label>
+      <label class="description-label">{{model.duration}}</label>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="row background-label">
+      <label class="name-label">{{viewActivityInfoEnum.type}}:</label>
+      <label class="description-label">{{model.activityType}}</label>
+    </div>
+  </div>
+</div>
+
+<div class="row mainrow-global">
+  <div class="col-sm-6 form-colums-global">
+    <div class="row background-label">
+      <label class="name-label">{{viewActivityInfoEnum.highlight}}:</label>
+      <label class="description-label">{{model.highlights}}</label>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="row background-label">
+      <label class="name-label">{{viewActivityInfoEnum.language}}:</label>
+      <label class="description-label">{{model.langs}}</label>
+    </div>
+  </div>
+</div>
+
+<div class="row mainrow-global">
+  <div class="col-sm-6 form-colums-global">
+    <div class="row background-label">
+      <label class="name-label">{{viewActivityInfoEnum.hour}}:</label>
+      <label class="description-label">{{model.pickUpHour}}</label>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="row background-label">
+      <label class="name-label">{{viewActivityInfoEnum.location}}:</label>
+      <label class="description-label">{{model.pickUpLocation}}</label>
+    </div>
+  </div>
+</div>
+
+<div class="row mainrow-global">
+  <div class="col-sm-6 form-colums-global">
+    <div class="row">
+      <label class="name-label">{{viewActivityInfoEnum.schedules}}:</label>
+    </div>
+    <div class="row">
+      <label class="description-label">
+        <img *ngIf="model.schedule == viewActivityInfoEnum.day || model.schedule == viewActivityInfoEnum.allDay" src="assets/img/app/sunny.svg" class="image-style" >
+        <img *ngIf="model.schedule == viewActivityInfoEnum.night || model.schedule == viewActivityInfoEnum.allDay" src="assets/img/app/moon.svg" class="image-style" >
+      </label>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="row background-label">
+      <label class="name-label">{{viewActivityInfoEnum.taxesText}}</label>
+    </div>
+  </div>
+</div>
+
+<div class="row mainrow-global">
+  <div class="col-sm-6 form-colums-global">
+    <div class="row">
+      <button type="button" class="btn btn-global btn-margin-top" routerLink="/base-navigator/activities/rates/{{model.activityId}}" >{{viewActivityInfoEnum.buttonText}}</button>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="row"></div>
+  </div>
+</div>

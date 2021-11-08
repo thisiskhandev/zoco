@@ -1,0 +1,12 @@
+<form [formGroup]="formGroup">
+
+  <div class="body-style-global">
+    <div [formArrayName]="'itemsTypes'">
+      <div class="label-text-subsection-global multiple-selector-align-checkbox" *ngFor="let item of formData.controls;  let i=index" [formGroup]="item" >
+        <mat-checkbox class="multiple-selector-matcheckbox" #identificador formControlName="checked">{{item.controls.name.value}}</mat-checkbox>
+      </div>
+    </div>
+    <span class="col-md-6 error-global align-error-message" *ngIf="!formGroup.controls.formSelectedItems.valid && this.formGroup.controls.itemsTypes.touched">Please select at least one item</span>
+  </div>
+  
+</form>

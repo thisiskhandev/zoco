@@ -1,0 +1,160 @@
+<app-form-header title="{{settingsTransferEnum.pageTitle}}" subtitle="{{settingsTransferEnum.pageSubtitle}}"></app-form-header>
+<div class="card-body">
+    <form #formGroup="ngForm">
+        <div class="row">
+            <label class="col-md-6 style-global">Vehicles<a class="required-global">*</a></label>
+            <label class="col-md-6 style-global">Vehicles Plate<a class="required-global">*</a></label>
+        </div>
+
+        <div class="row pl-3">
+            <div class="col-md-6 row mr-4">
+                <select class="col-md-10 single-select-global" name="vehicleFeatureId" #vehicleFeatureId="ngModel" [(ngModel)]="itemModel.vehicleFeatureId" required> 
+                    <option disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+                    <option *ngFor="let vehiclesOption of vehiclesOptions; let i = index" [value]="vehiclesOption.id" >{{vehiclesOption.name}}</option>                    
+                </select>
+            </div>           
+            <div class="col-md-6 row">
+                <input class="col-md-10 style-global" type="text" maxlength="{{settingsTransferEnum.textMaxInputMaxSize}}" name="vehiclePlate" #vehiclePlate="ngModel" [(ngModel)]="itemModel.vehiclePlate" placeholder="Write a Vehicle Plate" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="col-md-6 style-global">Vehicle Type /Transport Type<a class="required-global">*</a></label>
+            <label class="col-md-6 style-global">Maximun Stops or Pickups<a class="required-global">*</a></label>
+        </div>
+
+        <div  class="row pl-3">
+            <div class="col-md-6 row mr-4">
+                <input class="col-md-10 style-global" type="text" maxlength="{{settingsTransferEnum.textMaxInputMaxSize}}" name="vehicleType" #vehicleType="ngModel" [(ngModel)]="itemModel.vehicleType"  placeholder ="Vehicle Type: Car / Transport Type: Regular" required>
+            </div> 
+            <div class="col-md-6 row">
+                <input class="col-md-10 style-global" type="number" maxlength="{{settingsTransferEnum.textMaxInputMaxSize}}" name="stopsOrPickups" #stopsOrPickups="ngModel" [(ngModel)]="itemModel.stopsOrPickups" placeholder="Write a Maximun Stops or Pickups" required>
+            </div>
+        </div>
+      
+        <div class="row">
+            <label class="col-md-6 style-global">Period of Availability<a class="required-global">*</a></label>
+            <label class="col-md-6 style-global">Bags Dimentions<a class="required-global">*</a></label>
+        </div>
+
+        <div class="row pl-3">
+            <div class="col-md-6 row mr-4">
+                <select class="col-md-5 single-select-global" name="availableHours" #availableHours="ngModel" [(ngModel)]="itemModel.availableHours" required>
+                    <option [selected]="true" disabled hidden value="null" >Select Hours</option>
+                    <option *ngFor="let hoursOption of hoursOption; let i = index" [value]="hoursOption.id" >{{hoursOption.name}}</option>
+                </select>
+                <select class="col-md-5 single-select-global" name="availableDays" #availableDays="ngModel" [(ngModel)]="itemModel.availableDays" required>
+                    <option [selected]="true" disabled hidden value="null" >Select Days</option>
+                    <option *ngFor="let daysOption of daysOption; let i = index" [value]="daysOption.id" >{{daysOption.name}}</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 row">
+                <div class="col-md-10 row-dimentions">                   
+                    <label>Length</label>
+                    <select class="single-select-global size-select-settings" name="bagLength" #bagLength="ngModel" [(ngModel)]="itemModel.bagLength" required>
+                        <option disabled hidden value="null" >{{utilities.placeHolderDash}}</option>
+                        <option *ngFor="let dimention of dimentions; let i = index" [value] = "dimention" >{{dimention}}</option>
+                    </select>
+                            
+                    <label class="dimentions-settings">Height</label>
+                    <select class="single-select-global size-select-settings" name="bagHeight" #bagHeight="ngModel" [(ngModel)]="itemModel.bagHeight" required>
+                        <option disabled hidden value="null" >{{utilities.placeHolderDash}}</option>
+                        <option *ngFor="let dimention of dimentions; let i = index" [value] = "dimention">{{dimention}}</option>
+                    </select>
+                
+                    <label class="dimentions-settings">Width</label>
+                    <select class="single-select-global size-select-settings" name="bagWidth" #bagWidth="ngModel" [(ngModel)]="itemModel.bagWidth" required>
+                        <option disabled hidden value="null" >{{utilities.placeHolderDash}}</option>
+                        <option *ngFor="let dimention of dimentions; let i = index" [value] = "dimention">{{dimention}}</option>  
+                    </select>                             
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="col-md-6 style-global">Bags Weight /Kg<a class="required-global">*</a></label>
+            <label class="col-md-6 style-global">Schedule Type<a class="required-global">*</a></label>
+        </div>
+
+        <div class="row pl-3">
+            <div class="col-md-6 row mr-4">
+                <select class="col-md-10 single-select-global" name="bagWeight" #bagWeight="ngModel" [(ngModel)]="itemModel.bagWeight" required>
+                    <option disabled hidden value="null" >Select Bags Weight /Kg</option>
+                    <option *ngFor="let dimention of dimentions; let i = index" [value]="dimention">{{dimention}}</option> 
+                </select>
+            </div>
+            <div class="col-md-6 row">
+                <mat-checkbox name="day" #day="ngModel" [(ngModel)]="itemModel.day" color="accent" class="style-global col-md-2" (change)="daySchedule($event)">Day</mat-checkbox>
+                <mat-checkbox name="night" #night="ngModel" [(ngModel)]="itemModel.night" color="accent" class="style-global col-md-2" (change)="nightSchedule($event)">Night</mat-checkbox>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="col-md-6 style-global"><a class="required-global"></a></label>
+            <label class="col-md-6 style-global">Driver<a class="required-global">*</a></label>
+        </div>
+
+        <div class="row pl-3 ">
+            <div class="col-md-6 row mr-4"></div>
+            <div class="col-md-6 row ">
+                <select class="col-md-10 single-select-global" name="transferDriverId" #transferDriverId="ngModel" [(ngModel)]="itemModel.transferDriverId" required>
+                    <option  disabled hidden value="null" >Select a driver</option>
+                    <option *ngFor="let driverOption of driverOptions" [value]="driverOption.id" placeholder="select">{{driverOption.name}}</option>
+                </select>
+            </div>
+        </div>
+       
+        <div class="row">            
+            <div class="row col-md-12">
+                <div class="col-md-2">Have Children?</div>
+                <div class="col-md-6">
+                    <mat-radio-group  name="haveChildren" #haveChildren="ngModel" [(ngModel)]="itemModel.haveChildren"  class="col-md-6">
+                        <label class="label-buttons-global ">
+                            <mat-radio-button value="Yes">Yes</mat-radio-button>
+                        </label>
+                        <label class="label-buttons-global ">
+                            <mat-radio-button value="No">No</mat-radio-button>
+                        </label>
+                    </mat-radio-group>
+                </div>
+            </div>
+           
+            <div class="row col-md-12">
+                <div class="col-md-2">Allows Pets?</div>
+                <div class="col-md-6"> 
+                    <mat-radio-group  name="allowPets" #allowPets="ngModel" [(ngModel)]="itemModel.allowPets" class="col-md-6">
+                        <label class="label-buttons-global ">
+                            <mat-radio-button value="Yes">Yes</mat-radio-button>
+                        </label>
+                        <label class="label-buttons-global ">
+                            <mat-radio-button value="No">No</mat-radio-button>
+                        </label>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <div class="row col-md-12">
+                <div class="col-md-2"> Door to Door Service</div>
+                <div class="col-md-6">
+                    <mat-radio-group name="doorToDoor" #doorToDoor="ngModel" [(ngModel)]="itemModel.doorToDoor" class="col-md-6">
+                        <label class="label-buttons-global ">
+                            <mat-radio-button value="Yes">Yes</mat-radio-button>
+                        </label>
+                        <label class="label-buttons-global ">
+                            <mat-radio-button value="No">No</mat-radio-button>
+                        </label>
+                    </mat-radio-group>
+                </div>
+            </div>
+        </div>
+       
+        <div class="row mt-2 mb-2" >
+            <div class="col-md-2 col-md-offset-2">
+              <button class="btn btn-global" id="add" type="button" (click)="addSettings()">Add Other Setting to Vehicle</button>
+            </div>
+        </div>
+
+        <app-list-setting [model]="this.model.settingsList"></app-list-setting>
+
+    </form>
+</div>

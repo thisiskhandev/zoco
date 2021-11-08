@@ -1,0 +1,28 @@
+<form [formGroup]="formGroup">
+    <div class="section-global">
+        <div class="row">
+            <div class="section-label-global"><span class="col-md-4">{{ChannelManagerEnum['channelManagerLabel']}}</span>
+                <a href="" id="channelHelp">{{ChannelManagerEnum['linkChannel']}}</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label-radio-title">
+                <label class="col-md-12 style-global">{{ChannelManagerEnum['channelManagerMessage']}} <a class="required-global">*</a></label>
+            </div>
+            <mat-radio-group (change)="clearChannelManager()" formControlName="haveChannelManager" name="haveChannelManager" class="col-md-6">
+                <label class="label-buttons-global">
+                    <mat-radio-button   value="true">{{BasicInformationEnum['YES']}}</mat-radio-button>
+                </label>
+                <label class="label-buttons-global">
+                    <mat-radio-button value="false">{{BasicInformationEnum['NO']}}</mat-radio-button>
+                </label>
+            </mat-radio-group>
+        </div>
+        <div class="row" *ngIf="this.formGroup.get('haveChannelManager').value == 'true'">
+            <label class="col-md-3 style-global">{{ChannelManagerEnum['channelManagerNameLabel']}} <a class="required-global">*</a></label>
+            <input class="col-md-6 style-global" type="text" formControlName="channelManagerName" placeholder="{{ChannelManagerEnum['channelManagerInputPlaceHolder']}}" maxlength="{{BasicInformationEnum['inputMaxSize']}}" autocomplete="none">
+            <span class="col-md-3 error-global" *ngIf="formGroup.get('channelManagerName').touched && formGroup.get('channelManagerName').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+            <span class="col-md-3 error-global" *ngIf="formGroup.get('channelManagerName').touched && formGroup.get('channelManagerName').hasError('maxLength')">{{BasicInformationEnum['inputMaxSizeMessage']}}</span>
+        </div>
+    </div>
+</form>

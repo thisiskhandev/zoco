@@ -1,0 +1,22 @@
+.background-label {
+    background-color: #e9ecef;
+    border-radius: 6px;
+    font-size: 16px;
+    padding-top: 4px;
+}
+
+.name-label {
+    color: black;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.description-label {
+    margin-left: 10px;
+}
+
+.image-style {
+    height: 30px;
+    width: 30px;
+}

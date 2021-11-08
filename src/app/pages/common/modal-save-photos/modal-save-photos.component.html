@@ -1,0 +1,11 @@
+<div class="modal-header">
+  <h4 class="modal-title">Saving Photos</h4>
+</div>
+<div class="modal-body">
+  <ngb-progressbar *ngIf="this.processedFiles == modalSavePhotosEnum.valueZero" type="warning" [value]="100" [striped]="true" [animated]="true">
+    <i> Loading ... </i>
+  </ngb-progressbar>
+  <ngb-progressbar *ngIf="this.processedFiles != modalSavePhotosEnum.valueZero" type="info" [value]="this.percentage" [height]="this.height">
+    <b>{{this.processedFiles}} of {{this.quantityFiles}}</b>
+  </ngb-progressbar>
+</div>

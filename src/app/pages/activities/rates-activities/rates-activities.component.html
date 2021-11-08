@@ -1,0 +1,55 @@
+<app-form-header title="{{ratesActivitiesEnum.title}}" subtitle="{{ratesActivitiesEnum.subtitle}}"></app-form-header>
+<div class="card-body">
+  <div class="section-label-global">Activities Rates set up</div>
+  <form class="remove-scrollbar-global" #formGroup="ngForm">
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Sub activities: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <select class="single-select-global allwidth-global" name="subActivityId" #subActivityId="ngModel" [(ngModel)]="itemModel.subActivityId" required> 
+            <option [selected]="true" disabled hidden value="null" >Select an activity previously defined</option>
+            <option *ngFor="let option of this.activitiesOptions; let y = index;" value="{{option.subActivityId}}" >{{option.subActivityName}}</option>
+          </select>
+        </div>
+        <div class="row">
+          <label class="style-global">Type of person: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <select class="single-select-global allwidth-global" name="idPersonType" #idPersonType="ngModel" [(ngModel)]="itemModel.idPersonType" required> 
+            <option [selected]="true" disabled hidden value="null" >Select an option</option>
+            <option *ngFor="let option of this.personOptions; let y = index;" value="{{option.id}}" >{{option.name}}</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label class="style-global">Price Person/Activity/Type of person: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">          
+          <div class="input-group-prepend" >
+            <span class="input-group-text input-group-text-price-global" id="basic-addon3" >US $</span>
+          </div>
+          <input type="text" id="basic-url" aria-describedby="basic-addon3" name="price" #price="ngModel" [(ngModel)]="itemModel.price"
+           class="input-text-price-global" maxlength="{{ratesActivitiesEnum.numberMaxSize}}" placeholder="0" pattern="{{customValidator.numberMajorZeroRegExp}}" required>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row height-exclude-taxes">
+          <app-exclude-taxes [model]="itemModel.excludeTaxes"></app-exclude-taxes>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row mt-2">
+          <button type="button" class="btn btn-global div-margin-left" (click)="addRate()">Set up other rate</button>
+        </div>
+      </div>
+    </div>
+
+    <app-list-rates [model]="this.model.ratesList" ></app-list-rates>
+
+  </form>
+</div>

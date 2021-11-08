@@ -1,0 +1,28 @@
+.ng2-auto-complete-wrapper {
+    display: inline-block;
+}
+
+.col-md-3-5 { 
+  width: 23%;
+  height: 5%;
+  margin-left: 15px;
+  font-size: 10px;
+  background-color: #F2F2F2;
+  text-align: center;
+}
+
+.img-message {
+  width: 40%;
+}
+
+.btn-remove-phone{
+    margin-bottom: 6px;
+  } 
+
+.row label {
+  font-size: 15px;
+}
+
+.customer-types-div{
+  display:  -webkit-inline-box;
+}

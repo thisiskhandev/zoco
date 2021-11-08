@@ -1,0 +1,48 @@
+<div class="table-container" >
+  
+  <mat-table  mat-table #table  [dataSource]="dataSource" >
+
+    <ng-container matColumnDef="{{listSettingEnum.vehicleDescription}}">
+        <mat-header-cell class="vehicle-list-table-header-item" *matHeaderCellDef>{{listSettingEnum.vehicleFeatureTitle}}</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.vehicleDescription}}</mat-cell>        
+    </ng-container>
+
+    <ng-container matColumnDef="{{listSettingEnum.haveChildren}}">
+      <mat-header-cell class="vehicle-list-table-header-item" *matHeaderCellDef>{{listSettingEnum.haveChildrenTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.haveChildren}}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="{{listSettingEnum.allowPets}}">
+      <mat-header-cell class="vehicle-list-table-header-item" *matHeaderCellDef>{{listSettingEnum.allowPetsTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.allowPets}}</mat-cell>        
+    </ng-container>
+
+    <ng-container matColumnDef="{{listSettingEnum.doorToDoor}}">
+      <mat-header-cell class="vehicle-list-table-header-item" *matHeaderCellDef>{{listSettingEnum.doorToDoorTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.doorToDoor}}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="{{listSettingEnum.stopsOrPickups}}">
+        <mat-header-cell class="vehicle-list-table-header-item" *matHeaderCellDef>{{listSettingEnum.stopsOrPickupsTitle}}</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.stopsOrPickups}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="{{listSettingEnum.driverName}}">
+          <mat-header-cell class="vehicle-list-table-header-item" *matHeaderCellDef>{{listSettingEnum.transferDriverTitle}}</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.driverName}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="{{listSettingEnum.action}}">
+        <mat-header-cell *matHeaderCellDef >{{listSettingEnum.actionTitle}}</mat-header-cell>
+        <mat-cell *matCellDef="let element; let y = index" class="align-icons" >
+          <button mat-button (click)="this.delete( element.vehicleDescription, element.driverName, y)">
+            <mat-icon class="icon-delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns; let index = index" ></mat-row> 
+
+</mat-table>
+</div>

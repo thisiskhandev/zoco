@@ -1,0 +1,66 @@
+<form [formGroup]="formGroup">
+
+    <div class="d-flex flex-column mt-5">
+        <p class="subtitle-cr">Propietario y Chanel Manager</p>
+        <div class="d-flex mt-1">
+            <div class="col-6 pl-0">
+                <div class="d-flex flex-column h-100">
+                    <label for="" class="label-form">¿Es usted propietario?</label>
+                    <div class="d-flex align-items-center h-100">
+                        <mat-radio-group (change)="setFormGroupFields(ContactDetailEnum.isCompanyManagement, ContactDetailEnum.companyManagementName)" formControlName="isCompanyManagement" name="isCompanyManagement" class="mt-2">
+                            <label class="label-buttons-global mr-3">
+                                <mat-radio-button value="true">Si</mat-radio-button>
+                            </label>
+                            <label class="label-buttons-global">
+                                <mat-radio-button value="false" class="ml-3">No</mat-radio-button>
+                            </label>
+                        </mat-radio-group>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 p-0">
+                <div class="d-flex flex-column h-100">
+                    <label for="" class="label-form">¿Posee Chanel Manager?</label>
+                    <div class="d-flex align-items-center h-100 ml-1">
+                        <mat-radio-group (change)="setFormGroupFields(ContactDetailEnum.haveChannelManager, ContactDetailEnum.channelManagerName)" formControlName="haveChannelManager" name="haveChannelManager" class="mt-2">
+                            <label class="label-buttons-global mr-3">
+                                <mat-radio-button value="true">Si</mat-radio-button>
+                            </label>
+                            <label class="label-buttons-global">
+                                <mat-radio-button value="false" class="ml-3">No</mat-radio-button>
+                            </label>
+                        </mat-radio-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex mt-2">
+            <div class="col-6 pl-0" *ngIf="formGroup.get('isCompanyManagement').value === 'true'">
+                <div class="d-flex flex-column">
+                    <label for="" class="label-form">Nombre de la empresa</label>
+                    <input class="form-control input-style style-global" type="text" formControlName="companyManagementName" placeholder="{{ContactDetailEnum['companyInputPlaceHolder']}}" autocomplete="none">
+                    <span class="error-global" *ngIf="formGroup.get('companyManagementName').touched && formGroup.get('companyManagementName').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                    <span class="error-global" *ngIf="formGroup.get('companyManagementName').touched && formGroup.get('companyManagementName').hasError('maxLength')">{{BasicInformationEnum['inputMaxSizeMessage']}}</span>
+                </div>
+            </div>
+            <div class="col-6 p-0" *ngIf="formGroup.get('haveChannelManager').value === 'true'" [ngClass]="{'offset-6': this.applyOffset()}">
+                <div class="d-flex flex-column">
+                    <label for="" class="label-form">Nombre Chanel Manager</label>
+                    <input class="form-control  input-style style-global" type="text" formControlName="channelManagerName" placeholder="Write a channel manager name" autocomplete="none">
+                    <span class="error-global" *ngIf="formGroup.get('channelManagerName').touched && formGroup.get('channelManagerName').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                    <span class="error-global" *ngIf="formGroup.get('channelManagerName').touched && formGroup.get('channelManagerName').hasError('maxLength')">{{BasicInformationEnum['inputMaxSizeMessage']}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <app-generic-contact (isValid)="setValid(0, $event)" (form)="this.eventManagement($event, this.ContactDetailEnum.comercialContact)" [model]="this.CCmodel" [contactName]="'Contacto Comercial'" [prefix]="this.ContactDetailEnum.comercialContact"></app-generic-contact>
+
+    <app-generic-contact (isValid)="setValid(1, $event)" (form)="this.eventManagement($event, this.ContactDetailEnum.administrativeContact)" [model]="this.CAmodel" [contactName]="'Contacto Administrativo'" [prefix]="this.ContactDetailEnum.administrativeContact"></app-generic-contact>
+
+    <app-generic-contact (isValid)="setValid(2, $event)" (form)="this.eventManagement($event, this.ContactDetailEnum.payContact)" [model]="this.CPmodel" [contactName]="'Contacto Pago'" [prefix]="this.ContactDetailEnum.payContact"></app-generic-contact>
+
+    <app-generic-contact (isValid)="setValid(3, $event)" (form)="this.eventManagement($event, this.ContactDetailEnum.reservationContact)" [model]="this.CRmodel" [contactName]="'Contacto Reserva'" [prefix]="this.ContactDetailEnum.reservationContact"></app-generic-contact>
+
+</form>

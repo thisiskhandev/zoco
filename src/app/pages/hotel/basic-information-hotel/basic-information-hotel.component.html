@@ -1,0 +1,25 @@
+<div id="">
+
+  <!-- <app-form-header title="{{BasicInformationEnum['title']}}" subtitle="{{BasicInformationEnum['subtitle']}}"></app-form-header> -->
+ 
+  <div class="card-body">
+    <h4 class="titulo-cr">CREAR</h4>
+    <form [formGroup]="formGroup">
+
+      <app-location [hotelCompleteInfo]="hotelCompleteInfo"  (isValid)="this.viewChildComponentsStatus[basicInformationEnum.locationComponentIndex] = $event"></app-location>
+      
+      <!-- <div class="separator-global"></div> -->
+
+      <app-property [hotelCompleteInfo]="hotelCompleteInfo" (isValid)="this.viewChildComponentsStatus[basicInformationEnum.propertyComponentIndex] = $event" (notifyEstablishmentName)='onNotifyEstablishmentName($event)' (notifyEstablishmentTotalRooms)='onNotifyEstablishmentTotalRooms($event)'></app-property>
+            
+      <!-- <div class="separator-global"></div> -->
+
+      <app-contactdetail [hotelCompleteInfo]="hotelCompleteInfo" (isValid)="this.viewChildComponentsStatus[basicInformationEnum.contactDetailComponentIndex] = $event"></app-contactdetail>
+
+      <!-- <div class="separator-global"></div> -->
+
+      <!-- <app-channelmanager [hotelCompleteInfo]="hotelCompleteInfo" (isValid)="this.viewChildComponentsStatus[basicInformationEnum.channelManagerComponentIndex] = $event"></app-channelmanager> -->
+
+    </form>
+  </div>
+</div>

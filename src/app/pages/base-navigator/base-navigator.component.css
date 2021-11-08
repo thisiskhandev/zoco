@@ -1,0 +1,69 @@
+.btn-ppal:hover, #submit-button:hover {
+    color: #fff;
+    background-color: rgb(129, 126, 127);
+    border-color: #a5a5a5;
+  }
+  
+/*TODO: Valida si #submit-button son necesarios. Ya estan en el scss global*/
+.btn-ppal, #submit-button, #submit-button:disabled {
+    color: #fff;
+    background-color: #a5a5a5;
+    border-color: #a5a5a5;
+  }
+  
+/* #continue {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-right: 50px;
+  } */
+
+#main-div {
+    margin-top: 45px;
+    margin-bottom: 45px;
+    margin-left: 17%;
+    max-width: 66%;
+    text-align: center;
+  }
+
+  
+
+#infoFloatSection {
+  text-align: right;
+  position: fixed;
+  top: 77px;
+  right: 10px;
+  width: 180px;
+  margin: 10px;
+}
+
+#btn-preview {
+  right: 0px;
+}
+
+.continue{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  filter: drop-shadow(2.5px 4.33px 5px rgba(1,1,1,0.08));
+  background-color: #ffffff;
+  padding: 25px;
+  margin: 0px 5px;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-save{
+  width: 122px;
+  height: 30px;
+  border-radius: 15px;
+  font-size: 12px;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: "Muli";
+  text-align: center;
+  background-color: #353535;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-continue{
+  background-color: #ed394f;
+}

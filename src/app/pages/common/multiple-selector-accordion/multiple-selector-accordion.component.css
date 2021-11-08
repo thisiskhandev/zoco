@@ -1,0 +1,18 @@
+.title-subsection-global {
+    font-size: 20px;    
+    background: #ededed;    
+    text-align: left;
+    padding: 7px 15px;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: 0 0 0 0;
+}
+
+mat-expansion-panel-header {
+    padding: 0 10px;
+}
+
+::ng-deep .mat-ripple-element {
+    background: rgba(173, 102, 169, 0.219) !important;
+}

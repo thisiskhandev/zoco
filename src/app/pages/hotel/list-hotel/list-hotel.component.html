@@ -1,0 +1,107 @@
+<!-- <div class="table-container">
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="{{listHotelEnum.id}}">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{listHotelEnum.idTitle}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element[listHotelEnum.id]}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="{{listHotelEnum.establishmentName}}">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{listHotelEnum.nameHotelTitle}}</mat-header-cell>
+            <mat-cell *matCellDef="let element" routerLink="/base-navigator/hotels/view-details/{{element[listHotelEnum.id]}}" style="cursor: pointer;" [ngClass]="{'active-link': true}"> {{element[listHotelEnum.establishmentName]}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="{{listHotelEnum.location}}">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{listHotelEnum.locationHotelTitle}}</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="flag-icon flag-icon-{{element.iataCode}}"></span>
+                <div style="display: -webkit-box;">{{element[listHotelEnum.location]}}</div>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="{{listHotelEnum.action}}">
+            <mat-header-cell *matHeaderCellDef>{{listHotelEnum.actionTitle}}</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="align-icons">
+                <button mat-button (click)="edit(element[listHotelEnum.id])" routerLink="/base-navigator/hotels">
+          <mat-icon class="icon-edit" >edit</mat-icon>
+        </button>
+                <button mat-button (click)="this.delete(element[listHotelEnum.id], element[listHotelEnum.establishmentName] )">
+          <mat-icon class="icon-delete">delete</mat-icon>
+        </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let element; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
+</div> -->
+
+
+<div class="d-flex flex-column mt-4" id="list-hotel">
+    <table>
+        <thead>
+            <tr>
+                <th class="text-center"> ID </th>
+                <th> NOMBRE </th>
+                <th> TIPO </th>
+                <th> CATEGORIA </th>
+                <th class="text-center"> STATUS</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-template ngFor let-listHotel [ngForOf]="listHotels" let-i="index">
+                <tr>
+                    <td class="text-center"> {{listHotel.id}} </td>
+                    <td>
+                        <span class="cursor-pointer"> {{listHotel.establishment_name}} </span>
+                    </td>
+                    <td> Hotel </td>
+                    <td>
+                        <ngx-stars [readonly]="true" [size]="1" [maxStars]="5" [initialStars]="4" [color]="'#ed394d'"></ngx-stars>
+                    </td>
+                    <td>
+                        <span class="status status-activo mx-auto" *ngIf="listHotel.id == 1">
+                            Activo
+                        </span>
+                        <span class="status status-inactivo mx-auto" *ngIf="listHotel.id !== 1">
+                            Inactivo
+                        </span>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-end mr-3">
+                            <i class="cursor-pointer i-edit mr-2" (click)="edit(listHotel.id)" routerLink="/base-navigator/hotels"></i>
+                            <!-- <i class="cursor-pointer i-edit mr-2" routerLink="/base-navigator/hotels"></i> -->
+                            <i class="cursor-pointer i-view mr-2" routerLink="/base-navigator/hotels/view-details/{{listHotel.id}}"></i>
+                            <i class="cursor-pointer i-delete" (click)="delete(listHotel.id, listHotel.establishment_name)"></i>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </tbody>
+        <tbody *ngIf="!listHotels.length">
+            <tr>
+                <td class="text-center pt-4" colspan="12"> NO EXISTE DATOS PARA ESOS FILTROS</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- pagination -->
+    <!-- <div class="d-flex justify-content-end align-items-center nav-pagination" *ngIf="lastPage > 1 && agenciesCategorys.length > 0">
+     <nav aria-label="Page navigation">
+       <ul class="pagination justify-content-center m-0">
+         <li class="pagination-item" *ngIf="currentPage > 1" (click)="showMoreResult('-')">
+           <a class="pagination-link" tabindex="-1"> < </a>
+         </li>
+         <li class="pagination-item" [ngClass]="{'active': currentPage == 1}" (click)="goPage(1)"><a class="pagination-link">1</a></li>
+         <li class="pagination-item" [ngClass]="{'active': currentPage == 2}" *ngIf="lastPage > 1" (click)="goPage(2)"><a class="pagination-link">2</a></li>
+         <li class="pagination-item" [ngClass]="{'active': currentPage == 3}" *ngIf="lastPage > 2" (click)="goPage(3)"><a class="pagination-link">3</a></li>
+         <li class="pagination-item" *ngIf="lastPage > 4" ><p class="pagination-link m-0">...</p></li>
+         <li class="pagination-item" [ngClass]="{'active': currentPage == lastPage}" *ngIf="lastPage > 4" (click)="goPage(lastPage)"><a class="pagination-link">{{lastPage}}</a></li>
+         <li class="pagination-item" (click)="showMoreResult('+')">
+           <a class="pagination-link" > > </a>
+         </li>
+       </ul>
+     </nav>
+   </div> -->
+</div>

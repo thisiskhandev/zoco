@@ -1,0 +1,49 @@
+<form [formGroup]="formGroup">   
+  <div class="table-container">
+    <mat-table mat-table #table [dataSource]="vehicleList">
+
+      <ng-container matColumnDef="{{vehicleListEnum.idColumnName}}">
+        <mat-header-cell *matHeaderCellDef >{{vehicleListEnum.idColumnName}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element[vehicleListEnum.index]}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="{{vehicleListEnum.categoryColumnName}}">
+        <mat-header-cell *matHeaderCellDef >{{vehicleListEnum.categoryColumnName}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element[vehicleListEnum.category]}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="{{vehicleListEnum.typeColumnName}}">
+        <mat-header-cell *matHeaderCellDef >{{vehicleListEnum.typeColumnName}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element[vehicleListEnum.type]}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="{{vehicleListEnum.brandColumnName}}">
+        <mat-header-cell *matHeaderCellDef >{{vehicleListEnum.brandColumnName}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element[vehicleListEnum.brand]}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="{{vehicleListEnum.modelColumnName}}">
+        <mat-header-cell *matHeaderCellDef >{{vehicleListEnum.modelColumnName}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element[vehicleListEnum.model]}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="{{vehicleListEnum.quantityColumnName}}">
+        <mat-header-cell *matHeaderCellDef >{{vehicleListEnum.quantityColumnName}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element[vehicleListEnum.quantity]}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="{{vehicleListEnum.actionColumnName}}">
+        <mat-header-cell *matHeaderCellDef >{{vehicleListEnum.actionColumnName}}</mat-header-cell>
+        <mat-cell *matCellDef="let element; let y = index" class="align-icons">
+          <button mat-button (click)="this.delete(y, element[vehicleListEnum.category], element[vehicleListEnum.model])">
+            <mat-icon class="icon-delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      
+      <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
+      <mat-row [ngClass]="{ 'highlight-grey': index % vehicleListEnum.valueTwo == vehicleListEnum.valueOne }" *matRowDef="let row; columns: displayedColumns; let index = index" ></mat-row> 
+
+    </mat-table>
+  </div>
+</form>

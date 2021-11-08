@@ -1,0 +1,90 @@
+<form [formGroup]="formGroup" > 
+    <h3>Room Details</h3>
+    <div class="row" >
+        <label class="col-md-6 style-global">Room Type: <a class="required-global">*</a></label>  
+    </div>
+
+    <div class="row pb-3" > 
+        <div class="col-md-6 ml-1 row">
+          <select class="col-md-10 single-select-global"  formControlName="roomTypeId" name="roomTypeId" [(ngModel)]="model.roomTypeId"> 
+                <option [selected]="true" disabled hidden value="{{utilities.emptyLength}}" >{{utilities.placeHolderText}}</option>
+                <option *ngFor="let option of this.roomTypeDropdownOptions; let i = index;" value="{{option.id}}" >{{option.desc}}</option>
+          </select>
+        </div>
+    </div>  
+
+    <div class="row" >
+        <span class="col-md-6 error-global" *ngIf="formGroup.get(roomInfoEnum.customName).touched && formGroup.get(roomInfoEnum.customName).hasError('maxLength')">This field cannot have more than {{roomInfoEnum.roomNameMaxSize}} characters</span>
+    </div>
+
+    <div class="row" >
+        <label class="col-md-6 style-global">Room Name: </label>   
+        <label class="col-md-6 style-global">Custom name (optional): </label>   
+    </div>  
+
+    <div class="row" >
+        <div class="col-md-6 ml-1 row">
+            <select class="col-md-10 single-select-global" formControlName="roomNameId" name="roomNameId" [(ngModel)]="model.roomNameId"> 
+                <option [selected]="true" disabled hidden value="{{utilities.emptyLength}}" >{{utilities.placeHolderText}}</option>
+                <option  *ngFor="let option of this.roomNameDropdownOptions; let i = index;" value="{{option.id}}" >{{option.name}}</option>
+            </select>
+        </div>
+        <div class="col-md-6 ml-2">
+            <input  class="col-md-12 style-global" type="text" formControlName="customName" maxlength="{{roomInfoEnum.roomNameMaxSize}}" name="customName" [(ngModel)]="model.customName" placeholder="Write an Name">
+        </div>
+    </div>
+
+
+    <div class="row">
+        <p class="col-md-6 pl-4 pr-0 hotel-caption">This is the name guest will seen on USBLICK website.</p>
+        <p class="col-md-6 pl-3 hotel-caption">Create an optional, custom name for your reference.</p>
+    </div>
+
+
+
+
+    <div class="row">
+        <label class="col-md-6 style-global">Number of rooms (of this type): <a class="required-global">*</a></label>
+        <label class="col-md-6 style-global">Does it have Smoking Policy?: <a class="required-global">*</a></label>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 ml-1 row">
+            <input  class="col-md-10 style-global" type="number" max="{{getRemaining()}}" min="{{utilities.one}}" maxlength="{{roomInfoEnum.quantityMaxSize}}" formControlName="quantity" name="quantity" [(ngModel)]="model.quantity" placeholder="{{utilities.placeHolderText}}" required>
+        </div>
+
+        <div class="col-md-6 row" >
+            <mat-radio-group name="hasSmokingPolicy" [(ngModel)]="model.hasSmokingPolicy" formControlName="hasSmokingPolicy" class="ml-4">
+                <label class="label-buttons-global">
+                  <mat-radio-button value="true">YES</mat-radio-button>
+                </label>
+                <label class="label-buttons-global">
+                  <mat-radio-button value="false">NO</mat-radio-button>
+                </label>
+            </mat-radio-group>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <p class="col-md-6 hotel-caption">Out of {{ this.establishmentTotalRooms }} rooms at your property</p>
+    </div> 
+    <div class="row">
+        <span class="col-md-3 ml-1 error-global" *ngIf="formGroup.get(roomInfoEnum.quantity).touched && formGroup.get(roomInfoEnum.quantity).hasError('invalidNumber')">Only numeric caracters</span>
+        <span class="col-md-3 ml-1 error-global" *ngIf="formGroup.get(roomInfoEnum.quantity).touched && formGroup.get(roomInfoEnum.quantity).hasError('required') ">Cannot be empty</span>
+        <span class="col-md-3 ml-1 error-global" *ngIf="formGroup.get(roomInfoEnum.quantity).touched && model.quantity > getRemaining()">Must be less or equal than {{getRemaining()}}</span>
+        <span class="col-md-3 ml-1 error-global" *ngIf="formGroup.get(roomInfoEnum.quantity).touched && model.quantity <= utilities.emptyLength">Must be over than {{utilities.emptyLength}}</span>
+        <span class="col-md-3 ml-1 error-global" *ngIf="formGroup.get(roomInfoEnum.quantity).touched && formGroup.get(roomInfoEnum.quantity).hasError('maxLength')">This field cannot have more than {{roomInfoEnum.quantityMaxSize}} characters</span>
+    </div> 
+
+    <div class="row">
+        <label class="col-md-6 style-global">Smoking Policy: </label>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5 ml-1 row">
+            <input  class="col-md-12 style-global" type="text" maxlength="{{roomInfoEnum.smokingPolicyDescriptionMaxSize}}" formControlName="smokingPolicyDescription" name="smokingPolicyDescription" [(ngModel)]="model.smokingPolicyDescription" placeholder="Write a Smoking Policy Description">
+        </div>
+    </div>
+</form>

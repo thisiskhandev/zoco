@@ -1,0 +1,31 @@
+<br>
+<form class="remove-scrollbar-global design-exclude-tax" #formGroup="ngForm">    
+  <div>
+    <i class="material-icons size-icon">error</i>
+    <label class="size-label">Taxes will be applied by default in these rates, do you want to exclude any taxes for this? <a class="required-global">*</a></label>
+  </div>
+  <div class="row ml-1">
+    <mat-radio-group name="excludeTax" #excludeTax="ngModel" [(ngModel)]="model.excludeTax">
+      <label class="label-buttons-global">
+        <mat-radio-button value="true">YES</mat-radio-button>
+      </label>
+      <label class="label-buttons-global">
+        <mat-radio-button value="false">NO</mat-radio-button>
+      </label>
+    </mat-radio-group>
+  </div>
+  <div *ngIf="excludeTax.value == excludeTaxesEnum.trueString">
+    <div class="ml-2">
+      <div class="row">
+        <label class="style-global ml-2">Which tax does it exclude?</label>
+      </div>
+      <div class="exclude-taxes-checkbox">
+        <app-multiple-selector
+          [model]="this.model.typeTax"
+          [itemsTypes]="this.typeTaxOptions" 
+          [requiredField]="this.requiredField">
+        </app-multiple-selector>      
+      </div>
+    </div>
+  </div>
+</form>

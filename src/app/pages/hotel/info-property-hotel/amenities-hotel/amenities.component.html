@@ -1,0 +1,190 @@
+<div>
+    <p class="subtitle-cr">Amenities</p>
+    <div class="row">
+        <div class="col-12">
+            <accordion *ngFor="let amenitie of amenities;">
+                <group-accordion title="{{amenitie.amenitiesTypeDescription}}" bsBackground="bg-dark" bsText="text-white" useCaret="true">
+                    <div class="row">
+                        <div *ngFor="let item of amenitie.amenitiesList; let i = index;">
+                            <div class="col-12">
+                                <accordion-radio class="amenities_accordions">
+                                    <group-radio-accordion (change)="test('accordion',item)" *ngIf="item.amenities_property.length != 0" class="amenities_radio_accordion" title="{{item.amenityDescription}}" bsBackground="bg-light" bsText="text-dark" useCaret="true" useBody="true">
+                                        <div *ngFor="let property of item.amenities_property">
+                                            <div class="row amenitie_param_row">
+                                                <div class="col-6" style="padding-right: 0px;">
+                                                    <div *ngIf="property.type === 'select'">
+                                                        <ng-select (change)="test('select', $event)" placeholder="Select a value">
+                                                            <ng-option *ngFor="let prop of properties" [value]="prop.value" selected>
+                                                                {{prop.label}}
+                                                            </ng-option>
+                                                        </ng-select>
+                                                    </div>
+                                                    <div *ngIf="property.type === 'text'">
+                                                        <label for="">Ingrese valor</label>
+                                                        <input (change)="test('input', $event.target.value)" type="text" value="" placeholder="Enter a value">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </group-radio-accordion>
+                                    <group-radio-accordion (change)="test('second accordion', item)" *ngIf="item.amenities_property.length === 0" class="amenities_radio_accordion" title="{{item.amenityDescription}}" bsBackground="bg-light" bsText="text-dark">
+                                    </group-radio-accordion>
+                                </accordion-radio>
+                            </div>
+                        </div>
+                    </div>
+                </group-accordion>
+            </accordion>
+
+        </div>
+    </div>
+</div>
+
+<!-- <div>
+  <p class="subtitle-cr">Amenities</p>
+  <div class="row">
+      <div class="col-12">
+          <accordion *ngFor="let amenitie of amenities;">
+              <group-accordion title="{{amenitie.amenitiesTypeDescription}}" bsBackground="bg-dark" bsText="text-white" useCaret="true">
+                  <div class="row">
+                      <div class="col-12">
+                          <accordion-radio class="amenities_accordions" *ngFor="let item of amenitie.amenitiesList;">
+                              <group-radio-accordion (change)="test('accordion',item)" *ngIf="item.amenities_property.length != 0" class="amenities_radio_accordion" title="{{item.amenityDescription}}" bsBackground="bg-light" bsText="text-dark" useCaret="true" useBody="true">
+                                  <div *ngFor="let property of item.amenities_property">
+                                      <div class="row amenitie_param_row">
+                                          <div class="col-6" style="padding-right: 0px;">
+                                              <div *ngIf="property.type === 'select'">
+                                                  <ng-select (change)="test('select', $event)" placeholder="Select a value">
+                                                      <ng-option *ngFor="let prop of properties" [value]="prop.value" selected>
+                                                          {{prop.label}}
+                                                      </ng-option>
+                                                  </ng-select>
+                                              </div>
+                                              <div *ngIf="property.type === 'text'">
+                                                  <label for="">Ingrese valor</label>
+                                                  <input (change)="test('input', $event.target.value)" type="text" value="" placeholder="Enter a value">
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </group-radio-accordion>
+
+                              <group-radio-accordion (change)="test('second accordion', item)" *ngIf="item.amenities_property.length === 0" class="amenities_radio_accordion" title="{{item.amenityDescription}}" bsBackground="bg-light" bsText="text-dark">
+                              </group-radio-accordion>
+                          </accordion-radio>
+                      </div>
+                  </div>
+              </group-accordion>
+          </accordion>
+
+          <br>
+          <br>
+          <br>
+
+          <h1>
+              Amenities List
+          </h1>
+
+          <div *ngFor="let amenitie of amenities;">
+              <h2>{{amenitie.amenitiesTypeDescription}}</h2>
+              <div *ngFor="let item of amenitie.amenitiesList; let i = index">
+                  <h4>
+                      {{item.amenityDescription}} / {{i}}
+                  </h4>
+              </div>
+              <br>
+          </div>
+
+      </div>
+  </div>
+</div> -->
+
+
+<!-- <div>
+  <p class="subtitle-cr">Amenities</p>
+  <div class="row">
+    <div class="col-12">
+      <accordion>
+        <group-accordion title="General Amenities" bsBackground="bg-dark" bsText="text-white" useCaret="true">
+          <div class="row">
+            <div class="col-12" >
+              <accordion-radio class="amenities_accordions">
+                <group-radio-accordion class="amenities_radio_accordion" title="Parking" bsBackground="bg-light" bsText="text-dark" useCaret="true" useBody="true" opened="true">
+                  <div class="row amenitie_param_row">
+                    <div class="col-6" style="padding-right: 0px;">
+                      <ng-select placeholder="Select">
+                        <ng-option selected>Yes, Free</ng-option>
+                        <ng-option>Yes, Paid</ng-option>
+                        <ng-option>No</ng-option>
+                      </ng-select>
+                    </div>
+                  </div>
+                  <div class="row amenitie_param_row">
+                    <div class="col-6 amenitie_param_label text-right">
+                      What Type of access?
+                    </div>
+                    <div class="col-6">
+                      <ng-select placeholder="Select">
+                        <ng-option selected>Private</ng-option>
+                        <ng-option>Public</ng-option>
+                      </ng-select>
+                    </div>
+                  </div>
+                  <div class="row amenitie_param_row">
+                    <div class="col-6 col-6 amenitie_param_label text-right">
+                      Where?
+                    </div>
+                    <div class="col-6">
+                      <ng-select placeholder="Select">
+                        <ng-option selected>On Site</ng-option>
+                        <ng-option>Remote</ng-option>
+                      </ng-select>
+                    </div>
+                  </div>
+                  <div class="row amenitie_param_row">
+                    <div class="col-6 amenitie_param_label text-right">
+                      Do guests need to reserve a parquing?
+                    </div>
+                    <div class="col-6">
+                      <ng-select placeholder="Select">
+                        <ng-option selected>On Site</ng-option>
+                        <ng-option>Remote</ng-option>
+                      </ng-select>
+                    </div>
+                  </div>
+                </group-radio-accordion>
+                <group-radio-accordion class="amenities_radio_accordion" title="Hair dryer" bsBackground="bg-light" bsText="text-dark">
+                </group-radio-accordion>
+                <group-radio-accordion class="amenities_radio_accordion" title="Drying rack for clothing" bsBackground="bg-light" bsText="text-dark">
+                </group-radio-accordion>
+                <group-radio-accordion class="amenities_radio_accordion" title="Cleaning Products" bsBackground="bg-light" bsText="text-dark">
+                </group-radio-accordion>
+                <group-radio-accordion class="amenities_radio_accordion" title="Ironing facilities" bsBackground="bg-light" bsText="text-dark">
+                </group-radio-accordion>
+                <group-radio-accordion class="amenities_radio_accordion" title="Carpeted" bsBackground="bg-light" bsText="text-dark">
+                </group-radio-accordion>
+                <group-radio-accordion class="amenities_radio_accordion" title="Fan" bsBackground="bg-light" bsText="text-dark">
+                </group-radio-accordion>
+                <group-radio-accordion class="amenities_radio_accordion" title="Air conditioning" bsBackground="bg-light" bsText="text-dark">
+                </group-radio-accordion>
+                <group-radio-accordion class="amenities_radio_accordion" title="Hypoalegenic" bsBackground="bg-light" bsText="text-dark">
+                </group-radio-accordion>
+                <group-radio-accordion class="amenities_radio_accordion" title="Hardwood/Parquet floo" bsBackground="bg-light" bsText="text-dark">
+                </group-radio-accordion>
+              </accordion-radio>
+            </div>
+          </div>
+        </group-accordion>
+        <group-accordion title="Media and Technology" useCaret="true">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores corporis officiis
+          deleniti ipsa harum soluta iste aperiam eligendi, minima magnam iure doloremque aliquam
+          in, corrupti placeat quidem cumque adipisci maiores.
+        </group-accordion>
+        <group-accordion title="Food & Drink" useCaret="true">
+        </group-accordion>
+        <group-accordion title="Service & Extra" useCaret="true">this is the content</group-accordion>
+        <group-accordion title="&nbsp;"></group-accordion>
+      </accordion>
+    </div>
+  </div>
+</div> -->

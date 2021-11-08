@@ -1,0 +1,16 @@
+<ngb-carousel id="photo-carousel" [activeId]="activeSliderId" *ngIf="isImagesReady()">
+    <ng-template ngbSlide [id]="DetailsHotelEnum['slyde']+i" *ngFor="let image of images; let i = index">
+      <img class="slide__image" [src]="image.imagePath" >
+    </ng-template>
+</ngb-carousel>
+  <ul class="carousel-thumbnail" *ngIf="isImagesReady()">
+    <li class="carousel-thumbnail__item list-inline-item" *ngFor="let image of images; let i = index" (click)="cycleToSlide(i)">
+      <a class="selected">
+        <img class="carousel-thumbnail__img" [src]="image.imagePath">
+      </a>
+    </li>
+    <button mat-button routerLink="" *ngIf="isImagesReady()">
+      <mat-icon class="icon-edit" >edit</mat-icon>
+    </button>
+  </ul>
+  <br>

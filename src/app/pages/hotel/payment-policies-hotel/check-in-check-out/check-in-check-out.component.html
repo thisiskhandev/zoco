@@ -1,0 +1,95 @@
+<form class="sub-component-form" [formGroup]="formGroup" >
+    <h3>Check-In / Check-Out</h3>
+
+    <div class="row" >
+        <h4 class="col-md-6">Check-In</h4>
+        <h4 class="col-md-6">Check-Out</h4>
+    </div>
+    
+    <div class="row" >
+        <p class="col-md-6">From: </p>
+        <p class="col-md-6">From: </p>
+    </div>
+
+    <div class="row" >
+        <div class="col-md-6 row" >                
+            <label *ngFor="let option of checkInCheckOutEnum.fromTimeOptions; let y = index;" class="radio-button-div row">
+                <input class="col-md-6 style-global" type="radio" formControlName="checkInFromTimeId" name="checkInFromTimeId" [(ngModel)]="model.checkInFromTimeId" value="{{option.id}}">
+                <span class="checkmark"></span>
+                <span class="checkmark-text">{{option.name}}</span>  
+            </label>
+        </div>
+        <div class="col-md-6 row" >
+            <label *ngFor="let option of checkInCheckOutEnum.fromTimeOptions; let y = index;" class="radio-button-div row">
+                <input class="col-md-6 style-global" type="radio" formControlName="checkOutFromTimeId" name="checkOutFromTimeId" [(ngModel)]="model.checkOutFromTimeId" value="{{option.id}}">
+                <span class="checkmark"></span>
+                <span class="checkmark-text">{{option.name}}</span>  
+            </label>
+        </div>    
+    </div>
+
+    <div class="row pb-1">
+        <div class="col-md-6">
+            <span class="mt-1 error-global" *ngIf="formGroup.get(checkInCheckOutEnum.checkInFromTimeId).touched &&  formGroup.get(checkInCheckOutEnum.checkInFromTimeId).hasError( 'required')">Please select a 'check-In From' option</span>
+            <span class="mt-1 error-global" *ngIf="checkInFromTimeIsGreaterThanCheckInToTime()">Make sure your arrival start time is before the arrival end time.</span>
+        </div>
+        <div class="col-md-6">
+            <span class="mt-1 error-global" *ngIf="formGroup.get(checkInCheckOutEnum.checkOutFromTimeId).touched && formGroup.get(checkInCheckOutEnum.checkOutFromTimeId).hasError('required')">Please select a 'check-Out From' option</span>
+            <span class="mt-1 error-global" *ngIf="checkOutFromTimeIsGreaterThanCheckOutToTime()">Make sure your departure start time is before the departure end time.</span>
+        </div>
+    </div>
+
+    <div class="row" >
+        <div class="col-md-6" *ngIf="!isOtherOption(checkInCheckOutEnum.checkInFromTimeId)"> </div>
+        <div class="col-md-6 pl-5" *ngIf="isOtherOption(checkInCheckOutEnum.checkInFromTimeId)"> 
+            <ngb-timepicker [formControl]="formGroup.get(checkInCheckOutEnum.checkInFromTime)" [(ngModel)]="model.initTimePickerFromCheckIn" [meridian]="true" [hourStep]="checkInCheckOutEnum.timePickerHourSteps" [minuteStep]="checkInCheckOutEnum.timePickerMinuteSteps"></ngb-timepicker>
+        </div>
+        <div class="col-md-6" *ngIf="!isOtherOption(checkInCheckOutEnum.checkOutFromTimeId)"></div>
+        <div class="col-md-6 pl-5" *ngIf="isOtherOption(checkInCheckOutEnum.checkOutFromTimeId)"> 
+            <ngb-timepicker [formControl]="formGroup.get(checkInCheckOutEnum.checkOutFromTime)" [(ngModel)]="model.initTimePickerFromCheckOut" [meridian]="true" [hourStep]="checkInCheckOutEnum.timePickerHourSteps" [minuteStep]="checkInCheckOutEnum.timePickerMinuteSteps"></ngb-timepicker>
+        </div>
+    </div>
+
+    <div class="row" >
+        <p class="col-md-6">To: </p>
+        <p class="col-md-6">To: </p>
+    </div>
+
+    <div class="row" >
+        <div class="col-md-6 row" >
+            <label *ngFor="let option of checkInCheckOutEnum.toTimeOptions; let y = index;" class="radio-button-div row">
+                <input class="col-md-6 style-global" type="radio" formControlName="checkInToTimeId" name="checkInToTimeId" [(ngModel)]="model.checkInToTimeId" value="{{option.id}}">
+                <span class="checkmark"></span>
+                <span class="checkmark-text">{{option.name}}</span>  
+            </label>
+        </div>
+        <div class="col-md-6 row" >
+            <label *ngFor="let option of checkInCheckOutEnum.toTimeOptions; let y = index;" class="radio-button-div row">
+                <input class="col-md-6 style-global" formControlName="checkOutToTimeId" type="radio" name="checkOutToTimeId" [(ngModel)]="model.checkOutToTimeId" value="{{option.id}}">
+                <span class="checkmark"></span>
+                <span class="checkmark-text">{{option.name}}</span>  
+            </label>
+        </div>    
+    </div>
+
+    <div class="row pb-1">
+        <div class="col-md-6">
+            <span class="mt-1 error-global" *ngIf="formGroup.get(checkInCheckOutEnum.checkInToTimeId).touched &&  formGroup.get(checkInCheckOutEnum.checkInToTimeId).hasError( 'required')">Please select a 'check-In To' option</span>
+        </div>
+        <div class="col-md-6">
+            <span class="mt-1 error-global" *ngIf="formGroup.get(checkInCheckOutEnum.checkOutToTimeId).touched && formGroup.get(checkInCheckOutEnum.checkOutToTimeId).hasError('required')">Please select a 'check-Out To' option</span>
+        </div>    
+    </div>
+
+    <div class="row" >
+        <div class="col-md-6 pl-5" *ngIf="isOtherOption(checkInCheckOutEnum.checkInToTimeId)"> 
+            <ngb-timepicker [formControl]="formGroup.get(checkInCheckOutEnum.checkInToTime)" [(ngModel)]="model.initTimePickerToCheckIn" [meridian]="true" [hourStep]="checkInCheckOutEnum.timePickerHourSteps" [minuteStep]="checkInCheckOutEnum.timePickerMinuteSteps"></ngb-timepicker>
+        </div>
+        <div class="col-md-6" *ngIf="!isOtherOption(checkInCheckOutEnum.checkInToTimeId)"> </div>
+        <div class="col-md-6 pl-5" *ngIf="isOtherOption(checkInCheckOutEnum.checkOutToTimeId)">
+            <ngb-timepicker [formControl]="formGroup.get(checkInCheckOutEnum.checkOutToTime)" [(ngModel)]="model.initTimePickerToCheckOut" [meridian]="true" [hourStep]="checkInCheckOutEnum.timePickerHourSteps" [minuteStep]="checkInCheckOutEnum.timePickerMinuteSteps"></ngb-timepicker>
+        </div>
+        <div class="col-md-6" *ngIf="!isOtherOption(checkInCheckOutEnum.checkOutToTimeId)"></div>
+    </div>
+
+ </form> 

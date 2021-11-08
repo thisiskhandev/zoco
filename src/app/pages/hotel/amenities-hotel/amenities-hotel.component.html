@@ -1,0 +1,18 @@
+<app-form-header title="{{amenitiesEnum.title}}" subtitle="{{amenitiesEnum.subtitle}}"></app-form-header>
+<br>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+    <app-extra-bed [model]="this.model.extraBeds"></app-extra-bed>
+    <div *ngFor="let element of subsectionAmenities; let i=index" class="multiple-selector-style-global remove-scrollbar-global">
+        <br>
+        <div *ngIf = "this.subsectionAmenities[i].amenitiesList.length > amenitiesEnum.valueZero">
+            <app-multiple-selector-accordion 
+            [name]="this.subsectionAmenities[i].title"
+            [model]="this.model.amenitiesList[i].items"
+            [itemsTypes]="this.subsectionAmenities[i].amenitiesList" 
+            [requiredField]="this.subsectionAmenities[i].validator" #multipleSelectorAccordion 
+            [displayAccordion] = "this.displayAccordion" ></app-multiple-selector-accordion>
+        </div>
+    </div>
+
+</form>

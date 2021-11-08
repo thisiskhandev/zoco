@@ -1,0 +1,28 @@
+.label-allwidth {
+    width:30%;
+}
+
+.allwidth-global {
+    width: 50%;
+}
+
+.input-group-text-price {
+    width:60px; 
+    height: 35px; 
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.input-text-price {
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+    height: 35px;
+    font-size: 1em;
+    padding-left: .4em;
+    display: inline-block !important;
+    border-width: 1px;
+    border-color: lightgrey;
+}
+

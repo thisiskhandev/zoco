@@ -1,0 +1,42 @@
+<div class="div-global-photo">
+    <div class="panel-photos">
+        <div class="gallery-title">{{photoGalleryEnum.galleryTitle}}</div>
+
+        <div *ngIf="this.images.length > photoGalleryEnum.valueZero" class="toolbar-photos">
+            <span class="counter">{{count}} of {{this.images.length}} photos selected </span>|
+            <a class="select-unselected-images" role="button" (click)="selectAll()">Select all</a>|
+            <a class="select-unselected-images" role="button" (click)="deselectAll()">Deselect all</a>|
+            <a class="delete-images" role="button" (click)="deletePhotos()">Delete photos</a>
+        </div>
+
+        <div class="gallery-body">
+
+            <div id="droparea" class="drag_area subtitle-text">{{photoGalleryEnum.dragAndDropText}}
+                <div *ngIf="this.images.length <= photoGalleryEnum.valueZero">
+                    <div class="drag_content subtitle-text" draggable="true">{{photoGalleryEnum.uploadPhotosTitle}}</div>
+                    <div class="descriptive-text">{{photoGalleryEnum.uploadPhotosSubTitle}}</div>
+                </div>
+
+                <form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+                    <div *ngIf="this.images.length > photoGalleryEnum.valueZero" class="images-position">
+                        <div class="main-photo">Main Photo</div>
+                    </div>
+                    <!-- <div id="preview" class="div-preview" [dragula]='"image-item"' [dragulaModel]="images"></div> -->
+                </form>
+
+
+                <input class="input-button" type="file" accept="image/*" (change)="filesSelected($event)" accept="image/png,image/jpeg,image/jpg,image/bmp" multiple="" #fileInput>
+                <button class="btn btn-global add-photos-button" (click)="fileInput.click()"><i class="material-icons icon-upload-photos">insert_photo</i>Add Photos</button>
+                <button class="btn btn-global add-photos-button" (click)="loadPhotos()">Load Photos</button>
+            </div>
+
+            <div class="section-tips">
+                <div class="subtitle-text section-tips-subtitle-text">{{photoGalleryEnum.sectionTips}}</div>
+                <div class="descriptive-text section-tips-descriptive-text">{{photoGalleryEnum.useDevices}}<i class="material-icons material-icons-black">smartphone</i>{{photoGalleryEnum.useSmartphone}}<i class="material-icons material-icons-black">photo_camera</i> {{photoGalleryEnum.useDigitalCamera}} </div>
+                <div class="descriptive-text">{{photoGalleryEnum.nameTip}}<a routerLink="/dashboard">{{photoGalleryEnum.linkTips}}</a></div>
+                <div class="descriptive-text">{{photoGalleryEnum.copyrightPhotos}}</div>
+            </div>
+
+        </div>
+    </div>
+</div>

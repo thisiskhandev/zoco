@@ -1,0 +1,42 @@
+<div class="nav-create-hotel">
+    <mat-tab-group #tabs mat-align-tabs="center" mat-stretch-tabs dynamicHeight (selectChange)="getIdTab($event.index)">
+
+        <mat-tab label="Info General">
+            <app-basic-information-hotel [hotelCompleteInfo]="hotelCompleteInfo" (notifyEstablishmentName)='onNotifyEstablishmentName($event)' (notifyEstablishmentTotalRooms)='onNotifyEstablishmentTotalRooms($event)'></app-basic-information-hotel>
+        </mat-tab>
+        <!--<mat-tab label="PropertyDetails" disabled>
+            <app-general-description-hotel [completeInfo]="hotelCompleteInfo" [establishmentId]="establishmentId"></app-general-description-hotel>
+        </mat-tab>-->
+        <mat-tab label="Info Propiedad" disabled>
+            <app-info-property-hotel [hotelCompleteInfo]="hotelCompleteInfo" [establishmentId]="establishmentId"></app-info-property-hotel>
+        </mat-tab>
+        <!-- <mat-tab label="Foto y Video" disabled>
+            <app-photos-hotel [completeInfo]="hotelCompleteInfo" [establishmentId]="establishmentId"></app-photos-hotel>
+        </mat-tab> -->
+        <mat-tab label="Foto y Video" disabled>
+            <app-photo-video-hotel></app-photo-video-hotel>
+        </mat-tab>
+
+        <mat-tab label="Info del Producto" disabled>
+            <app-info-product-hotel [hotelCompleteInfo]="hotelCompleteInfo"></app-info-product-hotel>
+        </mat-tab>
+
+        <mat-tab label="Layout & Pricing" disabled>
+            <app-layout-hotel [completeInfo]="hotelCompleteInfo" [establishmentName]="establishmentName" [establishmentId]="establishmentId" [establishmentTotalRooms]="establishmentTotalRooms"></app-layout-hotel>
+        </mat-tab>
+        <mat-tab label="Amenities" disabled>
+            <app-amenities-hotel [completeInfo]="hotelCompleteInfo" [establishmentId]="establishmentId" [displayAccordion]="this.displayAccordion"></app-amenities-hotel>
+        </mat-tab>
+
+        <mat-tab label="Payment and policies" disabled>
+            <app-payment-policies-hotel [completeInfo]="hotelCompleteInfo" [establishmentId]="establishmentId"></app-payment-policies-hotel>
+        </mat-tab>
+
+    </mat-tab-group>
+</div>
+<!-- <div #infoFloatSection id="infoFloatSection">
+    <button class="btn btn-global" id="btn-preview">Preview</button>
+    <div #infoFloatMessage class="info-float-global">
+        <span>After your complete registration you'll be able to make changes to your listing before it goes live</span>
+    </div>
+</div> -->

@@ -1,0 +1,15 @@
+<div id="main-div">
+    <app-form-header title="{{paymentPoliciesHotelEnum.pageTitle}}" subtitle="{{paymentPoliciesHotelEnum.pageSubtitle}}"></app-form-header>
+    <span class="text-left"><h2></h2></span>
+    <p class="text-left"></p>
+    <form (ngSubmit)="onSubmit()" >
+        <div class="card-body">
+            <app-guest-payment-options [model]="this.model.guestPaymentOptions"></app-guest-payment-options>
+            <app-cancellation-options [model]="this.model.cancellationOptions"></app-cancellation-options>
+            <app-cancellation-fees [model]="this.model.cancellationFees"></app-cancellation-fees>
+            <app-check-in-check-out [model]="this.model.checkInCheckOutInfo"></app-check-in-check-out>
+            <app-children-policy [model]="this.model.childrenPolicy"></app-children-policy>
+            <app-pet-policy [model]="this.model.petPolicy"></app-pet-policy>
+        </div>      
+    </form>    
+</div>

@@ -1,0 +1,79 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+}
+  
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+.icon-edit {
+    color: #BB005E;
+    font: bold;
+    margin-left: 10px;
+}
+
+.icon-delete {
+    color: grey;
+    font: bold;
+    margin-left: 10px;
+}
+
+.mat-header-cell {
+    flex: 1;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    margin-right: 3px;
+    background-color: #e9ecef;   
+    text-align: center;
+    color: rgba(0, 0, 0, 0.788);
+    justify-content: left;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.mat-header-row {
+    padding: 10px 0px;
+    border-bottom-style: none;
+    text-align: center;
+}
+
+.mat-row {
+    border-bottom-style: dashed;
+    padding: 0px 0px 0px 24px;
+}
+
+.mat-column-id {
+    flex: 0 0 10%;
+}
+
+.mat-column-establishment_name {
+    flex: 0 0 25%;
+}
+
+.mat-column-home_address {
+    flex: 0 0 50%;
+}
+.mat-column-operation {
+    flex: 0 0 14%;
+}
+
+.active-link {
+    color: #BB005E;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.mat-button {
+    min-width: 20px;
+    line-height: 24px;
+    padding: 0px 0px 0px 0px;
+}
+
+.align-icons {
+    text-align:left;
+}

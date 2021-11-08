@@ -1,0 +1,66 @@
+<form class="sub-component-form" [formGroup]="formGroup">
+
+    <h3>Bed Options</h3>
+    
+    <div class="row" >
+      <p class="col-md-12">Tell us only about the existing beds in a room (don't include extra beds).</p>
+    </div>
+    <div class="row" > 
+      <label class="col-md-12 style-global">Bedrooms <a class="required-global">*</a></label>
+    </div>
+    <div class="row" > 
+      <p class="col-md-6">What kind of beds are available in this room?</p>
+    </div>
+    <div class="row" >
+      <div class="col-md-12" >  
+        <ul>
+           <li formArrayName="bedMeasures" *ngFor="let bedMeasure of getBedMeasures().controls; let i = index;" required>
+              <div [formGroupName]="i">
+                  
+
+                <select class="single-select-global" formControlName="measureItem" [(ngModel)]="getBedMeasure(i).id"> 
+                  <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+                  <option *ngFor="let bedMeasure of this.bedMeasureDropdownOptions; let y = index;" value="{{bedMeasure.id}}" >{{bedMeasure.desc}} / {{bedMeasure.measure}}</option>
+                </select>
+                <span class=" ml-2 mr-2" >X </span>
+                <select class="single-select-global" formControlName="bedQuantity" (change)="bedQuantityOnChange($event)" [(ngModel)]="getBedMeasure(i).itemQuantity"> 
+                    <option disabled hidden value="{{utilities.emptyLength}}" >-- Select quantity of this kind of bed --</option>
+                    <option *ngFor="let quantity of getQuatityBedTypesInARoomDropdownOptions(); let y = index;" value="{{quantity}}" >{{quantity}}</option>
+                </select>
+                <button class="col-md-2"  type="button" *ngIf="i !== 0" class="btn btn-danger btn-sm btn-remove-phone" (click)="removeBedMeasure(i)">Remove</button>
+                <span class="col-md-3 ml-1 error-global" *ngIf="bedMeasure.get(bedInfoEnum.bedQuantity).touched && getBedMeasure(i).itemQuantity <= utilities.emptyLength">Please Select quantity of this kind of bed</span>
+                <span   class="col-md-2 error-global" *ngIf="bedMeasure.get(bedInfoEnum.measureItem).touched && bedMeasure.get(bedInfoEnum.measureItem).hasError('required')">Please select a bed type</span>
+              </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row pb-3" >  
+          <div id="add-button-div" class="col-md-3" *ngIf="canAddMoreBedTypes()">
+            <img id="add-button" (click)="addBedType($event)" src="assets/img/app/Add-Button.jpg" >
+            <div class="ml-2">
+                <p (click)="addBedType($event)" id="add-bed-text" >Add another bed</p>
+            </div>        
+          </div>
+    </div>
+
+    <div class="row" > 
+      <p class="col-md-6">How many Guests can stay in this room?</p>
+    </div>
+
+    <div class="row pl-3">
+      <input class="col-md-2 style-global"  type="text" maxlength="{{bedInfoEnum.guestsOccupancyMaxSize}}" formControlName="roomPeopleQuantity" name="roomPeopleQuantity" [(ngModel)]="model.roomPeopleQuantity" required>
+      <div class="pl-1 pt-1" *ngIf="model.roomPeopleQuantity <= bedInfoEnum.bedMeasuresMaxItems" >
+        <img class="pl-1" *ngFor="let bedMeasure of guestsOccupancyArray;"  class="layout-user" src="assets/img/app/layout-user.png" >
+      </div>
+      <div class="pl-1" *ngIf="model.roomPeopleQuantity > bedInfoEnum.bedMeasuresMaxItems">
+        <img  class="ml-2 layout-user" src="assets/img/app/layout-user.png" >
+        <span class="col-md-1"  >x {{formGroup.get(bedInfoEnum.roomPeopleQuantity).value}}</span>
+      </div>
+      <span class="col-md-3 error-global" *ngIf="formGroup.get(bedInfoEnum.roomPeopleQuantity).touched && formGroup.get(bedInfoEnum.roomPeopleQuantity).hasError('required')">Cannot be empty</span>
+      <span class="col-md-5 error-global" *ngIf="formGroup.get(bedInfoEnum.roomPeopleQuantity).touched && formGroup.get(bedInfoEnum.roomPeopleQuantity).hasError('maxLength')">This field cannot have more than {{bedInfoEnum.guestsOccupancyMaxSize}} characters</span>
+      <span class="col-md-4 error-global" *ngIf="formGroup.get(bedInfoEnum.roomPeopleQuantity).touched && formGroup.get(bedInfoEnum.roomPeopleQuantity).hasError('invalidNumber')">This field admit only numbers</span>
+      <span class="col-md-3 ml-1 error-global" *ngIf="formGroup.get(bedInfoEnum.roomPeopleQuantity).touched && model.roomPeopleQuantity <= utilities.emptyLength">Must be over than {{utilities.emptyLength}}</span>
+    </div>
+
+  </form>

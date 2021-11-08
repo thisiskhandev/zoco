@@ -1,0 +1,36 @@
+<div class="table-container">
+  <mat-table [dataSource]="dataSource"> 
+
+    <ng-container matColumnDef="{{listSubActivitiesEnum.subActivityColumn}}">
+      <mat-header-cell *matHeaderCellDef>{{listSubActivitiesEnum.subActivityTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.subActivityName}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="{{listSubActivitiesEnum.dateColumn}}">
+      <mat-header-cell *matHeaderCellDef>{{listSubActivitiesEnum.dateTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.date}}</mat-cell>        
+    </ng-container>
+    
+    <ng-container matColumnDef="{{listSubActivitiesEnum.startTimeColumn}}">
+      <mat-header-cell *matHeaderCellDef>{{listSubActivitiesEnum.startTimeTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.startTime}}</mat-cell>        
+    </ng-container>
+
+    <ng-container matColumnDef="{{listSubActivitiesEnum.endTimeColumn}}">
+      <mat-header-cell *matHeaderCellDef>{{listSubActivitiesEnum.endTimeTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.endTime}}</mat-cell>       
+    </ng-container>
+
+    <ng-container matColumnDef="{{listSubActivitiesEnum.action}}">
+      <mat-header-cell *matHeaderCellDef >{{listSubActivitiesEnum.actionTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="align-icons">
+        <button mat-button (click)="this.delete( element[listSubActivitiesEnum.subActivityColumn] )">
+          <mat-icon class="icon-delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
+    <mat-row [ngClass]="{ 'highlight-grey': index % listSubActivitiesEnum.valueTwo == listSubActivitiesEnum.valueOne }" *matRowDef="let row; columns: displayedColumns; let index = index" ></mat-row>  
+  </mat-table>
+</div>

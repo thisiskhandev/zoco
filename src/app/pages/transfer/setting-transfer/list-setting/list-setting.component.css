@@ -1,0 +1,46 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+    margin-top: 40px;
+}
+  
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+.icon-delete {
+    color: grey;
+    font: bold;
+}
+
+.mat-header-cell {
+    color: rgba(0, 0, 0, 0.788);
+    flex: 1;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    margin-right: 3px;
+    background-color: #e9ecef;
+    text-align: center;
+    justify-content: left;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.mat-header-row {
+    padding: 10px 0px;
+    border-bottom-style: none;
+    text-align: center;
+}
+
+.mat-row {
+    border-bottom-style: dashed;
+    padding: 0px 0px 0px 24px;
+}
+
+.align-icons {
+    text-align:left;
+}

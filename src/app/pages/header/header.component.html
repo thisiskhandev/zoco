@@ -1,0 +1,52 @@
+<header class="col-12 justify-items-around">
+    <div class="d-lg-flex flex-xs-row align-items-center">
+        <div class="px-3 py-2 " id="hamburger">
+            <div class="btn-group align-content-start" dropdown >
+                <button dropdownToggle type="button" class="btna btn-sm ">
+                            <label for="menu-button" class="btna">
+                                <span class="hamburger hamburger-bar-1"></span>
+                                <span class="hamburger hamburger-bar-2"></span>
+                                <span class="hamburger hamburger-bar-3"></span>
+                            </label>
+                        </button>
+                        <div *dropdownMenu class="dropdown-menu" role="menu">
+                        <div class="dropdownmenu-card py-4">
+                        <ul>
+                            <li class="dropdown-separador"></li>
+                            <li role="menuitem"><a class="dropdown-item" href="#">Home</a></li>
+                            <li class="divider dropdown-divider"></li>
+                            <li role="menuitem"><a class="dropdown-item" href="#hotels">Hotels</a></li>
+                            <li class="divider dropdown-divider"></li>
+                            <li role="menuitem"><a class="dropdown-item" href="#transfers">Transfers</a></li>
+                            <li class="divider dropdown-divider"></li>
+                            <li class="nav-item"><a class="dropdown-item" href="#activities">Activities</a></li>                            
+                          </ul>
+                        </div>
+                        </div>
+            </div>
+        </div>
+        <div class="d-flex flex-xs-row flex-md-row  justify-content-end align-self-center col-xg-11 col-lg-11 col-md-11 col-xs-12" id="menu-right">
+            <ul class=" nav justify-content-xg-end justify-content-lg-end">
+                <li class="nav-item">
+                    <a href="#" class="menu-sesion font-menu nav-link">{{ fechaa }} </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#help" class="menu-sesion font-menu nav-link">Help</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#profile" class="menu-sesion font-menu nav-link">{{ _userData.data?.name|titlecase }} {{ _userData.data?.lastname|titlecase }}</a>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="close" (click)="logout()" tooltip="Logout" placement="bottom">
+                              <img src="assets/img/app/power.png" class="w-90 m-0 pt-1">
+                    </button>
+                </li>
+            </ul>
+        </div>
+      </div>
+
+</header>
+<div class="col-12" id="section-bottom">
+    <!-- <usb-itinerary-owner></usb-itinerary-owner> -->
+</div>
+

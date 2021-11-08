@@ -1,0 +1,514 @@
+@import url('https://use.fontawesome.com/releases/v5.0.13/css/all.css');
+
+h2.style-global {
+    color: #a5a5a5;
+}
+
+label.style-global {
+    display: inline-block;
+    width: 8em;
+    margin: .5em 0;
+    color: #666666;
+    font-weight: bold;
+}
+
+input.style-global {
+    height: 2em;
+    font-size: 1em;
+    padding-left: .4em;
+    display: inline-block !important;
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: lightgrey;    
+}
+
+input.allwidth-global {
+    width: 100%;
+}
+
+span.error-global {
+    color: red;
+}
+
+.btn-global:hover, #submit-button-global:hover {
+    color: #fff;
+    background-color: #d90000;
+    border-color: #cc0000;
+}
+  
+.btn-global, #submit-button-global, #submit-button-global:disabled {
+    color: #fff;
+    background-color: #BB005E;
+    border-color: #BB005E;
+}
+
+.btn-global {
+    margin-bottom: 10px;
+}
+
+#submit-button-global {
+    height: 40px !important;
+    width: 200px;
+}
+
+.required-global {
+    color: red !important;
+}
+
+.single-select-global {
+    width: 39%;
+    height: 2em;
+    line-height: 2em;
+    border-radius: 4px;
+    padding-left: 8px;
+    text-align: left;
+    font-weight: lighter;
+    background-image: url(/assets/img/selector.svg);
+    background-repeat: no-repeat;
+    background-position: right center;
+    -webkit-appearance: none; 
+}
+
+.row-label-global {
+    font-style: normal;
+    font-weight: normal;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+input[type=checkbox].style-global {
+    width: 30px;
+}
+
+.info-float-global {
+    font-size: 10pt;
+    background-color: #CAF0FB;
+    padding: 18px 12px 18px 12px;
+    border-radius: 5px;
+    text-align: justify;
+}
+
+/* ESTYLES FROM MAT-TAB */
+.tabgroup-global /deep/ .mat-ink-bar  {
+    background-color: #BA005E !important;
+    height: 7px !important;
+}
+
+.tabgroup-global {
+    margin-left: 90px;
+    margin-right: 230px;
+}
+
+.tabgroup-global /deep/ .mat-tab-header {
+    border-bottom: 0px;
+    margin-top: 10px;
+}
+
+.tabgroup-global /deep/ .mat-tab-label {
+    background-color: #F3F3F2;
+    margin-right: 10px;
+    width: 16%;
+}
+
+.tabgroup-global /deep/ .mat-tab-label:not(.mat-tab-disabled):focus {
+    background-color: #F3F3F2 !important;
+} 
+
+/*END STYLES FROM MAT-TAB*/
+
+mat-dialog-container {
+    border-radius: 10px !important;
+    padding: 0px !important;
+}
+
+.sub-component-form {
+    border-style: solid none none none;
+    padding: 25px 0px 0px 25px ;
+    border-top-color: #BA005D;
+    border-top-width: 5px;
+    margin-top: 25px;
+}
+
+p.describe-global {
+    display: inline-block;
+    font-weight: 400;
+    background: #ededed;
+    border-radius: 2px;
+    text-align: left;
+    font-size: 14px;
+    margin-top: 0;
+    padding: 5px 8px;
+}
+
+legend.style-global {
+    font-size: 1.3rem;
+}
+
+.label-buttons-global {
+    border: 1.3px solid #DC68A1;    
+    border-radius: 5px;
+    height: 35px;
+    min-width: 105px;
+    padding: 5px 8px 8px 15px;
+    cursor: pointer;
+    margin-right: 12px;
+    margin-bottom: 20px;
+}
+
+input[type='radio'].radio-style-global:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: white;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid #BA005D;
+}
+
+input[type='radio'].radio-style-global:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #BA005D;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid white;
+}
+
+.body-style-global {
+    margin-left: 12px;
+}
+
+.label-text-subsection-global {
+    font-size: 15px;
+}
+
+.radio-button-div {
+    border-style:  solid;
+    border-color: rgb(218,2,104);
+    border-width: 2px;
+    border-radius: 10px;
+    margin-left: 30px;
+    height: 57px;
+
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+  /* Hide the browser's default radio button */
+.radio-button-div input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+
+}
+
+
+/********** Create a custom radio button **********/
+.checkmark {
+    position: absolute;
+    top: 14px;
+    left: 21px;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: rgb(218,2,104);
+}
+
+/* On mouse-over, add a grey background color */
+.radio-button-div:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-button-div input:checked ~ .checkmark {
+    background-color: white;
+    border-style: solid;
+    border-color: rgb(218,2,104);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-button-div input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-button-div .checkmark:after {
+ 	top: 2px;
+	left: 2px;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	background: rgb(218,2,104);
+}
+/********** End of Create a custom radio button **********/
+
+.section-description {
+    background-color: #F0F0F0;
+    border-radius: .50rem;
+}
+
+.separator-global {
+    height: 6px;
+    background-color: #BA005D;
+    margin-top: 5px;
+}
+
+.section-label-global {
+    font-size: 18pt;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.section-global {
+    margin-bottom: 40px;
+}
+
+#first-section-label-global {
+    margin-top: 0px !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #BA005D !important;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle,
+.mat-radio-outer-circle
+ {
+    border-color: #BA005D;
+    border-width: 1.3px !important;
+    width: 16px !important;
+    height: 16px !important;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: #BA005D;
+    width: 16px !important;
+    height: 16px !important;
+}
+
+.mat-radio-container {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+.rating {
+    outline: 0;
+}
+
+.remove-scrollbar-global {
+    overflow-x: hidden;
+    overflow-y: hidden;    
+}
+
+.form-colums-global {
+    padding-right: 80px;
+}
+  
+.mainrow-global {
+   margin: 0px;
+   margin-top: 20px;
+}
+
+.star {
+    width: 30px !important;
+    height: 30px !important;
+}
+  
+.separator_div {
+    height: 5px;
+    background-color: #BA005D;
+    margin-top: 10px;
+    margin-bottom: 24px;
+}
+  
+
+@media (min-width: 1600px) {
+    #dahboard-carousel .carousel-caption{
+        top: 80px !important;
+        width: 480px !important; 
+    }    
+
+    #dahboard-carousel .carousel-indicators li {
+        height: 60px !important;
+    }    
+
+    #dahboard-carousel [id^="slide-"]::before {
+        padding-top: 25px !important;
+        font-size: 32px !important;  
+    }  
+}
+
+@media (max-width: 1024px) {
+    #dahboard-carousel .carousel-caption{
+        top: 12px !important;
+        width: 180px !important; 
+    }    
+
+    #dahboard-carousel .carousel-indicators li {
+        height: 36px !important;
+    }    
+
+    #dahboard-carousel [id^="slide-"]::before {
+        padding-top: 20px !important;
+        font-size: 18px !important;  
+    }  
+}
+
+#dahboard-carousel .carousel-inner {
+    max-height: 800px !important;
+}
+
+#dahboard-carousel .carousel-indicators .active {
+   color: #15B6D5;
+   background-color: transparent;
+}
+
+#dahboard-carousel .carousel-indicators li {
+    background-color: transparent;
+}
+
+#dahboard-carousel .carousel-caption{
+    position: fixed;
+    left: 14%;
+    top: 40px;
+    width: 320px; 
+}
+
+#dahboard-carousel .carousel-indicators {
+    outline: 0 !important;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    border: .1rem solid #222;
+    font-size: .75rem;
+    color: #fff!important;
+    -webkit-transform: translateY(5spx);
+    transform: translateY(5spx);
+    z-index: 501!important;
+    margin-bottom: 0px !important;
+    bottom: 0px;
+    margin: auto;
+    
+}
+
+.carousel-indicators {
+    width: 70% !important;
+}
+
+
+#dahboard-carousel .carousel-indicators li {
+    height: 45px;
+    outline: 0 !important;
+}
+
+
+#dahboard-carousel #slide-hotelIcon::before {
+    content: "\f1ad";
+}
+
+#dahboard-carousel #slide-transferIcon::before {
+    content: "\f207";
+}
+
+#dahboard-carousel #slide-activityIcon::before {
+    content: "\f1e5";
+}
+
+#dahboard-carousel [id^="slide-"]::before {
+    padding-top: 22px;
+    padding-left: 3px;
+    font-size: 24px;
+    text-indent: initial;
+    font-weight: 900;
+    font-family: "Font Awesome\ 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1; 
+}
+
+#photo-carousel .carousel-inner {
+    position: relative;
+    width: fit-content;
+    overflow: hidden;
+    border: 1px;
+    border-color: #999;
+    border-style: solid;
+    padding: 10px;
+}
+
+#photo-carousel .carousel-item {
+    justify-items: center;
+    margin: auto;
+    position: relative;
+    width: fit-content;
+    margin: auto;    
+}
+
+#photo-carousel .carousel-control-next-icon, #photo-carousel .carousel-control-prev-icon {
+    width: 26px;
+    height: 26px;
+    background-color: #BBB;
+    border-radius: 13px;
+    background-size: 60% 60%;
+}
+.carousel-control-next {
+    right: -15px !important;
+}
+
+
+
+.input-group-text-price-global {
+    width:60px; 
+    height: 35px; 
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.input-text-price-global {
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+    height: 35px;
+    font-size: 1em;
+    padding-left: .4em;
+    display: inline-block !important;
+    border-width: 1px;
+    border-color: lightgrey;
+}

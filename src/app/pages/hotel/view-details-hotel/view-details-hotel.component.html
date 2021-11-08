@@ -1,0 +1,31 @@
+<div class="main-div">
+    <app-form-header title="{{DetailsHotelEnum['title']}}" subtitle="{{DetailsHotelEnum['subtitle']}}"></app-form-header>
+    <br>
+
+    <div class="card-body" *ngIf="hotelDetails">
+        <div class="row">
+            <h5 class="col-md-6 p-0 m-0">
+                <!-- <star-rating-comp *ngIf="hotelDetails.star_rating !== DetailsHotelEnum.start" class="rating-star" [starType]="'svg'" [hoverEnabled]="false" [staticColor]="'ok'" [readOnly]="true" [rating]='hotelDetails.star_rating'></star-rating-comp> -->
+                <ngb-rating *ngIf="hotelDetails.star_rating !== DetailsHotelEnum.start" class="rating-star" [max]="5" [readonly]="true">
+                </ngb-rating>
+                <!-- <span *ngIf="hotelDetails.establishment_name  != DetailsHotelEnum.start">{{hotelDetails.establishment_name}}</span> -->
+            </h5>
+        </div>
+
+        <div class="row">
+            <h6 class="col-md-6 p-0 m-0 text-muted">
+                {{hotelDetails.home_address}}
+            </h6>
+        </div>
+
+        <div class="row container-fluid">
+            <app-hotel-images [images]="hotelDetails.photos"></app-hotel-images>
+        </div>
+        <div class="row container-fluid">
+            <app-room-details [hotelDetails]="hotelDetails"></app-room-details>
+        </div>
+        <div class="row container-fluid">
+            <app-hotel-policies [checkInCheckOut]="hotelDetails.checkInCheckOut"></app-hotel-policies>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+.price-summary-div {
+    background-color: #F0F0F0;
+    height: 150px;
+    border-radius: .25rem;
+}
+
+.layout-user {
+    height: 19px;
+    width: 21px;
+
+}
+
+#price-text {
+color: #22B473;
+}
+
+#price-summary-text {
+    font-size: 14px;
+    color: #4D4D4D;
+}
+
+#room-price-desc-text{
+    height: auto;
+    font-size: 16px;
+}
+
+#room-price-unit-text {
+    font-size: 14px;
+    height: 2.3em;
+}

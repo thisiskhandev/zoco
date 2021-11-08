@@ -1,0 +1,18 @@
+<form  class="sub-component-form" [formGroup]="formGroup">
+
+  <h3>Room size (optional)</h3>
+  <div class="row" >
+      <p class="col-md-12">Tell us the size of this room</p>
+  </div>
+  <div >
+    <input class="col-md-2 style-global" type="text" formControlName="roomTotalMeasure" maxlength="{{roomItemEnum.roomTotalMeasureMaxSize}}" name="roomTotalMeasure"  [(ngModel)]="model.roomTotalMeasure">
+
+    <select class="single-select-global" formControlName="unitOfMeasurement" name="unitOfMeasurement" [(ngModel)]="model.unitOfMeasurement" > 
+        <option disabled hidden value="{{utilities.emptyLength}}" >{{utilities.placeHolderText}}</option>
+        <option *ngFor="let unit of this.unitOfMeasurementTypes" value="{{unit.id}}" >{{unit.desc}}</option>
+    </select>
+    <span class="col-md-3 error-global" *ngIf="formGroup.get(roomItemEnum.roomTotalMeasure).touched && formGroup.get(roomItemEnum.roomTotalMeasure).hasError('required')">Cannot be empty</span>
+    <span class="col-md-5 error-global" *ngIf="formGroup.get(roomItemEnum.roomTotalMeasure).touched && formGroup.get(roomItemEnum.roomTotalMeasure).hasError('maxLength')">This field cannot have more than {{roomItemEnum.roomTotalMeasureMaxSize}} characters</span>
+    <span class="col-md-4 error-global" *ngIf="formGroup.get(roomItemEnum.roomTotalMeasure).touched && formGroup.get(roomItemEnum.roomTotalMeasure).hasError('invalidNumber')">This field admit only numbers</span>
+  </div>
+</form> 

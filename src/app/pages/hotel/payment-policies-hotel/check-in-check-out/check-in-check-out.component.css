@@ -1,0 +1,39 @@
+.radio-button-div {
+    height: 40px;
+    width: 84px;
+
+}
+
+.checkmark {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 36px;
+    width: 80px;
+    background-color: white;
+    border: none;
+    border-radius: 10%;
+    font-size: 14px;
+    padding-top: 8px;
+}
+
+.radio-button-div input:checked ~ .checkmark {
+    background-color: rgb(218,2,104,0.5);
+    border: none;
+}
+
+.radio-button-div:hover input ~ .checkmark {
+    opacity: 0.5;
+}
+
+.checkmark-text {
+    position: absolute;
+    top: 8px;
+    left: 22px;
+    font-size: 14px;
+}
+
+.radio-button-div input:checked ~ .checkmark:after {
+    display: none;
+}
+

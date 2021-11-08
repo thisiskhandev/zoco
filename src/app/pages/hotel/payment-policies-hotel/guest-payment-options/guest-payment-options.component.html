@@ -1,0 +1,37 @@
+<form class="margin-form" [formGroup]="formGroup">
+
+    <h3>Guest Payment Options</h3>
+    <div class="row" >
+        <p class="col-md-12">We allow guests to guarantee their reservation through USBlick with major credit cards. 
+            However, you can specify the payment methods you accept at your property as payment for the stay.</p>
+    </div>
+    <div class="row" > 
+        <p class="col-md-6">Can you charge credit cards at property?</p>
+    </div>
+
+    <div class="row">        
+        <mat-radio-group (change)="clearChargeToYourCreditCard($event)" name="chargeToYourCreditCard" formControlName="chargeToYourCreditCard" [(ngModel)]="model.chargeToYourCreditCard" class="ml-3" required>
+            <label class="label-buttons-global">
+                <mat-radio-button value="true">YES</mat-radio-button>
+            </label>
+            <label class="label-buttons-global">
+                <mat-radio-button value="false">NO</mat-radio-button>
+            </label>
+        </mat-radio-group>
+    </div>
+
+    <div class="row pt-2 ml-5" *ngIf="model.chargeToYourCreditCard === guestPaymentOptionsEnum.trueString"> 
+        <div [formArrayName]="'cardsTypes'">
+            <div class="credit-card-type-container col-md-6 pb-2 pl-0 pr-0 mr-0 mb-2 row creditCard-align-checkbox" *ngFor="let item of formData.controls;  let i=index" [formGroup]="item" >
+                <div class="credit-card-type-div col-md-11 pl-0 pb-2 row">
+                    <mat-checkbox color="accent" class="style-global col-md-2 mt-2" #identificador formControlName="checked">{{item.controls.name.value}} <img class="credit-card-image" src="{{item.controls.image_path.value}}"></mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <span class="col-md-6 error-global ml-0" *ngIf="!formGroup.controls.formSelectedItems.valid && this.formGroup.controls.cardsTypes.touched">Please select at least one item</span>
+        <div class="row">
+            <span class="info-float-global" >You can select payment preferences, including prepayment options, as soon as we verify your property. This is to ensure the security of both our partners and our customers.</span>
+        </div>
+    </div>
+    
+</form>

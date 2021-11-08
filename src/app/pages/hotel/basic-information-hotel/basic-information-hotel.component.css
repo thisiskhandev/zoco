@@ -1,0 +1,14 @@
+.card-body{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    filter: drop-shadow(2.5px 4.33px 5px rgba(1,1,1,0.08));
+    background-color: #ffffff;
+    margin-top: 20px;
+}
+.titulo-cr{
+    font-size: 18px;
+    line-height: 1;
+    color: #ed394d;
+    font-weight: 700;
+    font-family: "Muli";
+}

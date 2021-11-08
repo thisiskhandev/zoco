@@ -1,0 +1,20 @@
+label.style-global {
+    width: 100%;
+}
+
+.single-select-global.allwidth-global {
+    width: 100% !important;
+}
+
+.input-group-text-price {
+    height: 35px; 
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;    
+}
+
+.style-price {
+    height: 35px;
+    padding:3px 0px 0px 5px;
+}

@@ -1,0 +1,251 @@
+<form [formGroup]="formGroup">
+
+    <div class="section-global">
+        <div class="section-label-global" id="first-section-label-global">{{LocationEnum['locatedTitle']}}</div>
+        <!-- <div #gmap id="map"></div> -->
+        <div class="section-global">
+            <!-- <div class="section-label-global" id="first-section-label-global">{{LocationEnum['locatedTitle']}}</div> -->
+
+            <div class="d-flex flex-column">
+                <div class="col-12 p-0">
+                    <p class="subtitle-cr">Datos principales</p>
+                </div>
+                <div class="d-flex">
+                    <div class="col-8 pl-0">
+                        <div class="d-flex flex-column">
+                            <!-- maxlength="{{PropertyEnum['establishmentNameMaxSize']}}" -->
+                            <input class="form-control  input-style style-global allwidth-global" type="text" formControlName="establishmentName" placeholder="Nombre del Establecimiento" required>
+                            <span class="col-9 error-global" *ngIf="formGroup.get('establishmentName').touched && formGroup.get('establishmentName').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                            <span class="col-9 error-global" *ngIf="formGroup.get('establishmentName').touched && formGroup.get('establishmentName').hasError('maxLength')">{{BasicInformationEnum['inputMaxSizeMessage']}}</span>
+                            <span class="col-9 error-global" *ngIf="formGroup.get('establishmentName').touched && formGroup.get('establishmentName').hasError('EstablishNameIsNotAvailable')">This name is already taken, please try another name</span>
+                        </div>
+                    </div>
+                    <div class="col-4 ml-3">
+                        <div class="d-flex flex-column">
+                            <input class="form-control input-style" type="text" formControlName="cuit_rif" placeholder="Nro de CUIT /  RIF:">
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex mt-3">
+                    <div class="col-6 pl-0">
+                        <div class="d-flex flex-column">
+                            <input class="form-control input-style style-global allwidth-global" formControlName="home_address" type="text" placeholder="Domicilio" autocomplete="none">
+                            <span class="error-global" *ngIf="formGroup.get('home_address').touched && formGroup.get('home_address').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                        </div>
+                    </div>
+                    <div class="col-3 pl-0">
+                        <div class="d-flex flex-column">
+                            <select class="form-control input-style single-select-global allwidth-global" formControlName="country" (change)="this.getStates(formGroup.get('country').value)"> 
+                                <option value="" disabled selected hidden >Pais</option>
+                                <option *ngFor="let country of this.countries;" value="{{country.id}}">{{country.name}}</option>
+                            </select>
+                            <span class="col-md-6 error-global" *ngIf="formGroup.get('country').touched && formGroup.get('country').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                        </div>
+                    </div>
+                    <div class="col-3 p-0">
+                        <div class="d-flex flex-column">
+                            <select class="form-control input-style single-select-global allwidth-global" formControlName="state"> 
+                                <option [selected]="true" disabled hidden value="" >Estado</option>
+                                <option *ngFor="let state of this.states;" value="{{state.id}}"  >{{state.name}}</option>
+                            </select>
+                            <span class="col-md-6 error-global" *ngIf="formGroup.get('state').touched && formGroup.get('state').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex mt-3">
+                    <div class="col-3 pl-0">
+                        <div class="d-flex flex-column">
+                            <input class="form-control input-style style-global allwidth-global" formControlName="city" type="text" placeholder="Ciudad" maxlength="{{LocationEnum['cityInputMaxSize']}}" autocomplete="none">
+                            <span class="col-md-6 error-global" *ngIf="formGroup.get('city').touched && formGroup.get('city').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                        </div>
+                    </div>
+                    <div class="col-2 pl-0">
+                        <div class="d-flex flex-column">
+                            <input class="form-control input-style style-global allwidth-global" formControlName="zipCode" type="text" placeholder="Código Postal" maxlength="{{LocationEnum['zipCodeInputMaxSize']}}" autocomplete="none">
+                            <span class="col-md-6 error-global" *ngIf="formGroup.get('zipCode').touched && formGroup.get('zipCode').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                        </div>
+                    </div>
+                    <div class="col-3 p-0">
+                        <div class="d-flex flex-column">
+                            <input class="form-control input-style" type="text" formControlName="email" placeholder="email">
+                        </div>
+                    </div>
+                    <!-- <div class="col-3 pl-0">
+                        <div class="d-flex flex-column">
+                            <input class="form-control input-style style-global allwidth-global" #autocomplete type="text" placeholder="Localizacion">
+                        </div>
+                    </div> -->
+                    <div class="col-1 mt-2">
+                        <label class="label-form">Logo</label>
+                    </div>
+                    <div class="col-1 mt-3 p-0">
+                        <div class="d-flex flex-column">
+                            <div class="file-input">
+                                <input type="file" id="file" #fileInput accept=".png, .jpg, .jpeg" class="file" (change)="selectFile($event.target.files,$event)">
+                                <input type="imput" formControlName="logo_path" hidden required>
+                                <label for="file" style="margin-top: -15px !important; margin-left: -18px !important;">
+                                <p class="file-name my-auto">upload_file.svg</p>
+                                <i class="i-file"></i>
+                                </label>
+                            </div>
+                            <!-- <input class="form-control input-style style-global allwidth-global" formControlName="geo_coordinates" type="text" placeholder="Coordernadas"> -->
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="d-flex flex-column">
+                            <div class="div-preview-image">
+                                <img src="" id="preview" class="i-icon img-fluid w-50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex mt-3">
+                    <div class="col-12 p-0">
+                        <div class="d-flex flex-column">
+                            <input class="form-control input-style style-global allwidth-global" type="text" maxlength="{{LocationEnum['locationReferenceInputMaxSize']}}" formControlName="locationReference" placeholder="Referencia Locación" required>
+                            <span class="col-md-6 error-global" *ngIf="formGroup.get('locationReference').touched && formGroup.get('locationReference').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                            <span class="col-md-6 error-global" *ngIf="formGroup.get('locationReference').touched && formGroup.get('locationReference').hasError('maxLength')">{{BasicInformationEnum['inputMaxSizeMessage']}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-4">
+                        <app-phone (isValid)="setValid(0, $event)" (phone)="setPhone($event, 'first')" [phones]="this.model.first_phone_number" [maxPhoneItems]="this.maxPhoneItems" [labelName]="'Telefono Fijo 01'" [countries]="this.phoneCountries"></app-phone>
+                    </div>
+                    <div class="col-4">
+                        <app-phone (isValid)="setValid(1, $event)" (phone)="setPhone($event, 'second')" [phones]="this.model.second_phone_number" [maxPhoneItems]="this.maxPhoneItems" [labelName]="'Telefono Fijo 02'" [countries]="this.phoneCountries"></app-phone>
+                    </div>
+                    <div class="col-4">
+                        <app-phone (isValid)="setValid(2, $event)" (phone)="setPhone($event, 'third')" [phones]="this.model.third_phone_number" [maxPhoneItems]="this.maxPhoneItems" [labelName]="'Telefono Fijo 03'" [countries]="this.phoneCountries"></app-phone>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-4">
+                        <app-phone (isValid)="setValid(3, $event)" (phone)="setPhone($event, 'fourth')" [phones]="this.model.fourth_phone_number" [maxPhoneItems]="this.maxPhoneItems" [labelName]="'Telefono Fijo 04'" [countries]="this.phoneCountries"></app-phone>
+                    </div>
+                    <div class="col-4">
+                        <app-phone (isValid)="setValid(4, $event)" (phone)="setPhone($event, 'fifth')" [phones]="this.model.fifth_phone_number" [maxPhoneItems]="this.maxPhoneItems" [labelName]="'Telefono Fijo 05'" [countries]="this.phoneCountries"></app-phone>
+                    </div>
+                    <div class="col-4">
+                        <app-phone (isValid)="setValid(5, $event)" (phone)="setPhone($event, 'wsp')" [phones]="this.model.wsp_phone_number" [maxPhoneItems]="this.maxPhoneItems" [labelName]="'Whatsapp'" [countries]="this.phoneCountries"></app-phone>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-6">
+
+                </div>
+            </div>
+
+            <!-- <div #gmap id="map"></div> -->
+        </div>
+    </div>
+</form>
+
+
+
+<!-- <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">{{LocationEnum['locationLabel']}}</label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" #autocomplete type="text" placeholder="{{LocationEnum['autocompletePlaceHolderMessage']}}" >
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label class="style-global">{{LocationEnum['streetAddressLabel']}}<a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" formControlName="address" type="text" placeholder="{{LocationEnum['addressPlaceHolderMessage']}}" autocomplete="none">
+          <span class="error-global" *ngIf="formGroup.get('address').touched && formGroup.get('address').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+        </div>
+      </div>
+    </div>
+>>>>>>> a96847bdfdf0c373ab0e29fbfa5ee97b6d458d21
+
+        <div class="row mainrow-global">
+            <div class="col-sm-6 form-colums-global">
+                <div class="row">
+                    <label class="style-global">{{LocationEnum['locationLabel']}}</label>
+                </div>
+                <div class="row">
+                    <input class="style-global allwidth-global" #autocomplete type="text" placeholder="{{LocationEnum['autocompletePlaceHolderMessage']}}">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label class="style-global">{{LocationEnum['streetAddressLabel']}}<a class="required-global">*</a></label>
+                </div>
+                <div class="row">
+                    <input class="style-global allwidth-global" formControlName="home_address" type="text" placeholder="{{LocationEnum['addressPlaceHolderMessage']}}" autocomplete="none">
+                    <span class="error-global" *ngIf="formGroup.get('home_address').touched && formGroup.get('home_address').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mainrow-global">
+            <div class="col-sm-6 form-colums-global">
+                <div class="row">
+                    <label class="style-global" id="countryLabel">{{LocationEnum['countryRegionLabel']}}<a class="required-global">*</a></label>
+                </div>
+                <div class="row">
+                    <input class="style-global allwidth-global" formControlName="country" type="text" placeholder="Country" maxlength="{{LocationEnum['countryInputMaxSize']}}" autocomplete="none">
+                    <span class="col-md-6 error-global" *ngIf="formGroup.get('country').touched && formGroup.get('country').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label class="style-global">{{LocationEnum['referenceLabel']}}<a class="required-global">*</a></label>
+                </div>
+                <div class="row">
+                    <input class="style-global allwidth-global" type="text" maxlength="{{LocationEnum['locationReferenceInputMaxSize']}}" formControlName="locationReference" placeholder="{{LocationEnum['referencePlaceHolderMessage']}}" required>
+                    <span class="col-md-6 error-global" *ngIf="formGroup.get('locationReference').touched && formGroup.get('locationReference').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                    <span class="col-md-6 error-global" *ngIf="formGroup.get('locationReference').touched && formGroup.get('locationReference').hasError('maxLength')">{{BasicInformationEnum['inputMaxSizeMessage']}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mainrow-global">
+            <div class="col-sm-6 form-colums-global">
+                <div class="row">
+                    <label class="style-global" id="stateLabel">{{LocationEnum['stateMessageLabel']}}<a class="required-global">*</a></label>
+                </div>
+                <div class="row">
+                    <input class="style-global allwidth-global" formControlName="state" type="text" placeholder="{{LocationEnum['statePlaceHolder']}}" maxlength="{{LocationEnum['stateInputMaxSize']}}" autocomplete="none">
+                    <span class="col-md-6 error-global" *ngIf="formGroup.get('state').touched && formGroup.get('state').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                </div>
+                <div class="row">
+                    <label class="style-global" id="cityLabel">{{LocationEnum['cityMessageLabel']}}<a class="required-global">*</a></label>
+                </div>
+                <div class="row">
+                    <input class="style-global allwidth-global" formControlName="city" type="text" placeholder="{{LocationEnum['cityPlaceHolder']}}" maxlength="{{LocationEnum['cityInputMaxSize']}}" autocomplete="none">
+                    <span class="col-md-6 error-global" *ngIf="formGroup.get('city').touched && formGroup.get('city').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                </div>
+                <div class="row">
+                    <label class="style-global" id="coordinatesLabel">{{LocationEnum['coordinatesMessageLabel']}}<a class="required-global">*</a></label>
+                </div>
+                <div class="row">
+                    <input class="style-global allwidth-global" formControlName="geo_coordinates" type="text" placeholder="{{LocationEnum['coordinatesPlaceHolder']}}">
+                </div>
+                <div class="row">
+                    <label class="style-global">{{LocationEnum['zipMessageLabel']}}<a class="required-global">*</a></label>
+                </div>
+                <div class="row">
+                    <input class="style-global allwidth-global" formControlName="zipCode" type="text" placeholder="{{LocationEnum['zipCodePlaceHolder']}}" maxlength="{{LocationEnum['zipCodeInputMaxSize']}}" autocomplete="none">
+                    <span class="col-md-6 error-global" *ngIf="formGroup.get('zipCode').touched && formGroup.get('zipCode').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                </div>
+            </div>
+            <div class="col-sm-6" id="address-matters">
+                <div id="col-img">
+                    <img class="img-message" src="assets/img/app/message.png">
+                </div>
+                <div id="col-text">
+                    <h5 class="card-title">{{LocationEnum['yourAddressMessage']}}</h5>
+                    <p class="card-text">{{LocationEnum['cardTextMessage']}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div> -->

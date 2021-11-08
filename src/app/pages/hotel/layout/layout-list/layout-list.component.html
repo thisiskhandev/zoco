@@ -1,0 +1,72 @@
+<div class="pl-2 pt-5 row">
+  <p id="totalRegisteredRooms" class="col-md-4 section-description">{{layoutListEnum.totalLayoutText}}{{totalRegisteredRooms}}</p>
+</div>
+
+<div class="pb-5 pt-2 row" *ngIf="dataSource">
+    <mat-table #table [dataSource]="dataSource" class="col-md-12" matSort>
+
+
+        <ng-container matColumnDef="{{layoutListEnum.roomNameColumn}}">
+            <mat-header-cell *matHeaderCellDef mat-sort-header >{{layoutListEnum.roomHeaderName}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{getRoomName(element)}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="{{layoutListEnum.quantityColumn}}">
+            <mat-header-cell *matHeaderCellDef mat-sort-header >{{layoutListEnum.numberOfThisTypeHeaderName}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element[layoutListEnum.roomJsonNode][layoutListEnum.quantityJsonNode]}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="{{layoutListEnum.totalRoomMeasureColumn}}">
+            <mat-header-cell *matHeaderCellDef mat-sort-header >{{layoutListEnum.sizeHeaderName}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element[layoutListEnum.totalRoomMeasureColumn]}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="{{layoutListEnum.unitMeasureRoomColumn}}">
+            <mat-header-cell *matHeaderCellDef mat-sort-header >{{layoutListEnum.measureUnitHeaderName}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element[layoutListEnum.unitMeasureRoomColumn]}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="{{layoutListEnum.priceColumn}}">
+            <mat-header-cell *matHeaderCellDef mat-sort-header >{{layoutListEnum.priceHeaderName}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element[layoutListEnum.priceColumn]}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="{{layoutListEnum.operationsColumn}}">
+            <mat-header-cell *matHeaderCellDef >{{layoutListEnum.operationsHeaderName}}</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="align-icons">
+              <a   (click)="onEditLayout(element)" >
+                <mat-icon class="icon-edit" >edit</mat-icon>
+              </a>
+              <a  (click)="delete(element[layoutListEnum.idJsonNode],getRoomName(element))">
+                <mat-icon class="icon-delete">delete</mat-icon>
+              </a>
+            </mat-cell>
+          </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"  ></mat-header-row>
+        <mat-row *matRowDef="let element; columns: displayedColumns;" 
+            (click)="this.setSelectedLayoutItem(element)"
+                [style.background]="(getSelectedLayoutItem() && getSelectedLayoutItem().id === element.id) ? 'lightblue' : ''"
+        ></mat-row>
+    
+      </mat-table>
+</div>  
+
+<div class="row pl-2" *ngIf="getSelectedLayoutItem()">
+    <p class="col-md-4 section-description">Quantity of Beds: {{getSelectedLayoutItem().roomInfo.quantity}}</p>
+    <div class="col-md-4" ></div>
+    <p class="col-md-4 section-description">Guest Per Room: {{getSelectedLayoutItem().roomInfo.roomPeopleQuantity}}</p>
+</div>
+
+<div id="remaining-test" class="row" *ngIf="getRemainingCount() > utilities.emptyLength">
+    <span class="col-md-12" id="subtitle">Almost Done! You have {{getRemainingCount()}} More Rooms to add Before you can Continue Registering</span>
+</div>
+
+<div id="main-div" class="row"  *ngIf="getRemainingCount() !== utilities.emptyLength">
+    <div class="col-md-2 pr-0"></div>
+    <div class="col-md-10 pl-0 row">
+        <button type="button" id="add" class="btn btn-global col-md-12" (click)="onAddAnotherLayout()">Add Another Room Type</button>
+    </div>  
+</div>

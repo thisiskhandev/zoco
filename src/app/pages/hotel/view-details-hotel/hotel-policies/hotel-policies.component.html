@@ -1,0 +1,28 @@
+<div class="row" > 
+    <h6 class="col-md-6 style-global">{{DetailsHotelEnum['policies']}} </h6>
+</div>
+<br>
+<div class="table-policies">
+    <div class="row"> 
+        <h6 class="col-md-3 policies-title">Check in </h6>
+        <h6 class="col-md-6 style-global"   >
+            <label  *ngIf="checkInCheckOut" >{{checkInCheckOut.checkInFromTime | date:'shortTime'}}</label> 
+            <label  *ngIf="!checkInCheckOut" >Check In is not set yet</label>
+            <button mat-button routerLink="">
+              <mat-icon class="icon-edit" >edit</mat-icon>
+            </button>
+        </h6>
+    </div>
+    <hr class="line-subtitle-style"/>
+    <div class="row"> 
+        <h6 class="col-md-3 policies-title">Check out </h6>
+        <h6 class="col-md-6 style-global">
+            <label  *ngIf="checkInCheckOut" >{{checkInCheckOut.checkOutFromTime | date:'shortTime'}}</label>
+            <label  *ngIf="!checkInCheckOut" >Check out is not set yet</label>
+            <button mat-button routerLink="">
+              <mat-icon class="icon-edit" >edit</mat-icon>
+            </button>
+        </h6>
+    </div>
+    <hr class="line-subtitle-style"/>
+</div>

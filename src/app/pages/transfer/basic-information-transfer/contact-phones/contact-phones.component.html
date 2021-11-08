@@ -1,0 +1,70 @@
+<form #formGroup="ngForm">   
+
+    <div class="row" >
+        <label class="col-md-6 style-global">Email<a class="required-global">*</a></label>
+        <label class="col-md-6 style-global">Responsible Name<a class="required-global">*</a></label>
+    </div>
+
+    <div class="row" >   
+        <div class="col-md-6" >
+            <input class="col-md-10 style-global" type="text" 
+                maxlength="{{contactInfoEnum.emailMaxFieldSize}}"
+                name="email" #email="ngModel" [(ngModel)]="model.email"
+                placeholder="Write an email" 
+                pattern="{{customValidator.emailRegexpString}}"  required>      
+        </div>
+        <div class="col-md-6" >
+            <input class="col-md-10 style-global" type="text" 
+            maxlength="{{contactInfoEnum.responsibleNameMaxFieldSize}}" 
+            name="responsibleName" #responsibleName="ngModel" [(ngModel)]="model.responsibleName"
+            placeholder="Write a Responsible Name" required>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6" >
+            <span class="col-md-3 error-global" *ngIf="email.touched && email.errors?.required">Cannot be empty</span>
+            <span class="col-md-5 error-global" *ngIf="email.touched && email.errors?.pattern">Provide a valid email</span>
+        </div>
+        <div class="col-md-6" >
+            <span class="col-md-3 error-global" *ngIf="responsibleName.touched && responsibleName.errors?.required">Cannot be empty</span>
+        </div>
+    </div>
+
+
+    <div class="row pt-2 flex-column pl-1" >
+        <label class="col-md-3 w-75 style-global">Office Phone<a class="required-global">*</a></label>
+    </div>
+    <div class="row">
+        <select class="col-md-2 ml-4 single-select-global" 
+        name="countryCallingCodeOfficePhone" #countryCallingCodeOfficePhone="ngModel" [(ngModel)]="model.countryCallingCodeOfficePhone"> 
+            <option  [selected]="true" disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let country of this.countries; let y = index;" value="{{country.iataCode}}-{{country.callingCode}}" >{{country.countryName}} - {{country.callingCode}}</option>
+        </select>
+        <input class="col-md-2 ml-2 style-global" type="text" maxlength="{{contactInfoEnum.officePhoneMaxFieldSize}}" 
+         name="officePhoneNumber" #officePhoneNumber="ngModel" [(ngModel)]="model.officePhoneNumber"
+         placeholder="Write a Office Phone" pattern="{{customValidator.numberRegExpString}}" required>
+        <span class="col-md-2 error-global" *ngIf="officePhoneNumber.touched && officePhoneNumber.errors?.required">Cannot be empty</span>
+        <span class="col-md-5 error-global" *ngIf="officePhoneNumber.touched && officePhoneNumber.errors?.pattern">{{utilities.onlyNumberErrorText}}</span>
+        <span class="col-md-2 error-global" *ngIf="countryCallingCodeOfficePhone.touched && countryCallingCodeOfficePhone.errors?.required">Please select a Phone Country Code</span>
+    </div>
+
+    
+    <div class="row pt-2 flex-column pl-1" >   
+        <label class="col-md-3  w-75 style-global">24 Hour Phone<a class="required-global">*</a></label>
+    </div>
+    <div class="row">
+        <select class="col-md-2 ml-4 single-select-global" 
+            name="countryCallingCodeTwentyFourHourPhone" #countryCallingCodeTwentyFourHourPhone="ngModel" [(ngModel)]="model.countryCallingCodeTwentyFourHourPhone"> 
+            <option  [selected]="true" disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let country of this.countries; let y = index;" value="{{country.iataCode}}-{{country.callingCode}}" >{{country.countryName}} - {{country.callingCode}}</option>
+        </select>
+        <input class="col-md-2 ml-2 style-global" type="text" maxlength="{{contactInfoEnum.twentyFourHourPhoneMaxFieldSize}}" placeholder="Write a 24 Hour Phone" 
+        name="twentyFourHourPhoneNumber" #twentyFourHourPhoneNumber="ngModel" [(ngModel)]="model.twentyFourHourPhoneNumber" required>
+        <span class="col-md-3 error-global" *ngIf="twentyFourHourPhoneNumber.touched && twentyFourHourPhoneNumber.errors?.required">Cannot be empty</span>
+        <span class="col-md-5 error-global" *ngIf="twentyFourHourPhoneNumber.touched && twentyFourHourPhoneNumber.errors?.pattern">{{utilities.onlyNumberErrorText}}</span>
+        <span class="col-md-3 error-global" *ngIf="countryCallingCodeTwentyFourHourPhone.touched && countryCallingCodeTwentyFourHourPhone.errors?.required">Please select a Phone Country Code</span>
+    </div>
+</form>
+      

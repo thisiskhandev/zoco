@@ -1,0 +1,15 @@
+<form [formGroup]="formGroup">
+    <div formArrayName="breakfastTypes" class="customer-types-div col-md-6 pl-0 row" *ngFor="let type of getBreakfastTypesFormArray().controls; let i=index">
+        <div class="col-md-12 pl-2 pt-1 row" [formGroupName]="i">
+            <mat-checkbox color="accent" class="col-md-6 ml-1 style-global" formControlName="breakfastType">{{breakfastOptions[i].breakfast_type}}</mat-checkbox>
+            <p *ngIf="doesHavePaidBreakfast() && isBreakFastChecked(i)" class="col-md-2 pl-0 pr-0">Price($):<a class="required-global">*</a></p>
+            <input *ngIf="doesHavePaidBreakfast() && isBreakFastChecked(i)" class="col-md-2 pr-0 style-global" type="text" formControlName="breakfastPrice" maxlength="breakfastEnum.breakfastPriceInputMaxSize" placeholder="Write a price">
+            <span class="col-md-8 pr-0 error-global" *ngIf="doesHavePaidBreakfast() && isBreakFastChecked(i) && type.get(breakfastEnum.breakfastPrice).touched && type.hasError('priceIsNeeded')">Cannot be empty</span>
+            <span class="col-md-8 pr-0 error-global" *ngIf="doesHavePaidBreakfast() && isBreakFastChecked(i) && type.get(breakfastEnum.breakfastPrice).touched && type.get(breakfastEnum.breakfastPrice).hasError('invalidNumber')">This field admit only numbers</span>
+            <span class="col-md-8 pr-0 error-global" *ngIf="doesHavePaidBreakfast() && isBreakFastChecked(i) && type.get(breakfastEnum.breakfastPrice).touched && type.get(breakfastEnum.breakfastPrice).hasError('invalidValue')">The value must be greater than zero </span>
+        </div>
+    </div>
+    <div class="row">
+        <span class="col-md-6 error-global" *ngIf="formGroup.controls.breakfastTypes.touched && formGroup.controls.breakfastTypes.hasError('isNonSelected')">Please select at least one breakfast</span>
+    </div>
+</form>

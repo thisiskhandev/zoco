@@ -1,0 +1,13 @@
+.multiple-selector-align-checkbox {
+    width: 50%; 
+    float: left;
+    padding-left: 30px;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #BA005D !important;
+}
+
+.align-error-message {
+    float: left;
+}

@@ -1,0 +1,281 @@
+<!-- /. App Header -->
+<!-- <app-header></app-header> -->
+<!-- <ng2-toasty [position]='position'></ng2-toasty> -->
+<!-- /. Body app -->
+<!-- <router-outlet></router-outlet> -->
+<!-- /. Footer component -->
+<!-- <usb-footer></usb-footer> -->
+
+<mat-drawer-container class="h-100" [autosize]="autosize" hasBackdrop="false">
+    <mat-drawer #drawer class="sidenav-left" [mode]="mode" opened position="start" (mouseover)="expandMenu()" (mouseout)="expandedHover=false" [ngClass]="{'compresed-menu': compMenu, 'expand-hover': expandedHover}">
+        <div class="head-menu d-flex flex-column align-items-center justify-content-center">
+            <!-- <button mat-icon-button  isRoundButton (click)="drawer.toggle()" class="buton-menu"> -->
+            <button mat-icon-button isRoundButton (click)="compresedMenu()" class="buton-menu-fix" [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <img width="42" src="assets/img/app/logo-zoco.jpg" class="ng-star-inserted logo-notext" [ngClass]="{'d-block': compMenu && !expandedHover, 'd-none': !compMenu || expandedHover}">
+            <img src="/assets/img/app/logo-zoco-text.jpg" class="logo-text" [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+        </div>
+        <div class="list-menu">
+            <div class="menu" [ngStyle]="{'overflow-y': openParams || (contextHeight() < 620)? 'scroll' : 'hidden', 'height': (contextHeight() < 810)? 'calc(100% - 100px)' : 'calc(100% - 200px)' }">
+                <div class="d-flex align-items-center top-menu-title" *ngIf="!compMenu || expandedHover">
+                    <span class="i-backoffice">Z</span>
+                    <h3 class="title m-0">ZOCO</h3>
+                </div>
+                <mat-divider></mat-divider>
+                <mat-list class="d-flex flex-column pt-4" id="menu-right" role="list">
+                    <mat-list-item role="listitem" class="items-menu cursor-pointer" (click)="topNav=false" routerLink="/dashboard" routerLinkActive="item-menu-active" [ngClass]="{'item-menu-active-not-action': compMenu && !expandedHover}">
+                        <mat-icon class="mr-4">dashboard</mat-icon>
+                        <span class="cursor-pointer" [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                            Dashboard
+                        </span>
+                        <!-- <mat-icon class="material-icons ml-auto" [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">chevron_right</mat-icon> -->
+                    </mat-list-item>
+                    <mat-list-item role="listitem" class="items-menu cursor-pointer" (click)="topNav=true" routerLink="/base-list/hotels" routerLinkActive="item-menu-active" [ngClass]="{'item-menu-active-not-action': compMenu && !expandedHover}">
+                        <mat-icon class="mr-4">face</mat-icon>
+                        <span class="cursor-pointer" [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                            Categorias
+                        </span>
+                        <mat-icon (click)="openCategories=!openCategories" class="material-icons ml-auto cursor-pointer" [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">{{ !openCategories? 'chevron_right' : 'expand_more'}}</mat-icon>
+                    </mat-list-item>
+                    <!-- Lista de  Cateorias -->
+                    <mat-list class="d-flex flex-column" role="list" *ngIf="openCategories">
+                        <mat-list-item role="listitem" class="items-menu subitems" routerLink="hotels" (click)="tabSelect=0">
+                            <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Hotel
+                                </span>
+                        </mat-list-item>
+                        <mat-list-item role="listitem" class="items-menu subitems" routerLink="transfers" (click)="tabSelect=1">
+                            <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Transporte
+                                </span>
+                        </mat-list-item>
+                        <mat-list-item role="listitem" class="items-menu subitems" routerLink="activities" (click)="tabSelect=2">
+                            <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Tour
+                                </span>
+                        </mat-list-item>
+                        <mat-list-item role="listitem" class="items-menu subitems" routerLink="/base-list" (click)="tabSelect=3">
+                            <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Crucero
+                                </span>
+                        </mat-list-item>
+                        <mat-list-item role="listitem" class="items-menu subitems" routerLink="/base-list" (click)="tabSelect=4">
+                            <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Paquete
+                                </span>
+                        </mat-list-item>
+                        <mat-list-item role="listitem" class="items-menu subitems" routerLink="/base-list" (click)="tabSelect=5">
+                            <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Disney
+                                </span>
+                        </mat-list-item>
+                    </mat-list>
+                    <mat-list-item role="listitem" class="items-menu" [ngClass]="{'item-menu-active-not-action': compMenu && !expandedHover}">
+                        <mat-icon class="mr-4">featured_play_list</mat-icon>
+                        <span class="cursor-pointer" [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                            Transfers
+                        </span>
+                        <!-- <mat-icon (click)="openOptions=!openOptions" class="material-icons ml-auto cursor-pointer" [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">{{ !openOptions? 'chevron_right' : 'expand_more'}}</mat-icon> -->
+                    </mat-list-item>
+                    <!-- operations -->
+                    <!-- <mat-list class="d-flex flex-column" role="list" *ngIf="openOptions">
+                            <mat-list-item role="listitem" class="items-menu subitems">
+                                <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Depósito de Garantias
+                                </span>
+                            </mat-list-item>
+                            <mat-list-item role="listitem" class="items-menu subitems">
+                                <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Reservas
+                                </span>
+                            </mat-list-item>
+                            <mat-list-item role="listitem" class="items-menu subitems">
+                                <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Transacciones
+                                </span>
+                            </mat-list-item>
+                        </mat-list> -->
+                    <!-- operations end -->
+                    <mat-list-item role="listitem" class="items-menu" routerLinkActive="item-menu-active" [routerLinkActiveOptions]="{exact: false}" [ngClass]="{'item-menu-active-not-action': compMenu && !expandedHover}">
+                        <mat-icon class="mr-4">format_list_bulleted</mat-icon>
+                        <span class="cursor-pointer" [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                            Activities
+                        </span>
+                        <!-- <mat-icon (click)="openParams=!openParams" class="material-icons ml-auto cursor-pointer" [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">{{ !openParams? 'chevron_right' : 'expand_more'}}</mat-icon> -->
+                    </mat-list-item>
+                    <!-- params -->
+                    <!-- <mat-list class="d-flex flex-column" role="list" *ngIf="openParams">
+                            <mat-list-item role="listitem" class="items-menu subitems" routerLink="/pages/parameters" [queryParams]="{'tab':0}">
+                                <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Condición de Pago
+                                </span>
+                            </mat-list-item>
+                            <mat-list-item role="listitem" class="items-menu subitems" routerLink="/pages/parameters" [queryParams]="{'tab':1}">
+                                <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Métodos de Pago
+                                </span>
+                            </mat-list-item>
+                            <mat-list-item role="listitem" class="items-menu subitems" routerLink="/pages/parameters" [queryParams]="{'tab':2}">
+                                <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Tipo de transacciones
+                                </span>
+                            </mat-list-item>
+                            <mat-list-item role="listitem" class="items-menu subitems" routerLink="/pages/parameters" [queryParams]="{'tab':3}">
+                                <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Adm. de Servicios
+                                </span>
+                            </mat-list-item>
+                            <mat-list-item role="listitem" class="items-menu subitems" routerLink="/pages/parameters" [queryParams]="{'tab':4}">
+                                <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Rentab. por Proveedor
+                                </span>
+                            </mat-list-item>
+                            <mat-list-item role="listitem" class="items-menu subitems" routerLink="/pages/parameters" [queryParams]="{'tab':5}">
+                                <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                                    > Rentab. por Categoría
+                                </span>
+                            </mat-list-item>
+                        </mat-list> -->
+                    <!-- params end -->
+                    <!-- <mat-list-item role="listitem" class="items-menu" [ngClass]="{'item-menu-active-not-action': compMenu && !expandedHover}">
+                        <mat-icon class="mr-4">file_copy</mat-icon>
+                        <span [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">
+                            Reportes
+                        </span>
+                        <mat-icon class="material-icons ml-auto" [ngClass]="{'d-none': compMenu && !expandedHover, 'd-block': !compMenu || expandedHover}">chevron_right</mat-icon>
+                    </mat-list-item>  -->
+                    <!-- <mat-list-item role="listitem" class="items-menu" routerLink="/pages/providers/list" [routerLinkActive]="classMenuActive">
+                        <mat-icon class="mr-4">accessibility</mat-icon>
+                        Providers
+                    </mat-list-item>
+                    <mat-list-item role="listitem" class="items-menu" routerLink="/pages/reservations" [routerLinkActive]="classMenuActive">
+                        <mat-icon class="mr-4">format_list_bulleted</mat-icon>
+                        Reservations
+                    </mat-list-item>
+                    <mat-list-item role="listitem" class="items-menu" routerLink="/pages/profitability" [routerLinkActive]="">
+                        <mat-icon class="mr-4">assignment</mat-icon>
+                        Profitability
+                    </mat-list-item> -->
+                </mat-list>
+            </div>
+        </div>
+    </mat-drawer>
+    <mat-toolbar class="toolbar-shadow">
+        <div class="d-flex justify-content-between align-items-center w-100 h-100">
+            <div class="d-flex h-100">
+                <!-- <div class="btn-container d-flex">
+                    <button mat-icon-button  isRoundButton (click)="drawer.toggle()" class="buton-menu">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                </div> -->
+                <div class="btn-container d-flex">
+                    <button mat-icon-button outline isRoundButton class="buton-menu">
+                        <mat-icon>backspace</mat-icon>
+                    </button>
+                </div>
+                <mat-divider [vertical]="true"></mat-divider>
+            </div>
+            <div class="d-flex align-items-center">
+                <span style="margin-right: 15px; line-height: 1;">Moebius</span>
+                <img width="42" style="margin-right: 15px;" src="assets/img/logo/logoDeault.png" class="ng-star-inserted">
+                <button mat-icon-button isRoundButton class="buton-menu">
+                    <mat-icon>power_settings_new</mat-icon>
+                </button>
+                <button mat-icon-button outline isRoundButton (click)="drawer2.toggle()" class="buton-menu">
+                    <mat-icon>list</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-toolbar>
+    <mat-drawer #drawer2 class="sidenav-right" mode="over" position="end">
+        <button mat-icon-button outline isRoundButton (click)="drawer2.toggle()" class="buton-menu">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+        <h3 class="mat-subheader">Today</h3>
+        <div class="secondary-text mat-display-1 date">
+            <div class="date1">{{ dayName }}</div>
+            <div class="d-flex date2">
+                <span>{{ dayMonth }}</span><span class="mat-subheading-1">{{ sufix }}</span><span>&nbsp;{{month}}</span>
+            </div>
+        </div>
+    </mat-drawer>
+    <!-- <div class="example-sidenav-content">
+      <button type="button" mat-button (click)="drawer.toggle()">
+        Toggle sidenav
+      </button>
+    </div> -->
+    <!-- <app-header></app-header> -->
+    <div id="top-navigation" *ngIf="topNav">
+        <div class="filter d-flex flex-row justify-content-between">
+            <form class="d-flex flex-row justify-content-between">
+                <div class="d-flex flex-row align-items-center">
+                    <!-- nombre -->
+                    <input type="text" class="form-control input-custom mr-3" id="name" placeholder="Nombre">
+                    <!-- tipo -->
+                    <select type="text" class="form-control input-custom mr-3" id="tipo">
+                  <option value="">Tipo</option>
+                  <option value="1">
+                    Opcion 1
+                  </option>
+                  <option value="2">
+                    Opcion 2
+                  </option>
+                  <option value="3">
+                    Opcion 3
+                  </option>
+                </select>
+                    <!-- categoria -->
+                    <select type="text" class="form-control input-custom mr-3" id="categoria">
+                  <option value="">Categoría</option>
+                  <option value="1">
+                    Opcion 1
+                  </option>
+                  <option value="2">
+                    Opcion 2
+                  </option>
+                  <option value="3">
+                    Opcion 3
+                  </option>
+                </select>
+                    <!-- status -->
+                    <select type="text" class="form-control input-custom mr-3" id="status">
+                  <option value="">Status</option>
+                  <option value="1">
+                    Opcion 1
+                  </option>
+                  <option value="2">
+                    Opcion 2
+                  </option>
+                  <option value="3">
+                    Opcion 3
+                  </option>
+                </select>
+                </div>
+                <div class="btns-form d-flex align-items-center">
+                    <button class="btn btn-form btn-reset">reset</button>
+                    <button class="btn btn-form btn-search">buscar</button>
+                </div>
+            </form>
+            <div class="d-flex content-new">
+                <button class="btn btn-new" routerLink="/base-navigator/hotels/" (click)="clearCookies()">
+                <div class="d-flex align-items-center mb-1">
+                  <img class="mr-2 filter-white" src="/assets/img/app/icons/plus.svg" alt="" style="width: 20px; height: 20px;">
+                  <img class="filter-white" src="/assets/img/app/icons/concierge-bell.svg" alt="">
+                </div>
+                NUEVO HOTEL
+              </button>
+            </div>
+        </div>
+        <mat-tab-group aria-labelledby="cyan" mat-align-tabs="center" mat-stretch-tabs dynamicHeight class="mt-2" [selectedIndex]="tabSelect" (selectedIndexChange)="tabSelect;routing($event)">
+            <mat-tab label="HOTEL"></mat-tab>
+            <mat-tab label="TRANSPORTE"></mat-tab>
+            <mat-tab label="TOUR"></mat-tab>
+            <mat-tab label="CRUCERO"></mat-tab>
+            <mat-tab label="PAQUETE"></mat-tab>
+            <mat-tab label="RENT A CAR"></mat-tab>
+            <mat-tab label="DISNEY"></mat-tab>
+        </mat-tab-group>
+    </div>
+    <router-outlet></router-outlet>
+</mat-drawer-container>

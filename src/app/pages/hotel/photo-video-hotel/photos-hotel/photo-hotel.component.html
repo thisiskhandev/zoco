@@ -1,0 +1,71 @@
+<!-- <router-outlet></router-outlet> -->
+
+<input type="file">
+
+<div class="col-12 rmpm dropzone" appDrag (files)="filesDropped($event)">
+    <div class="text-wrapper">
+        <!--droped image preview-->
+        <div *ngFor="let file of files">
+            <img *ngIf="file" [src]="file.url" width="100px" height="100px">
+        </div>
+        <div class="centered">Drop your file here!</div>
+    </div>
+</div>
+
+
+
+
+<!-- <div>
+    <p class="subtitle-cr">Galería de Fotos y Video</p>
+    <div class="row">
+        <div class="col-12">
+            <accordion>
+                <group-accordion title="&nbsp;FOTOS" useCaret="true" opened="true" subtitle="50 FOTOS AGREGADAS">
+                    <div class="row mt-1">
+                        <div class="col-12">
+                            <div class="mb-5">
+                                <div class="d-inline-block text-center columna_opciones_1">2 of 2 photo select</div>
+                                <div class="d-inline-block adorno"></div>
+                                <div class="d-inline-block text-center columna_opciones_2">Select All</div>
+                                <div class="d-inline-block adorno"></div>
+                                <div class="d-inline-block text-center columna_opciones_3">Deselect All</div>
+                                <div class="d-inline-block adorno"></div>
+                                <div class="d-inline-block text-center columna_opciones_4">Delete Photos</div>
+                                <fa-stack size="lg" id="howToGet_plus" class="cursor-pointer float-right">
+                                    <fa-icon [icon]="faCircle" stackItemSize="2x"></fa-icon>
+                                    <fa-icon [icon]="faPlus" [inverse]="true" stackItemSize="1x"></fa-icon>
+                                </fa-stack>
+                            </div>
+                            <h2 class="text-center mb-0">DRAG AND DROP PHOTOS HERE</h2>
+                            <h2 class="text-center subtitle_drag">MAX 50MB UPLOAD</h2>
+                            <ngx-dropzone (change)="onSelect($event)" class="row alto-500px">
+                                <ngx-dropzone-label>DRAG AND DROP PHOTOS HERE</ngx-dropzone-label>
+                                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" [removable]="true" *ngFor="let f of files" [file]="f" style="width:20%;" class="col-2">
+                                    <ngx-dropzone-label class="alto-3rem mb-1 pt-2">
+                                        <div class="row">
+                                            <div class="col-8 Nombre_Imagen">
+                                                Nombre de la Imagen
+                                            </div>
+                                            <div class="col-1 Icono_Editar">
+                                                <fa-stack size="sm" class="cursor-pointer">
+                                                    <fa-icon [icon]="faCircle" stackItemSize="2x" [styles]="{'stroke': '#363636', 'color': '#363636'}"></fa-icon>
+                                                    <fa-icon [icon]="faPen" [inverse]="true" stackItemSize="1x"></fa-icon>
+                                                </fa-stack>
+                                            </div>
+                                            <div class="col-1 Icono_Eliminar">
+                                                <fa-stack size="sm" class="cursor-pointer">
+                                                    <fa-icon [icon]="faCircle" stackItemSize="2x" [styles]="{'stroke': '#eb394d', 'color': '#eb394d'}"></fa-icon>
+                                                    <fa-icon [icon]="faTrashAlt" [inverse]="true" stackItemSize="1x"></fa-icon>
+                                                </fa-stack>
+                                            </div>
+                                        </div>
+                                    </ngx-dropzone-label>
+                                </ngx-dropzone-image-preview>
+                            </ngx-dropzone>
+                        </div>
+                    </div>
+                </group-accordion>
+            </accordion>
+        </div>
+    </div>
+</div> -->

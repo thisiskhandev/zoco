@@ -1,0 +1,6 @@
+<app-form-header title="{{basicInfoActivitiesEnum.title}}" subtitle="{{basicInfoActivitiesEnum.subtitle}}"></app-form-header>
+<br>
+<form class="remove-scrollbar-global" (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+  <app-general-info [model]="model.generalInfo"></app-general-info>  
+  <app-contact-info [maxContacts]="maxContacts" [model]="model.contactInfo"></app-contact-info>  
+</form>

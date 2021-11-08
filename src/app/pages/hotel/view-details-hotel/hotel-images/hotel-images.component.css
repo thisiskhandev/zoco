@@ -1,0 +1,49 @@
+.carousel-thumbnail {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: block;
+    justify-content: left;
+    align-items: left;
+}
+  
+.carousel-thumbnail__item {
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+  
+.carousel-thumbnail__img {
+    width: 80px;
+    height: 60px;
+}
+
+.icon-edit {
+    color: #BB005E;
+    font: bold;
+    margin-left: 10px;
+}
+
+@media (min-width: 1600px) {
+
+    #photo-carousel {
+        width: 60% !important;
+    }
+}
+
+
+#photo-carousel {
+    margin: left;
+    margin-top: 20px;
+    background-color: #F2F2F2;
+    display: block;
+    width: 450px;
+}
+
+#photo-carousel:focus {
+    outline: #BA005D auto 5px;
+}
+
+.slide__image {
+    width: 450px;
+    height: 250px;
+}

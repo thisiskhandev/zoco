@@ -1,0 +1,38 @@
+<form class="sub-component-form" #formGroup="ngForm">
+    <h3>Cancellations</h3>
+
+    <div class="row">
+        <p class="col-md-12">How many days in advance can guests cancel free of charge?</p>
+    </div>
+
+    <div class="row pl-3 pb-3">
+        <select class="single-select-global" name="cancellationDays" #cancellationDays="ngModel" [(ngModel)]="model.cancellationDays" required>
+            <option disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let cancellationDay of this.cancellationsDaysDropdownOptions; let y = index;" value="{{cancellationDay.id}}" >{{cancellationDay.name}}</option>
+        </select>
+        <h3>
+            {{model.cancellationDays}}
+        </h3>
+        <span class="col-md-3 mt-1 error-global" *ngIf="cancellationDays.touched && cancellationDays.invalid">Please select an option</span>
+    </div>
+
+    <div class="row">
+        <p class="col-md-12">or guests will pay 100%</p>
+    </div>
+
+    <div class="row pl-3 pb-3">
+        <select class="single-select-global" name="penality" #penality="ngModel" [(ngModel)]="model.penality" required> 
+            <option  disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let penality of this.penalityDropdownOptions; let y = index;" value="{{penality.id}}" >{{penality.name}}</option>
+        </select>
+        <span class="col-md-3 mt-1 error-global" *ngIf="penality.touched && penality.invalid">Please select an option</span>
+    </div>
+
+    <div class="row pl-3">
+        <span class="info-float-global">The guest must cancel 
+            <span *ngIf="cancellationDays.value === cancellationOptionsEnum.dayOfArrivalCancellationDaysOption">by on the day of arrival</span>
+        <span *ngIf="cancellationDays.value !== cancellationOptionsEnum.dayOfArrivalCancellationDaysOption">{{findCancellationDaysNameById(cancellationDays.value)}} in advance</span> or pay 100% of the price of the whole stay. You'll be able to make changes
+        to your policies later on – this is just to get you started.
+        </span>
+    </div>
+</form>

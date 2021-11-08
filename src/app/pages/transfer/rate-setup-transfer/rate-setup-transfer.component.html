@@ -1,0 +1,154 @@
+<app-form-header title="{{rateSetupTransferEnum.title}}" subtitle="{{rateSetupTransferEnum.subtitle}}"></app-form-header>
+<br>
+
+<form class="remove-scrollbar-global" #formGroup="ngForm">
+  <div class="card-body">
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Origin Zone: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" name="origin" #origin="ngModel" [(ngModel)]="model.origin" type="text" placeholder="Origin Zone" autocomplete="none" required>
+          <span class="error-global" *ngIf="origin.touched && origin.invalid">Cannot be empty</span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label class="style-global">Destination Zone: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <input class="style-global allwidth-global" name="destination" #destination="ngModel" [(ngModel)]="model.destination" type="text" placeholder="Destination Zone" autocomplete="none" required>
+          <span class="error-global" *ngIf="destination.touched && destination.invalid">Cannot be empty</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Select a vehicle of your fleet or stock: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <select class="single-select-global allwidth-global" name="vehicle" #vehicle="ngModel" [(ngModel)]="model.vehicle" required> 
+            <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let option of this.vehiclesOptions;" value="{{option.id}}" >{{option.name}}</option>
+          </select>
+          <span class="error-global" *ngIf="vehicle.touched && vehicle.invalid">Select a vehicle</span> 
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label class="style-global">Service Mode: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <select class="single-select-global allwidth-global" name="service" #service="ngModel" [(ngModel)]="model.service" required> 
+            <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let option of this.serviceOptions; " value="{{option.id}}" >{{option.name}}</option>
+          </select>
+          <span class="error-global" *ngIf="service.touched && service.invalid">Select a service</span> 
+        </div>
+      </div>
+    </div>
+
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Number of people: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <select class="single-select-global allwidth-global" name="peopleNumber" #peopleNumber="ngModel" [(ngModel)]="model.peopleNumber" required> 
+            <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let option of this.peopleNumberOptions;" value="{{option}}" >{{option}}</option>
+          </select>
+          <span class="error-global" *ngIf="peopleNumber.touched && peopleNumber.invalid">Select a number</span> 
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label class="style-global">Max bags per person: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">          
+          <select class="single-select-global allwidth-global" name="bagsNumber" #bagsNumber="ngModel" [(ngModel)]="model.bagsNumber" required> 
+            <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let option of this.bagsNumberOptions;" value="{{option}}" >{{option}}</option>
+          </select>
+          <span class="error-global" *ngIf="bagsNumber.touched && bagsNumber.invalid">Select a number</span> 
+        </div>
+      </div>
+    </div>
+
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Max handbags per person: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <select class="single-select-global allwidth-global" name="handbagsNumber" #handbagsNumber="ngModel" [(ngModel)]="model.handbagsNumber" required> 
+            <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let option of this.handbagsNumberOptions;" value="{{option}}" >{{option}}</option>
+          </select>
+          <span class="error-global" *ngIf="handbagsNumber.touched && handbagsNumber.invalid">Select a number</span> 
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label class="style-global">Price: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">          
+          <div class="input-group-prepend" >
+            <span class="input-group-text input-group-text-price-global" id="basic-addon3" >US $</span>
+          </div>
+          <input type="text" id="basic-url" aria-describedby="basic-addon3" name="price" #price="ngModel" [(ngModel)]="model.price" 
+            class="input-text-price-global" maxlength="{{rateSetupTransferEnum.numberMaxSize}}" placeholder="0" pattern="{{customValidator.numberMajorZeroRegExp}}" required >
+          <span class="error-global" *ngIf="price.touched && price.invalid">The field is invalid</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Parking Price: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">
+          <div class="input-group-prepend" >
+            <span class="input-group-text input-group-text-price-global" id="basic-addon3" >US $</span>
+          </div>
+          <input type="text" id="basic-url" aria-describedby="basic-addon3" name="parkingPrice" #parkingPrice="ngModel" [(ngModel)]="model.parkingPrice" 
+            class="input-text-price-global" maxlength="{{rateSetupTransferEnum.numberMaxSize}}" placeholder="0" pattern="{{customValidator.numberMajorZeroRegExp}}" required >
+          <span class="error-global" *ngIf="parkingPrice.touched && parkingPrice.invalid">The field is invalid</span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label class="style-global">Total Price: <a class="required-global">*</a></label>
+        </div>
+        <div class="row">          
+          <div class="input-group-prepend" >
+            <span class="input-group-text input-group-text-price-global" id="basic-addon3" >US $</span>
+          </div>
+          <input type="text" id="basic-url" aria-describedby="basic-addon3" name="totalPrice" #totalPrice="ngModel" [(ngModel)]="model.totalPrice" 
+            class="input-text-price-global" maxlength="{{rateSetupTransferEnum.numberMaxSize}}" placeholder="0" pattern="{{customValidator.numberMajorZeroRegExp}}" required >
+          <span class="error-global" *ngIf="totalPrice.touched && totalPrice.invalid">The field is invalid</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <app-exclude-taxes [model]="model.excludeTaxes"></app-exclude-taxes>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row message">
+            {{rateSetupTransferEnum.messageLuggage}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-extra-charges-prices [model]="model.extraChargesPrices"></app-extra-charges-prices>
+  
+</form>

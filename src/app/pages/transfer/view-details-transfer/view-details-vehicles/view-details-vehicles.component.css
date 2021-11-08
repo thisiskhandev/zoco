@@ -1,0 +1,38 @@
+.title {
+    font-weight: bold;
+    font-size: 18pt;
+    margin-bottom: 15px;
+}
+
+.total-box {
+    background-color: #e9ecef;
+    height: 120px;
+    text-align: center;
+    width: 19%;
+    margin-left: 1%;
+    padding: 24px 0px 0px 0px;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+.icon-style {
+    height: 30px;
+    width: auto;
+}
+
+.underline-text {
+    height: 2px;
+    background-color: #BA005D;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.totals-text {
+    font-size: 20px;
+}
+
+.button-size {
+    margin-left: 30%;
+    width: 100%;
+}

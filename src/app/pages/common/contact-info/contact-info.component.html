@@ -1,0 +1,61 @@
+<div class="card-body">
+  <form #formGroup="ngForm">
+    <div class="separator-global"></div>
+    <div class="section-label-global">Contact Info</div>
+
+    <div ngModelGroup="contact" *ngFor="let contact of this.model; let i = index;">
+
+		<div class="row mainrow-global">
+			<div class="col-sm-6 form-colums-global">
+            <div class="row">
+              <label class="style-global">Contact name: <a class="required-global">*</a></label>
+            </div>
+            <div class="row">
+              <input class="style-global allwidth-global" [(ngModel)]="contact.contactName"   name="contactName-{{i}}" #name="ngModel" type="text" placeholder="Contact name" autocomplete="none" required>
+              <span class="error-global" *ngIf="name.touched && name.errors?.required">Cannot be empty</span>
+          </div>
+        </div>
+          
+			<div class="col-sm-6">
+            <div class="row">
+              <label class="style-global">Contact E-mail: <a class="required-global">*</a></label>
+            </div>
+            <div class="row">
+              <input class="style-global allwidth-global" type="text"  maxlength="{{contactInfoActEnum.inputMaxSize}}" [(ngModel)]="contact.email"  name="email-{{i}}" #email="ngModel"  placeholder="Write an e-mail" autocomplete="none" pattern="{{customValidator.emailRegexpString}}"  required>
+              <span class="error-global" *ngIf="email.touched && email.errors?.required">Cannot be empty</span>
+              <span class="error-global" *ngIf="email.touched && email.errors?.pattern">Provide a valid email</span>
+            </div>
+          </div>
+		</div> 
+ 
+        <div class="row mainrow-global">
+          <div class="col-sm-6 form-colums-global">
+            <div class="row">
+              <label class="style-global">Type of contact: <a class="required-global">*</a></label>
+            </div>
+            <div class="row">
+              <select class="single-select-global allwidth-global" [(ngModel)]="contact.type"  name="type-{{i}}" #type="ngModel"  required> 
+                <option [selected]="true"  disabled hidden value="{{''}}" >Select the contact type</option>
+                <option *ngFor="let option of this.typeContactOptions; let y = index;" value="{{option.id}}" >{{option.name}}</option>
+              </select>
+              <span class="error-global" *ngIf="type.touched && type.errors?.required">Select a contact type</span>
+            </div>
+          </div>          
+          <div class="col-sm-6">
+            <app-phone [phones]="contact.phoneNumber" [maxPhoneItems]="this.maxPhoneItems"></app-phone>
+          </div>          
+        </div>
+
+
+        
+
+      
+		<div class="row mainrow-global">
+		  <button type="button" *ngIf="i !== 0" class="btn btn-danger btn-sm btn-remove-phone" (click)="removeContact(i)">Remove Contact</button>
+		</div>
+    </div>
+    <span *ngIf="this.model?.length < this.maxContacts">
+      <button type="button" class="btn btn-global mt-4" (click)="addContact($event)">Add other Contact</button>
+    </span> 
+  </form>
+</div>

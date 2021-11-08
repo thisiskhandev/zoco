@@ -1,0 +1,10 @@
+<div class="main-div">
+  <app-form-header title="{{viewDetailsTransferEnum.title}}" subtitle="{{model.nameCompany}}"></app-form-header>
+
+  <form>
+    <div class="card-body">
+      <app-view-details-vehicles [model]="model.viewDetailsVehicles" ></app-view-details-vehicles>
+      <app-view-details-rates [model]="model.viewDetailsRates" [transferId]="model.transferId"></app-view-details-rates>
+    </div>
+  </form>
+</div>

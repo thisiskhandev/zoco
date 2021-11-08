@@ -1,0 +1,102 @@
+<form #formGroup="ngForm">   
+
+    <div class="row" >
+        <label class="col-md-6 style-global">Category</label>
+        <label class="col-md-6 style-global">Vehicule Type</label>
+    </div>
+   
+    <div class="row pl-3"  >  
+        <div class="col-md-6 row mr-4" > 
+        <select class="col-md-10 single-select-global" name="category" #category="ngModel" [(ngModel)]="model.category"> 
+            <option  disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let option of this.categoryDropdownOptions; let y = index;" value="{{option.id}}" >{{option.name}}</option>
+        </select>    
+        </div>
+        <div class="col-md-6 row" > 
+        <select class="col-md-10 single-select-global" name="type" #type="ngModel" [(ngModel)]="model.type" > 
+            <option  disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let option of this.typeDropdownOptions; let y = index;" value="{{option.id}}" >{{option.name}}</option>
+        </select>    
+        </div>
+    </div>
+
+    <div class="row" >
+        <label class="col-md-6 style-global">Brand</label>
+        <label class="col-md-6 style-global">Model</label>
+    </div>
+
+    <div class="row" >
+        <div class="col-md-6" >
+            <input class="col-md-10 style-global" type="text" maxlength="{{vehicleInfoEnum.brand}}" name="brand" #brand="ngModel" [(ngModel)]="model.brand" placeholder="Write an Vehicule brand">
+        </div>
+        <div class="col-md-6" >
+            <input class="col-md-10 style-global" type="text" maxlength="{{vehicleInfoEnum.model}}" name="modelType" #modelType="ngModel" [(ngModel)]="model.modelType" placeholder="Write an Vehicule model">
+        </div>
+    </div>
+
+    <div class="row" >
+        <label class="col-md-6 style-global">Capacity of Vehicle</label>
+        <label class="col-md-6 style-global">Number of Vehicles</label>
+    </div>
+
+    <div class="row" >
+        <div class="col-md-6" >
+            <input class="col-md-10 style-global" type="text" maxlength="{{vehicleInfoEnum.capacity}}" name="capacity" #capacity="ngModel" [(ngModel)]="model.capacity" placeholder="Write an Capacity" pattern="{{customValidator.numberRegExpString}}" required>
+        </div>
+        <div class="col-md-6" >
+            <input class="col-md-10 style-global" type="text" maxlength="{{vehicleInfoEnum.quantity}}" name="quantity" #quantity="ngModel" [(ngModel)]="model.quantity" placeholder="Write an Quantity of this Vehicle" pattern="{{customValidator.numberRegExpString}}" required>
+        </div>
+    </div>
+
+    <div class="row">
+        <span class="col-md-6 error-global" *ngIf="capacity.touched && capacity.errors?.required">Cannot be empty</span>
+        <span class="col-md-6 error-global" *ngIf="capacity.touched && capacity.errors?.pattern">{{utilities.onlyNumberErrorText}}</span>
+
+        <span class="col-md-6 error-global" *ngIf="quantity.touched && quantity.errors?.required">Cannot be empty</span>
+        <span class="col-md-6 error-global" *ngIf="quantity.touched && quantity.errors?.pattern">{{utilities.onlyNumberErrorText}}</span>
+    </div>
+
+
+    <div class="row description-label" >
+        <label class="col-md-5 ml-3 mr-0 pl-0 pr-0">
+            The passanger capacity in the vehicles excludes the driver
+        </label>
+    <div class="col-md-1"></div>
+        <label class="col-md-5 pl-0 ml-0">
+            Quantity or stock of vehicles of this type
+        </label>
+    </div>
+
+    <div class="row" >
+        <div class="col-md-6" >        
+            <label class="style-global">Transport Type</label>
+            <mat-radio-group name="isPrivate" #isPrivate="ngModel" [(ngModel)]="model.isPrivate" class="col-md-6">
+                <label class="label-buttons-global">
+                    <mat-radio-button value="1">Regular</mat-radio-button>
+                </label>
+                <label class="label-buttons-global">
+                    <mat-radio-button value="2">Private</mat-radio-button>
+                </label>
+                <label class="label-buttons-global">
+                    <mat-radio-button value="3">Shared</mat-radio-button>
+                </label>
+            </mat-radio-group>
+        </div>
+        <div class="col-md-6" >
+            <label class="style-global">Property or Belonging</label>  
+            <select class="col-md-10 single-select-global" name="ownedBy" #ownedBy="ngModel" [(ngModel)]="model.ownedBy"> 
+                <option  disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+                <option *ngFor="let option of this.vehicleBelongingTypes; let y = index;" value="{{option.id}}" >{{option.name}}</option>
+            </select>
+        </div>
+    </div>  
+    <div class="row">
+        <div class="row col-md-3 pl-2 ml-2 mt-2">
+            <button class="col-md-12 btn btn-global" id="add" type="button" (click)="addFeature(formGroup)">Add Other</button>
+        </div>
+    </div>
+
+    <app-vehicle-list></app-vehicle-list>
+    <br>
+
+</form>

@@ -1,0 +1,42 @@
+<div class="card-body">
+  <form #formGroup = "ngForm">
+    <div class="separator-global"></div>
+    <div class="section-label-global">{{extraChargesEnum.title}}</div>
+
+    <div class="row mainrow-global">
+      <div class="col-sm-6 form-colums-global">
+        <div class="row">
+          <label class="style-global">Apply extra charges?<a class="required-global">*</a></label>
+        </div>
+      </div>
+    </div>  
+    <div class="row">
+      <mat-radio-group name="hasExtraCharges" #hasExtraCharges="ngModel" [(ngModel)]="model.hasExtraCharges" class="col-md-6">
+        <label class="label-buttons-global">
+          <mat-radio-button value="true">YES</mat-radio-button>
+        </label>
+        <label class="label-buttons-global">
+          <mat-radio-button value="false">NO</mat-radio-button>
+        </label>
+      </mat-radio-group>
+    </div>
+
+    <div *ngIf="hasExtraCharges.value == 'true'">
+      <div class="row">
+        <div class="col-sm-6 form-colums-global">
+          <div>
+            <label class="style-global">Which of these extra charges? <a class="required-global">*</a></label>
+          </div>
+          <div class="extra-charges-checkbox">
+            <app-multiple-selector
+              [model]="model.extraCharges"
+              [itemsTypes]="this.extraChargesOptions" 
+              [requiredField]="this.requiredField">
+            </app-multiple-selector>         
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>

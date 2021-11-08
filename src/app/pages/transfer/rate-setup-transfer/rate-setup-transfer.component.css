@@ -1,0 +1,14 @@
+label.style-global {
+    width: 100%;
+}
+
+.single-select-global.allwidth-global {
+    width: 100% !important;
+}
+
+.message {
+    background: white;
+    border: 2px dashed rgba(0, 0, 0, 0.73);
+    margin-top: 20px;
+    padding: 40px 40px 40px 40px;
+}

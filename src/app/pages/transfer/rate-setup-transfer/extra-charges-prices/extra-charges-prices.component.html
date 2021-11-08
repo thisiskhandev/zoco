@@ -1,0 +1,32 @@
+<div class="card-body">
+  <form [formGroup] = "formGroup">
+    <div class="separator-global"></div>
+    <div class="section-label-global">{{extraChargesPricesEnum.title}}</div>
+
+    <div *ngIf="this.model.length > extraChargesPricesEnum.valueZero">
+      <div formArrayName="priceCharge">
+        <!-- <div *ngFor="let charge of formGroup.get('priceCharge').controls;  let i=index">
+          <div class="col-sm-6">
+            <div class="row">
+              <label class="style-global label-allwidth">{{this.model[i].nameCharge}}</label>
+              <div class="input-group-prepend" >
+                <span class="input-group-text input-group-text-price" id="basic-addon3" >US $</span>
+              </div>
+              <input type="text" id="basic-url" aria-describedby="basic-addon3" [formControl]="charge" name="priceCharge" 
+                [(ngModel)]="this.model[i].priceCharge" class="input-text-price" maxlength="{{extraChargesPricesEnum.numberMaxSize}}" placeholder="0">
+              <span class="error-global" *ngIf="formGroup.get('priceCharge').touched && formGroup.get('priceCharge').hasError('required')">Cannot be empty</span>
+              <span class="error-global" *ngIf="formGroup.get('priceCharge').touched && formGroup.get('priceCharge').hasError('invalidNumber')">This field admit only numbers</span>
+              <span class="error-global" *ngIf="formGroup.get('priceCharge').touched && formGroup.get('priceCharge').hasError('size')">This field cannot have more than 5 characters</span>
+              <span class="error-global" *ngIf="formGroup.get('priceCharge').touched && formGroup.get('priceCharge').hasError('invalidValue')">The value must be greater than zero </span>
+            </div>
+          </div>        
+        </div> -->
+      </div>
+    </div>
+   
+    <div *ngIf="this.model.length == extraChargesPricesEnum.valueZero" class="row mainrow-global">
+      <label class="style-global label-allwidth">{{extraChargesPricesEnum.noCharges}}</label>
+    </div>
+
+  </form>
+</div>

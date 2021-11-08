@@ -1,0 +1,38 @@
+<div class="table-container">
+    <mat-table #table [dataSource]="dataSource" matSort>
+  
+      <ng-container matColumnDef="{{listActivitiesEnum.id}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >{{listActivitiesEnum.idActivityTitle}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element[listActivitiesEnum.id]}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="{{listActivitiesEnum.name}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >{{listActivitiesEnum.nameTitle}}</mat-header-cell>
+        <mat-cell *matCellDef="let element" routerLink="/base-navigator/activities/view-details/{{element[listActivitiesEnum.id]}}"  
+          [ngClass]="{'active-link': true}" > {{element[listActivitiesEnum.name]}} </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="{{listActivitiesEnum.location}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >{{listActivitiesEnum.locationTitle}}</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div style="display: -webkit-box;">{{element[listActivitiesEnum.location]}}</div>
+        </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="{{listActivitiesEnum.action}}">
+        <mat-header-cell *matHeaderCellDef >{{listActivitiesEnum.actionTitle}}</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="align-icons">
+          <button mat-button  routerLink="/base-navigator/activities/{{element[listActivitiesEnum.id]}}">
+            <mat-icon class="icon-edit" >edit</mat-icon>
+          </button>
+          <button mat-button (click)="this.delete(element[listActivitiesEnum.id], element[listActivitiesEnum.name] )">
+            <mat-icon class="icon-delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"  ></mat-header-row>
+      <mat-row *matRowDef="let element; columns: displayedColumns;" ></mat-row>
+  
+    </mat-table>
+  </div>

@@ -1,0 +1,42 @@
+<form [formGroup]="formGroup">
+
+    <div class="d-flex flex-column mt-5">
+        <div class="col-12 p-0">
+            <p class="subtitle-cr">Tipo y Categoría</p>
+        </div>
+        <div class="d-flex">
+            <div class="col-6 pl-0">
+                <div class="d-flex flex-column">
+                    <label for="" class="label-form">Tipo de Alojamiento</label>
+                    <select class="form-control input-style single-select-global allwidth-global" formControlName="establishmentType" required> 
+                        <option [selected]="true" disabled hidden value="">Tipo de Alojamiento</option>
+                        <option *ngFor="let type of stablishmentTypes;" value="{{type.id}}"  >{{type.establishment_type_description}}</option>
+                    </select>
+                    <span class="col-md-6 error-global" *ngIf="formGroup.get('establishmentType').touched && formGroup.get('establishmentType').hasError('required')">{{PropertyEnum['stablishmentTypeMessage']}}</span>
+                </div>
+            </div>
+            <div class="col-2 pl-0">
+                <div class="d-flex flex-column h-100">
+                    <label for="" class="label-form ml-1">Categoría</label>
+                    <div class="d-flex align-items-center h-100">
+                        <mat-radio-group formControlName="haveStarRating" name="haveStarRating">
+                            <label class="label-buttons-global">
+                                <mat-radio-button value="false" class="ml-1">{{PropertyEnum['noApply']}}</mat-radio-button>
+                            </label>
+                            <label class="label-buttons-global">
+                                <mat-radio-button value="true" class="ml-3">{{PropertyEnum['starRatingLabel']}}</mat-radio-button>
+                            </label>
+                        </mat-radio-group>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 p-0 mt-4" *ngIf="this.formGroup.get('haveStarRating').value == 'true'">
+                <div class="d-flex flex-column">
+                    <!-- <ngx-stars [readonly]="false" formControlName="starRating" [size]="1" [maxStars]="5" [initialStars]="0" [color]="'#ed394d'"></ngx-stars> -->
+                    <ngx-input-star-rating formControlName="star_rating"></ngx-input-star-rating>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

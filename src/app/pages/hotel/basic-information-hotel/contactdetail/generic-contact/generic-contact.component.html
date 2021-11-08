@@ -1,0 +1,90 @@
+<form [formGroup]="formGroup">
+
+    <div class="d-flex flex-column mt-5">
+        <p class="subtitle-cr">{{this.contactName}}</p>
+        <div class="d-flex">
+            <div class="col-4 pl-0">
+                <div class="d-flex flex-column">
+                    <input class="form-control input-style" type="text" formControlName="name" placeholder="Nombre" (change)="isFormValid()">
+                    <span class="col-md-6 error-global" *ngIf="formGroup.get('name').touched && formGroup.get('name').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                    <span class="col-md-6 error-global" *ngIf="formGroup.get('name').touched && formGroup.get('name').hasError('maxLength')">{{BasicInformationEnum['inputMaxSizeMessage']}}</span>
+                </div>
+            </div>
+            <div class="col-4 pl-0">
+                <div class="d-flex flex-column">
+                    <input class="form-control input-style" type="text" formControlName="last_name" placeholder="Apellido" (change)="isFormValid()">
+                    <span class="col-md-6 error-global" *ngIf="formGroup.get('last_name').touched && formGroup.get('last_name').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                    <span class="col-md-6 error-global" *ngIf="formGroup.get('last_name').touched && formGroup.get('last_name').hasError('maxLength')">{{BasicInformationEnum['inputMaxSizeMessage']}}</span>
+                </div>
+            </div>
+            <div class="col-4 p-0">
+                <div class="d-flex flex-column">
+                    <input class="form-control input-style" type="text" formControlName="email" placeholder="E-mail" (change)="isFormValid()">
+                    <span class="error-global" *ngIf="formGroup.get('email').touched && formGroup.get('email').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                    <span class="error-global" *ngIf="formGroup.get('email').touched && formGroup.get('email').hasError('invalidemail')">{{ContactDetailEnum['provideValidEmailMessage']}}</span>
+                    <span class="error-global" *ngIf="formGroup.get('email').touched && formGroup.get('email').hasError('maxLength')">{{BasicInformationEnum['inputMaxSizeMessage']}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-6">
+                <app-phone (isValid)="setValid(0, $event)" (phone)="setPhone($event, '')" [phones]="this.model.phone_number" [maxPhoneItems]="this.maxPhoneItems" [labelName]="'Telefono'" [countries]="this.phoneCountries"></app-phone>
+            </div>
+            <div class="col-6">
+                <app-phone (isValid)="setValid(1, $event)" (phone)="setPhone($event, 'wsp_')" [phones]="this.model.wsp_phone_number" [maxPhoneItems]="this.maxPhoneItems" [labelName]="'Telefono Whatsapp'" [countries]="this.phoneCountries"></app-phone>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="mt-4 col-4 pl-0">
+                <div class="d-flex flex-column">
+                    <label for="" class="label-form">¿Mi domicilio es diferente?</label>
+                    <div class="d-flex align-items-center h-100 mt-2">
+                        <mat-radio-group (change)="setFormGroupFields(ContactDetailEnum.different_address)" formControlName="different_address">
+                            <label class="label-buttons-global mr-3">
+                            <mat-radio-button value="true">SI</mat-radio-button>
+                        </label>
+                            <label class="label-buttons-global">
+                            <mat-radio-button value="false">NO</mat-radio-button>
+                        </label>
+                        </mat-radio-group>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="formGroup.get('different_address').value === 'true'" class="col-8 p-0 mt-2">
+                <div class="d-flex flex-column">
+                    <label for="" class="label-form">&nbsp;</label>
+                    <input type="text" class="form-control input-style " formControlName="home_address" placeholder="Domicilio" (change)="isFormValid()">
+                    <span class="error-global" *ngIf="formGroup.get('home_address').touched && formGroup.get('home_address').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="formGroup.get('different_address').value === 'true'">
+            <div class="row mt-3">
+                <div class="col-3">
+                    <select class="form-control input-style single-select-global allwidth-global" formControlName="country" (change)="this.getStates(formGroup.get('country').value)" (change)="isFormValid()"> 
+                        <option [selected]="true" disabled hidden value="">Pais</option>
+                        <option *ngFor="let country of this.countries;" value="{{country.id}}"  >{{country.name}}</option>
+                    </select>
+                    <span class="error-global" *ngIf="formGroup.get('country').touched && formGroup.get('country').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                </div>
+                <div class="col-3">
+                    <select class="form-control input-style single-select-global allwidth-global" formControlName="state" (change)="isFormValid()"> 
+                        <option [selected]="true" disabled hidden value="" >Estado</option>
+                        <option *ngFor="let state of this.states;" value="{{state.id}}">{{state.name}}</option>
+                    </select>
+                    <span class="error-global" *ngIf="formGroup.get('state').touched && formGroup.get('state').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                </div>
+                <div class="col-3">
+                    <div class="d-flex flex-column">
+                        <input type="text" class="form-control input-style" formControlName="city" placeholder="Ciudad" (change)="isFormValid()">
+                        <span class="error-global" *ngIf="formGroup.get('city').touched && formGroup.get('city').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <input type="text" class="form-control input-style" formControlName="zip" placeholder="Código Postal" (change)="isFormValid()">
+                    <span class="error-global" *ngIf="formGroup.get('zip').touched && formGroup.get('zip').hasError('required')">{{BasicInformationEnum['notEmptyMessage']}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

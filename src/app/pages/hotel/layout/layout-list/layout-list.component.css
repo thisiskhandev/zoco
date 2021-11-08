@@ -1,0 +1,27 @@
+#totalRegisteredRooms {
+    background-color: #EAB2CF;
+}
+
+.mat-column-roomName {
+    flex: 0 0 20%;
+}
+
+.mat-column-quantity {
+    padding-left: 15px;
+}
+
+.mat-column-operation {
+    display: flex;
+}
+
+.mat-icon {
+    cursor: pointer;
+}
+
+.mat-button {
+    padding: 0px 0px 0px 0px;
+}
+
+#remaining-test {
+    text-align: center;
+}

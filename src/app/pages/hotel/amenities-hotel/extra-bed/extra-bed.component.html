@@ -1,0 +1,90 @@
+<div class="body-style-global">
+    <form #formGroup="ngForm">
+        <legend class="style-global">{{extraBedEnum.titleComponent}}</legend>
+        <p class="describe-global">{{extraBedEnum.descriptiveText}}</p>
+        <div>
+            <label class="label-text-subsection-global">Can you provide extra beds? </label>
+        </div>
+        <div>
+            <mat-radio-group name="hasExtraBed" #hasExtraBed="ngModel" [(ngModel)]="model.hasExtraBed" (change)="clearModel($event)" required>
+                <label class="label-buttons-global">
+          <mat-radio-button value="true">YES</mat-radio-button>
+        </label>
+                <label class="label-buttons-global">
+          <mat-radio-button value="false">NO</mat-radio-button>
+        </label>
+            </mat-radio-group>
+            <h4>
+                .{{model.hasExtraBed}}.
+
+            </h4>
+        </div>
+
+        <div *ngIf="hasExtraBed.value === extraBedEnum.trueString">
+
+            <label class="label-text-subsection-global">Select the number of extra beds that can be added <a class="required-global">*</a></label>
+            <div>
+                <select class="select-numbers single-select-global align-selector" name="quantity" #quantity="ngModel" [(ngModel)]="model.quantity" [required]="hasExtraBed.value === extraBedEnum.trueString">
+          <option disabled hidden value="null" >{{utilities.placeHolderDash}}</option>
+          <option *ngFor="let number of this.extraBedQuantity;" value="{{number}}">{{number}}</option>
+        </select>
+                <span class="col-md-3 error-global" *ngIf="quantity.touched && quantity.invalid">Select an option</span>
+            </div>
+
+            <strong><label class="label-text-subsection-global" >Check the box(es) if you can accommodate the following guests in extra beds </label></strong>
+            <div class="row col-md-12">
+                <mat-checkbox class="margin-checkbox" name="haveCrib" [(ngModel)]="haveCrib" (change)="onChange(extraBedEnum.guestExtraBedsCotId)">{{extraBedEnum.guest_extraBeds_cot}}</mat-checkbox>
+
+                <div class="row col-md-12" *ngIf="haveCrib == true">
+                    <div class="input-group mb-3">
+                        <label class="label-text-subsection-global style-descriptive-text">Enter the price per night, per child <a class="required-global">*</a></label>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text input-group-text-price" id="basic-addon3">US $</span>
+                        </div>
+                        <input type="text" id="basic-url" aria-describedby="basic-addon3" class="style-price" name="childCribsPrice" #childCribsPrice="ngModel" [(ngModel)]="model.childCribsPrice" maxlength="{{extraBedEnum.priceInputMaxSize}}" pattern="{{extraBedEnum.regexNumbers}}"
+                            [required]="haveCrib == true">
+                        <span class="col-md-3 error-global" *ngIf="childCribsPrice.touched && childCribsPrice.invalid">The field is invalid</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row col-md-12">
+                <mat-checkbox class="margin-checkbox" name="haveChil" [(ngModel)]="haveChil" (change)="onChange(extraBedEnum.guestExtraBedsChildrenId)">{{extraBedEnum.guest_extraBeds_children}}</mat-checkbox>
+
+                <div class="row col-md-12" *ngIf="haveChil == true">
+                    <div class="input-group mb-3">
+                        <select class="select-ages single-select-global align-selector" name="childrenAges" #childrenAges="ngModel" [(ngModel)]="model.childrenAges" [required]="haveChil == true">
+              <option disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+              <option *ngFor="let age of this.childrenAgesOptions;" value="{{age.id}}" > {{age.desc}} </option>
+            </select>
+                        <label class="label-text-subsection-global style-descriptive-text">Enter the price per night, per child <a class="required-global">*</a></label>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text input-group-text-price" id="basic-addon3">US $</span>
+                        </div>
+                        <input type="text" id="basic-url" aria-describedby="basic-addon3" class="style-price" name="childrenPrice" #childrenPrice="ngModel" [(ngModel)]="model.childrenPrice" maxlength="{{extraBedEnum.priceInputMaxSize}}" pattern="{{extraBedEnum.regexNumbers}}"
+                            [required]="haveChil == true">
+                        <span class="col-md-3 error-global" *ngIf="childrenPrice.touched && childrenPrice.invalid">The field is invalid</span>
+                        <span class="col-md-3 error-global" *ngIf="childrenAges.touched && childrenAges.invalid">Select an option</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row col-md-12">
+                <mat-checkbox class="margin-checkbox" name="haveAdul" [(ngModel)]="haveAdul" (change)="onChange(extraBedEnum.guestExtraBedsAdultId)">{{extraBedEnum.guest_extraBeds_adult}}</mat-checkbox>
+
+                <div class="row col-md-12" *ngIf="haveAdul == true">
+                    <div class="input-group mb-3">
+                        <label class="label-text-subsection-global style-descriptive-text">Enter the price per night, per child <a class="required-global">*</a></label>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text input-group-text-price" id="basic-addon3">US $</span>
+                        </div>
+                        <input type="text" id="basic-url" aria-describedby="basic-addon3" class="style-price" name="adultPrice" #adultPrice="ngModel" [(ngModel)]="model.adultPrice" maxlength="{{extraBedEnum.priceInputMaxSize}}" [required]="haveAdul == true" pattern="{{extraBedEnum.regexNumbers}}">
+                        <span class="col-md-3 error-global" *ngIf="adultPrice.touched && adultPrice.invalid">The field is invalid</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</div>

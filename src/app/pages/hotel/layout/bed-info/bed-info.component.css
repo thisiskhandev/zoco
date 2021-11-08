@@ -1,0 +1,27 @@
+li {
+    display: block;
+}
+
+#add-button{
+    
+    height: 25px;
+    width: 25px;
+}
+
+#add-button-div {
+    display: inline-flex;
+}
+
+#add-bed-text {
+    color: rgb(218,2,104) !important;
+}
+
+#add-bed-text:hover {
+    color: rgb(218,2,104) !important;
+    text-decoration: underline; 
+}
+
+.layout-user {
+    height: 25px;
+    width: 25px;
+}

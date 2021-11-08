@@ -1,0 +1,35 @@
+<div id="main-div">
+  <form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+    
+    <div *ngIf="showForm">
+      <app-form-header title="{{layoutEnum.pageTitle}}" subtitle="{{layoutEnum.pageSubtitle}}"></app-form-header>
+      <span class="text-left"><h2></h2></span>
+      <p class="text-left"></p> 
+      <div class="card-body" >
+        <app-room-info-layout-hotel   [model]="model.roomInfo"      (notifyRoomTypeId)='onNotifyRoomTypeId($event)'  [establishmentTotalRooms]='establishmentTotalRooms'  [totalRegisteredRooms]='totalRegisteredRooms' ></app-room-info-layout-hotel>
+        <app-bed-info-layout-hotel    [model]="model.bedInfo"       *ngIf="roomTypeId !== layoutEnum.roomTypeIdWithoutBedOptions"  (notifyGuestsOccupancy)='onNotifyGuestsOccupancy($event)'></app-bed-info-layout-hotel>
+        <app-room-items-layout-hotel  [model]="model.roomItemsModel"  ></app-room-items-layout-hotel>
+        <app-room-price-layout-hotel  [model]="model.price"          [guestsOccupancy]="guestsOccupancy"  [establishmentName]="establishmentName"   ></app-room-price-layout-hotel>
+      </div>
+
+    </div>
+    <div class="card-body" *ngIf="!showForm">
+      <app-form-header title="{{layoutEnum.overviewPageTitle}}" subtitle="{{layoutEnum.overviewPageSubtitle}}"></app-form-header>
+      <app-layout-list [layoutList]="layoutList" 
+        [establishmentTotalRooms]="establishmentTotalRooms" 
+        (notifyShowForm)="onNotifyShowForm($event)"
+        (notifySelectedLayoutItem)="onNotifyLayout($event)"
+        (notifyTotalRegisteredRooms)="onNotifyTotalRegisteredRooms($event)"
+        (notifyActualQuantity)="onNotifyActualQuantity($event)"
+      ></app-layout-list>
+
+    </div>
+  </form>
+
+  <div id="main-div" class="row" *ngIf="showForm">
+      <div class="col-md-2 pr-0"></div>
+      <div class="col-md-10 pl-0 row">
+          <button type="button" id="got-to-overview" class="btn btn-global col-md-12" (click)="showLayoutList()">Return to Room Overview</button>
+      </div>  
+  </div>
+</div>

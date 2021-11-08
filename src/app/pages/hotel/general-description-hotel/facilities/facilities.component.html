@@ -1,0 +1,23 @@
+<br>
+<div>
+  <form class="sub-component-form" #formGroup="ngForm">
+    <div class="section-label-global">Facilities: <a class="required-global">*</a></div>
+    <div class="row">
+      <p class="col-md-8 section-description">{{facilitiesEnum.subTitle}} </p>  
+    </div>
+    <div class="row">
+      <p class="col-md-8">{{facilitiesEnum.description}} </p>  
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-4"></div>
+      <div class="col-md-6 row" *ngIf = "this.facilitiesTypes.length > facilitiesEnum.valueZero">
+        <app-multiple-selector
+          [model]="this.model"
+          [itemsTypes]="this.facilitiesTypes" 
+          [requiredField]="this.requiredField">
+        </app-multiple-selector>
+      </div>  
+    </div>    
+  </form>
+</div>
+<br>

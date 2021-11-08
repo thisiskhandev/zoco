@@ -1,0 +1,36 @@
+<form class="sub-component-form" #formGroup="ngForm" >
+    <h3>Pets</h3>
+
+    <div class="row" > 
+        <p class="col-md-12">Some guests like to travel with their furry friends. Indicate if you allow pets and if any charges apply.</p>
+    </div>
+  
+    <div class="row  pl-3">
+        <select class="single-select-global align-text" name="canYouBringPets" #canYouBringPets="ngModel" [(ngModel)]="model.canYouBringPets" (change)="clearModel()" required >
+            <option disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let option of this.petPolicyDropdownOptions; let y = index;" value="{{option.id}}">{{option.name}}</option>
+        </select>
+    </div>
+
+    <div class="row pb-1">    
+        <span class="col-md-12 mt-1 error-global" *ngIf="canYouBringPets.touched && canYouBringPets.invalid">Please select an option</span>
+    </div>
+
+    <div *ngIf="ValidatePets()">
+        <div class="row pt-2"> 
+            <p class="col-md-12">Are there additional charges for pets?</p>
+        </div>
+
+        <div class="row pb-1 pl-3" >  
+            <select class="single-select-global align-text" name="petCharge" #petCharge="ngModel" [(ngModel)]="model.petCharge" [required]="ValidatePets()" >
+                <option disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+                <option *ngFor="let option of this.petChargePolicyDropdownOptions; let y = index;" value="{{option.id}}" >{{option.name}}</option>
+            </select>    
+        </div>
+
+        <div class="row pb-1">    
+            <span class="col-md-12 mt-1 error-global" *ngIf="petCharge.touched && petCharge.invalid">Please select pet charge option</span>
+        </div>
+    </div>
+    
+</form>

@@ -1,0 +1,61 @@
+<form #formGroup="ngForm">   
+  <div class="row" >
+    <label class="col-md-6 style-global">Home Address<a class="required-global">*</a></label>
+    <label class="col-md-6 style-global">Country<a class="required-global">*</a></label>
+  </div>
+  <div class="row" >   
+      <div class="col-md-6" >
+          <input class="col-md-10 style-global" type="text" maxlength="{{addressInfoEnum.addressMaxFieldSize}}" 
+          name="address" #address="ngModel" [(ngModel)]="model.address" placeholder="Write an address" required>
+      </div>
+      <div class="col-md-6" >
+          <input class="col-md-10 style-global" type="text" maxlength="{{addressInfoEnum.countryMaxFieldSize}}" 
+          name="country" #country="ngModel" [(ngModel)]="model.country" placeholder="Write a Country" required>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" >
+        <span class="col-md-10 error-global"  *ngIf="address.touched && address.errors?.required">Cannot be empty</span>
+    </div>
+    <div class="col-md-6" >
+        <span class="col-md-10 error-global" *ngIf="country.touched && country.errors?.required">Cannot be empty</span>
+    </div>
+  </div>
+  <div class="row" >   
+    <label class="col-md-6 style-global">State<a class="required-global">*</a></label>
+    <label class="col-md-6 style-global">City<a class="required-global">*</a></label>
+  </div>
+  <div class="row" >   
+      <div class="col-md-6" >
+          <input class="col-md-10 style-global" type="text" 
+          maxlength="{{addressInfoEnum.stateMaxFieldSize}}" 
+          name="state" #state="ngModel" [(ngModel)]="model.state" placeholder="Write a State name" required>
+      </div>
+      <div class="col-md-6" >
+          <input class="col-md-10 style-global" type="text" maxlength="{{addressInfoEnum.cityMaxFieldSize}}" 
+          name="city" #city="ngModel" [(ngModel)]="model.city"  placeholder="Write a City Code" required>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-6" >
+          <span class="col-md-10 error-global" *ngIf="state.touched && state.errors?.required">Cannot be empty</span>
+      </div>
+      <div class="col-md-6" >
+          <span class="col-md-10 error-global" *ngIf="city.touched && city.errors?.required">Cannot be empty</span>
+      </div>
+  </div>
+  <div class="row" >   
+    <label class="col-md-6 style-global">Zip<a class="required-global">*</a></label>
+  </div>
+  <div class="row" >   
+      <div class="col-md-6" >
+          <input class="col-md-10 style-global" type="text" maxlength="{{addressInfoEnum.zipMaxFieldSize}}" 
+          name="zip" #zip="ngModel" [(ngModel)]="model.zip"  placeholder="Write a Zip Code" required>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-6" >
+          <span class="col-md-10 error-global" *ngIf="zip.touched && zip.errors?.required">Cannot be empty</span>
+      </div>
+  </div>
+</form>

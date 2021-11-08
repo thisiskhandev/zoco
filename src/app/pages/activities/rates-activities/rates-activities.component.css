@@ -1,0 +1,20 @@
+label.style-global {
+    width: 100%;
+}
+
+.single-select-global.allwidth-global {
+    width: 100% !important;
+}
+
+.input-price-width {
+    width: 88% 
+}
+
+.label-price-width {
+    width: 12%;
+}
+
+.height-exclude-taxes {
+    height: 200px;
+}
+

@@ -1,0 +1,81 @@
+<form [formGroup]="formGroup">
+    <div class="mt-5 mb-3">
+        <p class="subtitle-cr">{{title}}</p>
+        <!-- Row de labels de Inputs-->
+        <div class="row">
+            <div class="col-3">
+                <label for="" class="pl-3 label-form">{{InfoPropertyHotelEnum.Icono}}</label>
+            </div>
+            <div class="col-3">
+                <div class="d-flex flex-column">
+                    <label for="" class="pl-3 label-form">{{InfoPropertyHotelEnum.Lugar}}</label>
+                </div>
+            </div>
+            <div class="col-3">
+                <label for="" class="pl-3 label-form">{{InfoPropertyHotelEnum.Indicacion}}</label>
+            </div>
+            <div class="col-3">
+                <label for="" class="pl-3 label-form">{{InfoPropertyHotelEnum.Distancia}}</label>
+            </div>
+        </div>
+        <!-- Row de Inputs-->
+        <div class="row">
+            <div class="col-3" id="howToGet_col_input_icon">
+                <ng-select formControlName="icon" placeholder="{{InfoPropertyHotelEnum.Seleccione}}" id="howToGet_icon">
+                    <ng-option *ngFor="let icon of icons" [value]="icon.value">
+                        <fa-stack size="xs">
+                            <fa-icon [icon]="faCircle" stackItemSize="2x"></fa-icon>
+                            <fa-icon [icon]="icon.icon" [inverse]="true" stackItemSize="1x"></fa-icon>
+                        </fa-stack> {{icon.text}}
+                    </ng-option>
+                </ng-select>
+            </div>
+            <div class="col-3" id="howToGet_col_input_place">
+                <ng-select formControlName="place" placeholder="{{InfoPropertyHotelEnum.Lugar}}" id="howToGet_place">
+                    <ng-option *ngFor="let place of places" [value]="place.value">
+                        {{place.text}}
+                    </ng-option>
+                </ng-select>
+            </div>
+            <div class="col-3" id="howToGet_col_input_indication">
+                <input formControlName="indication" class="form-control input-style style-global allwidth-global" placeholder="{{InfoPropertyHotelEnum.Indicacion}}" id="howToGet_indication" required>
+            </div>
+            <div class="col-3" id="howToGet_col_input_distancia">
+                <div class="row">
+                    <div class="col-10">
+                        <input formControlName="distance" class="form-control" placeholder="{{InfoPropertyHotelEnum.Km}}" id="howToGet_distancia" required>
+                    </div>
+                    <div class="col-1 plus-btn">
+                        <fa-stack (click)="addItem()" size="lg" id="howToGet_plus" class="cursor-pointer">
+                            <fa-icon [icon]="faCircle" stackItemSize="2x"></fa-icon>
+                            <fa-icon [icon]="faPlus" [inverse]="true" stackItemSize="1x"></fa-icon>
+                        </fa-stack>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr *ngFor="let item of itemsList">
+                            <td class="table-icon-td">
+                                <fa-stack>
+                                    <fa-icon [icon]="faCircle" stackItemSize="2x"></fa-icon>
+                                    <fa-icon [icon]="item.icon" [inverse]="true" stackItemSize="1x"></fa-icon>
+                                </fa-stack>
+                            </td>
+                            <td class="table-lugar-td">{{item.place}}</td>
+                            <td class="table-time-td">{{item.indication}}</td>
+                            <td class="table-time-td">{{item.distance}}</td>
+                            <td class="table-delete-td">
+                                <img (click)="removeItem(item)" class="delete_icon cursor-pointer" src="/assets/img/app/icons/times-circle_fill_ec394e.svg">
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>

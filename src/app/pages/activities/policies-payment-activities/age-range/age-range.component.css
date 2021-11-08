@@ -1,0 +1,20 @@
+label.style-global {
+    width: 54%;
+    font-weight: normal;
+}
+
+.single-select-global.allwidth-global {
+    width: 10% !important;
+}
+
+.error-width {
+    width: 62% !important;
+}
+
+.margin-left {
+    margin-left: 2%;
+}
+
+.margin-right {
+    margin-right: 5%;
+}

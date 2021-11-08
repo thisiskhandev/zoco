@@ -1,0 +1,28 @@
+.mypanel {
+  background-color: white;
+  color: #222;
+}
+
+.mypanel .title {
+  background-color: #ccc;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #666;
+  border-radius: 5px;
+}
+
+.mypanel .body {
+  padding: 10px;
+}
+
+.mypanel .body.hidden {
+  display: none;
+}
+
+.body {
+  transition: all 2s ease-out !important;
+}
+.caret-accordion {
+  margin-top: -4px;
+}

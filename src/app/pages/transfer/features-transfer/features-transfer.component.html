@@ -1,0 +1,7 @@
+<form [formGroup]="formGroup">
+    <app-form-header title="{{featuresTransferEnum.pageTitle}}" subtitle="{{featuresTransferEnum.pageSubtitle}}"></app-form-header>
+    <div class="card-body">
+        <app-vehicle-info [model]="model.vehicleInfo" [vehicleList]="model.vehiclesInfo"></app-vehicle-info>
+        <app-photo-gallery [photoGalleryArray]="model.photos"></app-photo-gallery>
+    </div>
+</form>

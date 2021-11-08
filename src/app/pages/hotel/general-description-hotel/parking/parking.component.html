@@ -1,0 +1,133 @@
+<br>
+<div>
+    <form class="sub-component-form" [formGroup]="formGroupParking">
+        <div class="section-label-global">Parking</div>
+        <div class="row">
+            <p class="col-md-8 section-description">This information is especially important for those travelling to your property by car.</p>
+        </div>
+        <div class="row">
+            <p class="col-md-6">Is parking availabe to guests?: <a class="required-global">*</a></p>
+        </div>
+        <div class="row pl-3">
+            <!-- HasParking Select -->
+            <select class="col-md-3 single-select-global" formControlName="hasParking">
+              <option  disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+              <option *ngFor="let optionParking of this.hasParkingOptions; let y = index;" value="{{optionParking.id}}" >{{optionParking.desc}}</option>
+            </select>
+            <h1>
+                {{ this.formGroupParking.controls.hasParking.value }}
+            </h1>
+            <span class="col-md-3 error-global" *ngIf="formGroupParking.get('hasParking').touched && formGroupParking.get('hasParking').invalid">Select an option</span>
+        </div>
+
+        <div *ngIf="formGroupParking.get('hasParking').value == parkingEnum.parkingFree || formGroupParking.get('hasParking').value == parkingEnum.parkingPaid">
+            <div class="row pt-3 pl-3">
+                <p class="col-md-6">What type of access?: <a class="required-global">*</a></p>
+                <!-- ParkingAccess Select -->
+                <select class="col-md-3 single-select-global" formControlName="parkingAccess">
+                  <option disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+                  <option class="col-md-3" *ngFor="let access of this.parkingAccessOptions;" value="{{access.index}}">{{access.value}}</option>
+                </select>
+                <h1>
+                    {{ this.formGroupParking.controls.parkingAccess.value }}
+                </h1>
+                <span class="col-md-3 error-global" *ngIf="formGroupParking.get('parkingAccess').touched && formGroupParking.get('parkingAccess').invalid">Select a parking access</span>
+            </div>
+            <div class="row pl-3">
+                <p class="col-md-6">Where?:<a class="required-global">*</a></p>
+                <!-- ParkingLocation Select -->
+                <select class="col-md-3 single-select-global" formControlName="parkingLocation">
+                  <option  disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+                  <option class="col-md-3" *ngFor="let location of this.parkingLocationsOptions;" value="{{location.index}}" >{{location.value}}</option>
+                </select>
+                <h1>
+                    {{ this.formGroupParking.controls.parkingLocation.value }}
+                </h1>
+                <span class="col-md-3 error-global" *ngIf="formGroupParking.get('parkingLocation').touched && formGroupParking.get('parkingLocation').invalid">Select a parking place</span>
+            </div>
+            <div class="row pl-3">
+                <p class="col-md-6">Do guests need to reserve a parking space? <a class="required-global">*</a></p>
+                <!-- ParkingCondition Select -->
+                <select class="col-md-3 single-select-global" formControlName="parkingCondition">
+                  <option  disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+                  <option class="col-md-3" *ngFor="let condition of this.parkingConditionsOptions;" value="{{condition.index}}" >{{condition.value}}</option>
+                </select>
+                <h1>
+                    {{ this.formGroupParking.controls.parkingCondition.value }}
+                </h1>
+                <span class="col-md-3 error-global" *ngIf="formGroupParking.get('parkingCondition').touched && formGroupParking.get('parkingCondition').invalid">Select a parking condition</span>
+            </div>
+        </div>
+
+        <div *ngIf="formGroupParking.get('hasParking').value == parkingEnum.parkingPaid">
+            <div class="row pl-3">
+                <p class="col-md-6">Price for parking (per day) ($):<a class="required-global">*</a></p>
+                <!-- ParkingPrice Input -->
+                <input class="col-md-3 style-global" type="text" formControlName="parkingPrice" placeholder="Write a price" />
+                <h1>
+                    {{ this.formGroupParking.controls.parkingPrice.value }}
+                </h1>
+                <span class="col-md-3 error-global" *ngIf="formGroupParking.get('parkingPrice').touched && formGroupParking.get('parkingPrice').invalid">The field is invalid</span>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+<!-- <br>
+<div>
+    <form class="sub-component-form" #formGroup="ngForm">
+        <div class="section-label-global">Parking</div>
+        <div class="row">
+            <p class="col-md-8 section-description">This information is especially important for those travelling to your property by car.</p>
+        </div>
+        <div class="row">
+            <p class="col-md-6">Is parking availabe to guests?: <a class="required-global">*</a></p>
+        </div>
+        <div class="row pl-3">
+            <select class="col-md-3 single-select-global" name="hasParking" #hasParking="ngModel" [(ngModel)]="model.hasParking" (change)="clearParking()" required>
+              <option  disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+              <option *ngFor="let optionParking of this.hasParkingOptions; let y = index;" value="{{optionParking.id}}" >{{optionParking.desc}}</option>
+            </select>
+            <span class="col-md-3 error-global" *ngIf="hasParking.touched && hasParking.invalid">Select an option</span>
+        </div>
+
+        <div *ngIf="hasParking.value == parkingEnum.parkingFree || hasParking.value == parkingEnum.parkingPaid">
+            <div class="row pt-3 pl-3">
+                <p class="col-md-6">What type of access?: <a class="required-global">*</a></p>
+                <select class="col-md-3 single-select-global" name="parkingAccess" #parkingAccess="ngModel" [(ngModel)]="model.parkingAccess" [required]="hasParking.value == parkingEnum.parkingFree || hasParking.value == parkingEnum.parkingPaid">
+                  <option  disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+                  <option class="col-md-3" *ngFor="let access of this.parkingAccessOptions;" value="{{access.index}}">{{access.value}}</option>
+                </select>
+                <span class="col-md-3 error-global" *ngIf="parkingAccess.touched && parkingAccess.invalid">Select a parking access</span>
+            </div>
+            <div class="row pl-3">
+                <p class="col-md-6">Where?:<a class="required-global">*</a></p>
+                <select class="col-md-3 single-select-global" name="parkingLocation" #parkingLocation="ngModel" [(ngModel)]="model.parkingLocation" [required]="hasParking.value == parkingEnum.parkingFree || hasParking.value == parkingEnum.parkingPaid">
+                  <option  disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+                  <option class="col-md-3" *ngFor="let location of this.parkingLocationsOptions;" value="{{location.index}}" >{{location.value}}</option>
+                </select>
+                <span class="col-md-3 error-global" *ngIf="parkingLocation.touched && parkingLocation.invalid">Select a parking place</span>
+            </div>
+            <div class="row pl-3">
+                <p class="col-md-6">Do guests need to reserve a parking space? <a class="required-global">*</a></p>
+                <select class="col-md-3 single-select-global" name="parkingCondition" #parkingCondition="ngModel" [(ngModel)]="model.parkingCondition" [required]="hasParking.value == parkingEnum.parkingFree || hasParking.value == parkingEnum.parkingPaid">
+                  <option  disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+                  <option class="col-md-3"  *ngFor="let condition of this.parkingConditionsOptions;" value="{{condition.index}}" >{{condition.value}}</option>
+                </select>
+                <span class="col-md-3 error-global" *ngIf="parkingCondition.touched && parkingCondition.invalid">Select a parking condition</span>
+            </div>
+        </div>
+
+        <div *ngIf="hasParking.value == parkingEnum.parkingPaid">
+            <div class="row pl-3">
+                <p class="col-md-6">Price for parking (per day) ($):<a class="required-global">*</a></p>
+                <input class="col-md-3 style-global" type="text" maxlength="{{parkingEnum.parkingPriceInputMaxSize}}" name="parkingPrice" #parkingPrice="ngModel" [(ngModel)]="model.parkingPrice" placeholder="Write a price" [required]="hasParking.value == parkingEnum.parkingPaid"
+                    pattern="0*[1-9][0-9]*$" />
+                <span class="col-md-3 error-global" *ngIf="parkingPrice.touched && parkingPrice.invalid">The field is invalid</span>
+            </div>
+        </div>
+    </form>
+</div> -->

@@ -1,0 +1,37 @@
+<div class="table-container" >
+  <mat-table mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="{{listDriversEnum.driverName}}">
+      <mat-header-cell class="vehicle-list-table-header-item" *matHeaderCellDef>{{listDriversEnum.driverNameTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.driverName}}</mat-cell>        
+    </ng-container>
+
+    <ng-container matColumnDef="{{listDriversEnum.driverLicenceId}}">
+      <mat-header-cell class="vehicle-list-table-header-item" *matHeaderCellDef>{{listDriversEnum.licenceIdTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.driverLicenceId}}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="{{listDriversEnum.contactPhone}}">
+      <mat-header-cell class="vehicle-list-table-header-item" *matHeaderCellDef>{{listDriversEnum.contactPhoneTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.contactPhone}}</mat-cell>        
+    </ng-container>
+
+    <ng-container matColumnDef="{{listDriversEnum.birthday}}">
+      <mat-header-cell class="vehicle-list-table-header-item" *matHeaderCellDef>{{listDriversEnum.birthdayTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.birthday | date:'MM-dd-yyyy'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="{{listDriversEnum.action}}">
+      <mat-header-cell *matHeaderCellDef >{{listDriversEnum.actionTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element; let y = index" class="align-icons" >
+        <button mat-button (click)="this.delete( element.driverName, y )">
+          <mat-icon class="icon-delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
+    <mat-row [ngClass]="{ 'highlight-grey': index % listDriversEnum.valueTwo == listDriversEnum.valueOne }" *matRowDef="let row; columns: displayedColumns; let index = index" ></mat-row> 
+
+</mat-table>
+</div>

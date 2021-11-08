@@ -1,0 +1,36 @@
+.select-numbers {
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+.select-ages {
+    width: 180px;
+    margin-right: 10px;
+}
+
+.input-group-text-price {
+    width:60px; 
+    height: 35px; 
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+}
+
+.margin-checkbox {
+    margin-right: 10px;
+    margin-top: 4px;
+}
+
+.style-price {
+    width: 60px;
+    height: 35px;
+    padding:3px 0px 0px 5px;
+}
+
+.style-descriptive-text {
+    margin-right: 15px;
+    margin-top: 6px;
+}
+
+.align-selector {
+    text-align: left;
+}

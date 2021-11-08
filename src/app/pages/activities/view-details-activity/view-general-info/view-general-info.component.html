@@ -1,0 +1,21 @@
+<app-form-header title="" subtitle=""></app-form-header>
+<br>
+
+<div class="row mainrow-global">
+    <div class="col-sm-6 form-colums-global">
+        <div class="row">
+            <label class="name-label">{{viewGeneralInfoEnum.description}}:</label>
+        </div>
+        <div class="row">
+            <textarea class="textarea-style" [(ngModel)]="model.description" disabled></textarea>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <label class="name-label">{{viewGeneralInfoEnum.tips}}:</label>
+        </div>
+        <div class="row">
+            <textarea class="textarea-style" [(ngModel)]="model.tips" disabled></textarea>
+        </div>
+    </div>
+</div>

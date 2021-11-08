@@ -1,0 +1,17 @@
+<div id="main-div">
+  <app-form-header title="{{GeneralDescriptionEnum['title']}}" subtitle="{{GeneralDescriptionEnum['subtitle']}}"></app-form-header>
+
+  <form [formGroup]="formGroup">
+    <div class="card-body">
+      <app-internet [model]="this.model.internet"></app-internet>
+      <app-parking [model]="this.model.parking"></app-parking>
+      <app-breakfast [model]="this.model.breakfasts"></app-breakfast>
+      <div class="sub-component-form">
+        <app-language [model]="this.model.langs"></app-language>
+      </div>
+      <app-facilities [model]="this.model.facilities"></app-facilities>
+    </div>
+
+  </form>
+</div>
+

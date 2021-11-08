@@ -1,0 +1,87 @@
+#map {
+    height: 300px;
+    margin: 0px;
+}
+
+#address-matters {
+    font-size: 10px;
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    padding: 35px;
+}
+
+.img-message {
+    width: 100%;
+    padding-right: 30px;
+}
+
+#col-img {
+    float: left;
+    height: 100%;
+    width: 30%;
+}
+
+.card-title {
+    font-size: 18pt;
+    text-align: center;
+}
+
+.card-text:last-child {
+    font-size: 12pt;
+    line-height: 40px;
+}
+
+.row label {
+    font-size: 15px;
+}
+
+
+/*Sustituye el ancho del estilo global*/
+
+label.style-global {
+    width: 100%;
+}
+
+
+/* Logo Styles */
+
+.file {
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+}
+
+.name-input {
+    width: calc(100% - 130px);
+}
+
+.file-input label {
+    display: block;
+    position: relative;
+    width: 130px;
+    height: 28px;
+    border-radius: 30px;
+    /* background-color: #039be5; */
+    background-color: #000000;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    transition: transform .2s ease-out;
+}
+
+.file-name {
+    /* position: absolute;
+     bottom: -35px;
+     left: 10px;
+     font-size: 0.85rem;
+     color: #555;*/
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: 500;
+    font-family: "Muli";
+    line-height: 1;
+}

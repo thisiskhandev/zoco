@@ -1,0 +1,15 @@
+.line-subtitle-style {
+    border: 1px dashed rgb(196, 196, 196);
+    width:100%;
+    margin-top: 0px;
+}
+
+.policies-title {
+    font-weight: bold;
+}
+
+.icon-edit {
+    color: #BB005E;
+    font: bold;
+    margin-left: 10px;
+}

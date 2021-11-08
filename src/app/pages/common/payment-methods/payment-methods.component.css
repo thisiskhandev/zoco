@@ -1,0 +1,18 @@
+.checkbox-margin {
+    margin-right: 60px;
+}
+
+label.style-global {
+    width: 100%;
+    padding-bottom: 8px;
+}
+
+.allwidth-global {
+    width: 50%;
+}
+
+.payment-methods-checkbox ::ng-deep .multiple-selector-align-checkbox {
+    width: 50% !important; 
+    float: left;
+    padding-left: 0px !important;
+}

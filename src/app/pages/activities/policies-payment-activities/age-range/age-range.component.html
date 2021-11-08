@@ -1,0 +1,55 @@
+<div class="card-body">
+    <form #formGroup = "ngForm">
+        <div class="separator-global"></div>
+        <div class="section-label-global">Ages</div>
+
+        <div class="row mainrow-global">
+            <div class="col-sm-6 form-colums-global">
+                <div class="row">
+                    <label class="style-global">Age range of infants between<a class="required-global">*</a></label>
+                    <select class="single-select-global allwidth-global" name="infantAgeFrom" #infantAgeFrom="ngModel" [(ngModel)]="model.infantAgeFrom" required>
+                        <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderDash}}</option>
+                        <option *ngFor="let option of this.infantOptions; let y = index;" value="{{option}}" >{{option}}</option>
+                    </select>
+                    <label class="style-global col-md-1 margin-right">and<a class="required-global">*</a></label>
+                    <select class="single-select-global allwidth-global" name="infantAgeUp" #infantAgeUp="ngModel" [(ngModel)]="model.infantAgeUp" required>
+                        <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderDash}}</option>
+                        <option *ngFor="let option of this.infantOptions; let y = index;" value="{{option}}" >{{option}}</option>
+                    </select>
+                    <span class="error-global error-width" *ngIf="infantAgeFrom.touched && infantAgeFrom.invalid">Select an option</span>
+                    <span class="error-global" *ngIf="infantAgeUp.touched && infantAgeUp.invalid">Select an option</span>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label class="style-global">Age range of children between<a class="required-global">*</a></label>
+                    <select class="single-select-global allwidth-global" name="childrenAgeFrom" #childrenAgeFrom="ngModel" [(ngModel)]="model.childrenAgeFrom" required>
+                        <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderDash}}</option>
+                        <option *ngFor="let option of this.childrenOptions; let y = index;" value="{{option}}" >{{option}}</option>
+                    </select>
+                    <label class="style-global col-md-1 margin-right">and<a class="required-global">*</a></label>
+                    <select class="single-select-global allwidth-global" name="childrenAgeUp" #childrenAgeUp="ngModel" [(ngModel)]="model.childrenAgeUp" required>
+                        <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderDash}}</option>
+                        <option *ngFor="let option of this.childrenOptions; let y = index;" value="{{option}}" >{{option}}</option>
+                    </select>
+                    <span class="error-global error-width" *ngIf="childrenAgeFrom.touched && childrenAgeFrom.invalid">Select an option</span>
+                    <span class="error-global" *ngIf="childrenAgeUp.touched && childrenAgeUp.invalid">Select an option</span>
+                </div>
+            </div>
+        </div>    
+
+        <div class="row mainrow-global">
+            <div class="col-sm-6 form-colums-global">
+                <div class="row">
+                    <label class="style-global">Age range of adults over<a class="required-global">*</a></label>
+                    <select class="single-select-global allwidth-global" name="adultAge" #adultAge="ngModel" [(ngModel)]="model.adultAge" required>
+                        <option [selected]="true" disabled hidden value="null" >{{utilities.placeHolderDash}}</option>
+                        <option *ngFor="let option of this.adultOptions; let y = index;" value="{{option}}" >{{option}}</option>
+                    </select>
+                    <span class="error-global margin-left" *ngIf="adultAge.touched && adultAge.invalid">Select an option</span>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+</div>

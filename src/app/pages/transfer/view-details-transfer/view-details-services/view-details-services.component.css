@@ -1,0 +1,160 @@
+.row-services {
+    margin-right: 0px;
+    margin-left: 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 14pt;
+    margin-top: 15px;
+    width: 50%;
+}
+
+.button-align {
+    margin-top: 10px;
+    width: 50%;
+    height: 40px;
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    min-width: 100%;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+  
+.mat-table {
+    max-height: 500px;
+}
+
+.mat-header-cell {
+    flex: 1;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    margin-right: 4px;
+    background-color: #e9ecef;   
+    text-align: center;
+    color: rgba(0, 0, 0, 0.788);
+    justify-content: left;
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.mat-cell {
+    font-size: 11px;
+    margin-right: 8px;
+}
+
+.mat-header-row {
+    padding: 0px 0px;
+    border-bottom-style: none;
+}
+
+.mat-row {
+    border-bottom-style: dashed;
+    padding: 0px 0px 0px 1px;
+}
+
+.mat-column-plate {
+    flex: 0 0 14%;
+}
+
+.mat-column-children {
+    flex: 0 0 16%;
+}
+
+.mat-column-pets {
+    flex: 0 0 14%;
+}
+
+.mat-column-door {
+    flex: 0 0 16%;
+}
+
+.mat-column-stop {
+    flex: 0 0 18%;
+}
+
+.mat-column-availability {
+    flex: 0 0 17%;
+}
+
+.extraInfo-title {
+    font-weight: bold;
+    font-size: 16pt;
+    margin-top: 15px;
+}
+
+.textarea-style {
+    height: 150px;
+    width: 70%;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+
+.btn-drivers {
+    width: 100%;
+}
+
+.background-label {
+    background-color: #e9ecef;
+    border-radius: 6px;
+    font-size: 16pt;
+    padding-top: 4px;
+    width: 100%;
+}
+
+.background-mini-label {
+    background-color: #e9ecef;
+    border-radius: 6px;
+    font-size: medium;
+    width: 32%;
+    padding: 10px 10px 10px 10px;
+}
+
+.name-label {
+    color: black;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.dimentions-title {
+    padding: 10px 10px 10px 0px;
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.description-label {
+    margin-left: 10px;
+    font-size: medium;
+}
+
+.margin-label {
+    margin-right: 2%;
+}
+
+.margin-top {
+    margin-top: 12px;
+}
+
+.highlight-pink {
+    background: rgba(245, 179, 212, 0.508);
+}
+
+.image-style {
+    height: 30px;
+    width: 30px;
+    margin-left: 6px;
+}
+
+.form-colums-global {
+    padding-right: 60px;
+}

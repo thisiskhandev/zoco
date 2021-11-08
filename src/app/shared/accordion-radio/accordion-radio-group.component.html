@@ -1,0 +1,20 @@
+<div class="mypanel mb-1">
+    <div class="title bg_accordion_radio {{bsText}} title_accordion_radio_group" (click)="toggle.emit()">
+        <div class="form-check">
+            <div class="row">
+                <div class="col-11">
+                    <input class="form-check-input" type="checkbox">
+                    <label class="form-check-label">
+            <b>{{title}}</b>
+          </label>
+                </div>
+                <div class="col-1">
+                    <fa-icon [icon]="faCaretDown" rotate="{{opened ? 180 : 0}}" [inverse]="whiteChevron" class="float-right caret-accordion" size="2x" *ngIf="useCaret"></fa-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body body_accordion_group bg_accordion_radio" [ngClass]="{'hidden': !opened}" *ngIf="useBody">
+        <ng-content></ng-content>
+    </div>
+    <div>

@@ -1,0 +1,18 @@
+<form class="sub-component-form" #formGroup="ngForm" >
+    <h3>Children</h3>
+
+    <div class="row" > 
+        <p class="col-md-12">Can you accommodate children? (You can specify the ages and prices later)</p>
+    </div>    
+
+    <div class="row">
+        <mat-radio-group name="childAllowed" #childAllowed="ngModel" [(ngModel)]="model.childAllowed" class="ml-3">
+            <label class="label-buttons-global">
+                <mat-radio-button value="true">YES</mat-radio-button>
+            </label>
+            <label class="label-buttons-global">
+                <mat-radio-button value="false">NO</mat-radio-button>
+            </label>
+        </mat-radio-group>    
+    </div>
+ </form> 

@@ -1,0 +1,67 @@
+.cursor-pointer:hover {
+  cursor: pointer;
+}
+
+.table-icon-td {
+  width: 2rem;
+}
+
+.table-lugar-td {
+  width: 30rem;
+}
+
+.table-time-td {
+  width: 18rem;
+}
+
+.table-delete-td {
+  width: 2rem;
+}
+
+.plus-btn {
+  padding-left: 0px;
+}
+
+/* #howToGet_icon {
+  
+} */
+
+#howToGet_place {
+  margin-top: 0px;
+}
+
+#howToGet_indication {
+  height: 36px;
+  margin-top: 0px;
+}
+
+#howToGet_distancia {
+  margin-top: 0px;
+  height: 36px;
+}
+
+#howToGet_plus {
+  margin-left: -9 px;
+}
+
+#howToGet_col_input_icon {
+  padding-right: 5px;
+}
+
+#howToGet_col_input_place {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+#howToGet_col_input_indication {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+#howToGet_col_input_distancia {
+  padding-left: 5px;
+}
+
+.delete_icon {
+  height: 1.75rem;
+}

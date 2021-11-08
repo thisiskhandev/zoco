@@ -1,0 +1,24 @@
+<br>
+<form class="sub-component-form" #formGroup="ngForm">
+    <div class="section-label-global">Breakfast</div>
+    <div class="row">
+        <p class="col-md-6">Is breakfast available?: <a class="required-global">*</a></p>
+    </div>
+    <div class="row pl-3">
+        <select class="col-md-3 single-select-global" name="hasBreakfast" #hasBreakfast="ngModel" [(ngModel)]="model.hasBreakfast" required> 
+            <option disabled hidden value="null" >{{utilities.placeHolderText}}</option>
+            <option *ngFor="let option of this.hasBreakfastDropdownOptions; let y = index;" value="{{option.id}}" >{{option.desc}}</option>
+        </select>
+        <span class="col-md-3 error-global" *ngIf="hasBreakfast.touched && hasBreakfast.invalid">Select an option</span>
+    </div>
+
+    <div *ngIf="hasBreakfast.value == breakfastEnum.yesFreeId || hasBreakfast.value == breakfastEnum.yesPaidId">
+        <div class="row">
+            <label class="col-md-4 pt-3 pr-0">What Kind of breakfast is available?: <a class="required-global">*</a> </label>
+        </div>
+        <div class="ml-2" *ngIf="hasBreakfast.value == breakfastEnum.yesFreeId || hasBreakfast.value == breakfastEnum.yesPaidId">
+            <app-checkbox-price [typeBreakfast]="hasBreakfast.value" [breakfastOptions]="this.breakfastTypeDropdownOptions" [model]="this.model.breakfastList"></app-checkbox-price>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,74 @@
+<div class="card-body">
+  <form #formGroup="ngForm">
+    <app-form-header title="{{driversTransferEnum.pageTitle}}" subtitle="{{driversTransferEnum.pageSubtitle}}"></app-form-header>
+    
+      <div class="row" >
+        <label class="col-md-6 style-global">Driver Name<a class="required-global">*</a></label>
+        <label class="col-md-6 style-global">Driver Licence ID<a class="required-global">*</a></label>
+      </div>
+
+      <div class="row" >   
+        <div class="col-md-6" >
+          <input class="col-md-10 style-global" type="text" maxlength="{{driversTransferEnum.textMaxInputMaxSize}}" name="driverName" #driverName="ngModel" [(ngModel)]="itemModel.driverName" placeholder="Write a driver name" >
+        </div>
+        <div class="col-md-6" >
+          <input class="col-md-10 style-global" type="text" maxlength="{{driversTransferEnum.textMaxInputMaxSize}}" name="driverLicenceId" #driverLicenceId="ngModel" [(ngModel)]="itemModel.driverLicenceId" placeholder="Write a driver Licence Id" >
+        </div>
+      </div>
+
+      <div class="row" >
+        <label class="col-md-6 style-global">Birthdate<a class="required-global">*</a></label>
+        <label class="col-md-6 style-global">Types of Vehicles the Driver can Drive<a class="required-global">*</a></label>
+      </div>
+
+    <div class="row" >   
+      <div class="col-md-6" >
+        <input class="col-md-10 style-global" type="date" maxlength="{{driversTransferEnum.textMaxInputMaxSize}}" 
+          name="birthday" #birthday="ngModel" [(ngModel)]="itemModel.birthday" placeholder="yyyy-mm-dd">
+      </div>
+      <div class="col-md-6 drivers-transfer-checkbox">
+        <app-multiple-selector *ngIf="this.carTypesOptions.length > this.utilities.one"
+          [model]="this.itemModel.vehiclesTypes"
+          [itemsTypes]="this.carTypesOptions" 
+          [requiredField]="this.requiredField">
+        </app-multiple-selector>
+      </div>
+    </div>
+
+    <div class="row ml-1">
+      <div class="col-md-6" >   
+        <app-phone [phones]="this.itemModel.contactPhone" [maxPhoneItems]="driversTransferEnum.maxPhoneItems"></app-phone>  
+      </div>
+      
+      <div class="col-md-6">
+        <div class="row">
+          <label class="col-md-6 style-global">Period To Work<a class="required-global">*</a></label>
+        </div>
+        <div class="row col-md-6">
+          <select class="col-md-3 single-select-global" name="periodToworkFrom" #periodToworkFrom="ngModel" [(ngModel)]="itemModel.periodToworkFrom"> 
+            <option  [selected]="true" disabled hidden value="null" >  {{ utilities.placeHolderDash}}  </option>
+            <option *ngFor="let hour of this.hourOptionDropdownOptions" value="{{hour}}" >{{hour}}</option>
+          </select>
+          <label class="col-md-2 pl-2 style-global">To</label>
+          <select class="col-md-3 single-select-global" name="periodToworkTo" #periodToworkTo="ngModel" [(ngModel)]="itemModel.periodToworkTo"> 
+            <option  [selected]="true" disabled hidden value="null" >  {{ utilities.placeHolderDash}}  </option>
+            <option *ngFor="let hour of this.hourOptionDropdownOptions" value="{{hour}}" >{{hour}}</option>
+          </select> 
+        </div>
+      </div>
+    </div>
+    
+    <div class="ml-1">
+      <app-language [model]="this.itemModel.languages"></app-language>
+    </div>
+
+    <div class="row mt-2 mb-2" >
+      <div class="col-md-2 col-md-offset-2">
+        <button class="btn btn-global" id="add" type="button" (click)="addDriver()">Add Other</button>
+      </div>
+    </div>
+
+    <app-list-drivers [model]="this.model.driversList"></app-list-drivers>
+
+  </form>
+</div>

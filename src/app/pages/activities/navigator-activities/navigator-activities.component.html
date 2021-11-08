@@ -1,0 +1,20 @@
+<mat-tab-group #tabs class="tabgroup-global">
+  <mat-tab label="Basic Info">
+    <app-basic-information-activities></app-basic-information-activities>
+  </mat-tab>
+  <mat-tab label="Create Activity" disabled>
+    <app-new-activity [activityId]="this.basicInformationId" ></app-new-activity >
+  </mat-tab>
+  <mat-tab label="Policies and Payment" disabled>
+    <app-policies-payment-activities [activityId]="this.activityId" ></app-policies-payment-activities >    
+  </mat-tab>
+  <mat-tab label="Services Rate & Price" disabled>
+    <app-rates-activities [activityId]="this.activityId" [activitiesOptions]="this.subActivitiesList"></app-rates-activities >
+  </mat-tab>
+</mat-tab-group>
+<div #infoFloatSection id="infoFloatSection">
+    <button class="btn btn-global" id="btn-preview">Preview</button>
+    <div #infoFloatMessage class="info-float-global">
+        <span>After your complete registration you'll be able to make changes to your listing before it goes live</span>
+    </div>
+</div>

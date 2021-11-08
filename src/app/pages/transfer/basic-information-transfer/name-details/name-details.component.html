@@ -1,0 +1,24 @@
+<form #formGroup="ngForm">
+  <div class="row" >
+    <label class="col-md-6 style-global">Service Provider Name<a class="required-global">*</a></label>
+    <label class="col-md-6 style-global">Fiscal Data<a class="required-global">*</a></label>
+  </div>
+
+  <div class="row" >   
+    <div class="col-md-6" >
+      <input class="col-md-10 style-global" type="text" maxlength="{{nameDetailsEnum.nameMaxFieldSize}}" name="name" #name="ngModel" [(ngModel)]="model.name" placeholder="Write a service provider name" required>
+    </div>
+    <div class="col-md-6" >
+      <input class="col-md-10 style-global" type="text" maxlength="{{nameDetailsEnum.fiscalDataMaxFieldSize}}" name="fiscalData" #fiscalData="ngModel" [(ngModel)]="model.fiscalData"  placeholder="Write a Fiscal data " required>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6" >
+      <span class="col-md-10 error-global" *ngIf="name.touched && name.errors?.required">Cannot be empty</span>
+    </div>
+    <div class="col-md-6" >
+      <span class="col-md-10 error-global" *ngIf="fiscalData.touched && fiscalData.errors?.required">Cannot be empty</span>
+    </div>
+  </div>
+</form>

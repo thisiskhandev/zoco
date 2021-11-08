@@ -1,0 +1,27 @@
+.credit-card-type-container {
+    margin-left: -10px;
+}
+
+.credit-card-type-div {
+    border-bottom-style: dashed;
+    border-bottom-color: #B2B2B2;
+    border-bottom-width: 2px;
+}
+
+.credit-card-image {
+    width: auto !important;
+    height: 38px !important;
+    margin-left: 5px;
+    max-width: 100px;
+}
+
+.creditCard-align-checkbox {
+    width: 50%; 
+    float: left;
+    padding-left: 30px;
+}
+
+.margin-form {
+    padding: 0px 0px 0px 25px;
+    border-top-width: 5px;
+}

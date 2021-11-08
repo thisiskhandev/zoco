@@ -1,0 +1,21 @@
+.nav-create-hotel {
+    padding: 10px 10px 0px 10px;
+}
+
+.nav-create-hotel ::ng-deep .mat-ink-bar {
+    height: 5px;
+    background-color: #353535;
+}
+
+.nav-create-hotel ::ng-deep .mat-tab-label {
+    font-size: 15px !important;
+    line-height: 1 !important;
+    color: #000000 !important;
+    font-weight: 700 !important;
+    font-family: "Muli" !important;
+}
+
+.nav-create-hotel ::ng-deep .mat-tab-header {
+    background-color: #fff;
+    filter: drop-shadow(2.5px 4.33px 5px rgba(1, 1, 1, 0.08));
+}

@@ -1,0 +1,63 @@
+<div class="title">{{viewDetailsVehiclesEnum.mainTitle}}</div>
+<br>
+
+<div class="row">
+  <div class="total-box">
+    <div>
+      <img class="icon-style" src="assets/img/app/user.svg">
+    </div>
+    <div class="totals-text">{{viewDetailsVehiclesEnum.drivers}}</div>
+    <div class="underline-text"></div>
+    <div class="totals-text">{{model.totalDrivers}}</div>
+  </div>
+  <div class="total-box">
+    <div>
+      <img class="icon-style" src="assets/img/app/car.svg">
+    </div>
+    <div class="totals-text">{{viewDetailsVehiclesEnum.cars}}</div>
+    <div class="underline-text"></div>
+    <div class="totals-text">{{model.totalCars}}</div>
+  </div>
+  <div class="total-box">
+    <div>
+      <img class="icon-style" src="assets/img/app/suv.svg">
+    </div>
+    <div class="totals-text">{{viewDetailsVehiclesEnum.trucks}}</div>
+    <div class="underline-text"></div>
+    <div class="totals-text">{{model.totalTrucks}}</div>
+  </div>
+  <div class="total-box">
+    <div>
+      <img class="icon-style" src="assets/img/app/bus.svg">
+    </div>
+    <div class="totals-text">{{viewDetailsVehiclesEnum.bus}}</div>
+    <div class="underline-text"></div>
+    <div class="totals-text">{{model.totalBus}}</div>
+  </div>
+  <div class="total-box">
+    <div>
+      <img class="icon-style" src="assets/img/app/total_vehicles.svg">
+    </div>
+    <div class="totals-text">{{viewDetailsVehiclesEnum.totalVehicles}}</div>
+    <div class="underline-text"></div>
+    <div class="totals-text">{{model.totalVehicles}}</div>
+  </div>
+</div>
+
+<div class="row mainrow-global">
+  <div class="col-sm-6 form-colums-global">
+    <div class="row">
+      <div class="title">{{viewDetailsVehiclesEnum.secondTitle}}</div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="row">
+      <button type="button" class="btn btn-global button-size" (click)="loadFeatures(model.transferId)"
+        routerLink="/base-navigator/transfers/features" >{{viewDetailsVehiclesEnum.buttonFeatures}}</button>
+    </div>
+  </div>
+</div>
+
+<app-list-product [model]="model.listViewDetailsVehiclesModel" (selectedRowIndex)="initSettingsModel($event)" ></app-list-product>
+
+<app-view-details-services [model]="this.serviceDetails"[vehicleName]="this.vehicleName" [transferId]="model.transferId"></app-view-details-services>

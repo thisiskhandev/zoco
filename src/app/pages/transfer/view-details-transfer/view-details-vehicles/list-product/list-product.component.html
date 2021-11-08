@@ -1,0 +1,28 @@
+<div class="table-container">
+  <mat-table #table [dataSource]="dataSource" matSort>  
+    <ng-container matColumnDef="{{listProductEnum.brand}}">
+      <mat-header-cell *matHeaderCellDef mat-sort-header >{{listProductEnum.brandTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element[listProductEnum.brand]}} </mat-cell>
+    </ng-container>  
+    <ng-container matColumnDef="{{listProductEnum.model}}">
+      <mat-header-cell *matHeaderCellDef mat-sort-header >{{listProductEnum.modelTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element[listProductEnum.model]}} </mat-cell>
+    </ng-container>      
+    <ng-container matColumnDef="{{listProductEnum.transportType}}">
+      <mat-header-cell *matHeaderCellDef mat-sort-header >{{listProductEnum.typeTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element[listProductEnum.transportType]}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="{{listProductEnum.capacity}}">
+      <mat-header-cell *matHeaderCellDef mat-sort-header >{{listProductEnum.capacityTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="align-hour"> {{element[listProductEnum.capacity]}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="{{listProductEnum.stock}}">
+      <mat-header-cell *matHeaderCellDef mat-sort-header >{{listProductEnum.stockTitle}}</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element[listProductEnum.stock]}} </mat-cell>
+    </ng-container>  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let element; columns: displayedColumns;" 
+      [ngClass]="{'highlight-pink': selectedRow == element.id}" (click)="highlight(element)" >
+    </mat-row>  
+  </mat-table>
+</div>

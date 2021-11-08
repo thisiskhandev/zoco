@@ -1,0 +1,17 @@
+.checkbox-margin {
+    margin-right: 60px;
+}
+
+label.style-global {
+    width: 100%;
+}
+
+.allwidth-global {
+    width: 50%;
+}
+
+.extra-charges-checkbox ::ng-deep .multiple-selector-align-checkbox {
+    width: 50% !important; 
+    float: left;
+    padding-left: 0px !important;
+}

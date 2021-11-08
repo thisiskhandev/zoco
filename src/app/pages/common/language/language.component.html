@@ -1,0 +1,16 @@
+<form #formGroup="ngForm">
+  <div class="section-label-global">Languages Spoken by Your Staff<a class="required-global">*</a></div>
+  <div class="row" >
+    <div class="col-md-8 section-description">Select the language(s) in which you or your staff can help guests.</div>
+  </div>
+  <div class="row mt-2" >
+    <div class="col-md-4">Which Languages are spoken in the establishment?: <a class="required-global">*</a></div>
+    <div class="col-md-6 row" *ngIf = "this.languageOptions.length > languageEnum.valueZero">
+      <app-multiple-selector
+        [model]="this.model"
+        [itemsTypes]="this.languageOptions" 
+        [requiredField]="this.requiredField">
+      </app-multiple-selector>
+    </div>
+  </div>
+</form>

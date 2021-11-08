@@ -1,0 +1,72 @@
+#calendar-button {
+    padding: 2px 5px 2px 5px;
+}
+
+
+ #calendar-button-image {
+    width: 1.2rem; 
+    height: 1rem; 
+    cursor: pointer;
+
+}
+
+.vehicle-list-table-header-item {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    align-self: stretch;
+    height: 15px;
+}
+
+#vehicle-list-table-header {
+    margin-bottom: 0px; 
+    border-radius: 5px;
+ height: 15px;
+    padding-top: 15px;
+    border-bottom-width: 0px;
+}
+
+.vehicle-list-table-row {
+    border: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    text-align: center;
+    align-self: stretch;
+    padding-right: 0px;
+}
+
+
+.mat-cell {
+    border-right: 1px solid grey;
+    align-self: stretch;
+    text-align: center
+}
+
+.mat-table {
+    overflow: auto;
+}
+
+.margin-phones {
+   margin: 0px;
+   margin-top: 8px;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #BA005D !important;
+}
+
+.tranfer-checkboxes {
+    font-size: 12px; 
+}
+
+::ng-deep span.mat-checkbox-label {
+    white-space: nowrap  !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis  !important;
+}
+
+.drivers-transfer-checkbox ::ng-deep .multiple-selector-align-checkbox {
+    width: 25% !important; 
+    float: left;
+    padding-left: 0px !important;
+}
