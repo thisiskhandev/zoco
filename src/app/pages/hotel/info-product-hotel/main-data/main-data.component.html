@@ -36,8 +36,8 @@
             class="form-control"
           ></textarea>
         </div>
-        <main class="row">
-          <section class="col-3 form-group">
+        <main class="row justify-content-between liness">
+          <section class="col-2 form-group">
             <label for=""><b>Cantidad de habitaciones</b></label>
             <select id="" class="form-control">
               <option selected>01</option>
@@ -45,7 +45,7 @@
               <option>03</option>
             </select>
           </section>
-          <section class="col-3 form-group">
+          <section class="col-2 form-group">
             <label for=""><b>Cantidad de pisos</b></label>
             <select id="" class="form-control">
               <option selected>01</option>
@@ -53,7 +53,7 @@
               <option>03</option>
             </select>
           </section>
-          <section class="col-3 form-group">
+          <section class="col-2 form-group">
             <label for=""><b>Años de construcción</b></label>
             <select id="" class="form-control">
               <option selected>01</option>
@@ -61,13 +61,26 @@
               <option>03</option>
             </select>
           </section>
-          <section class="col-3 form-group">
+          <section class="col-2 form-group">
             <label for=""><b>Cantidad de Restaurantes</b></label>
             <select id="" class="form-control">
               <option selected>01</option>
               <option>02</option>
               <option>03</option>
             </select>
+          </section>
+          <section class="col-3 form-group">
+            <label for=""><b>Apto fumador</b></label>
+            <div class="row space-between align-content-center">
+              <div class="col">
+                <input type="radio" class="cust_radio" aria-label="" />
+                <label for=""><b>SI</b></label>
+              </div>
+              <div class="col">
+                <input type="radio" class="cust_radio" aria-label="" />
+                <label for=""><b>NO</b></label>
+              </div>
+            </div>
           </section>
         </main>
         <main class="row">
@@ -142,9 +155,19 @@
                   max="23:59"
                 />
               </div>
+              <div class="form-group col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
             </div>
             <main class="row">
-              <div class="col-4">
+              <div class="col-3">
                 <input
                   type="time"
                   class="form-control"
@@ -155,7 +178,7 @@
                 />
               </div>
               <b class="colon">:</b>
-              <div class="col-4">
+              <div class="col-3">
                 <input
                   type="time"
                   class="form-control"
@@ -204,9 +227,19 @@
                   max="23:59"
                 />
               </div>
+              <div class="form-group col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
             </div>
             <main class="row">
-              <div class="col-4">
+              <div class="col-3">
                 <input
                   type="time"
                   class="form-control"
@@ -217,7 +250,7 @@
                 />
               </div>
               <b class="colon">:</b>
-              <div class="col-4">
+              <div class="col-3">
                 <input
                   type="time"
                   class="form-control"
@@ -234,6 +267,161 @@
           </section>
         </main>
 
+        <main class="row mt-4">
+          <section class="col-6">
+            <h4>To</h4>
+            <div class="row">
+              <div class="form-group col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
+              <div class="form-group col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
+              <div class="form-group col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
+              <div class="form-group col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
+            </div>
+            <main class="row">
+              <div class="col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
+              <b class="colon">:</b>
+              <div class="col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
+              <button type="submit" class="btn btn-dark checkinout_btn">
+                AM
+              </button>
+            </main>
+          </section>
+          <section class="col-6">
+            <h4>To</h4>
+            <div class="row">
+              <div class="form-group col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
+              <div class="form-group col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
+              <div class="form-group col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
+              <div class="form-group col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
+            </div>
+            <main class="row">
+              <div class="col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
+              <b class="colon">:</b>
+              <div class="col-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  aria-describedby="timings"
+                  placeholder="12:00"
+                  min="00:00"
+                  max="23:59"
+                />
+              </div>
+              <button type="submit" class="btn btn-dark checkinout_btn">
+                AM
+              </button>
+            </main>
+          </section>
+        </main>
+
+        <main class="row mt-5 Requisitos_Check_In">
+          <div class="form-group col-10">
+            <h3 class="checkin_head">Requisitos Check In</h3>
+            <label for="">Nombre </label>
+            <input type="text" name="" id="" class="form-control" />
+          </div>
+          <div class="col-2">
+            <button type="submit" class="increment_btns">+</button>
+          </div>
+        </main>
         <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
       </form>
     </div>
