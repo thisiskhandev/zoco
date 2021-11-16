@@ -23,3 +23,5 @@ describe('MainDataComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
