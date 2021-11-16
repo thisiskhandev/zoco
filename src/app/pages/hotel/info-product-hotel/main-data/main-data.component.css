@@ -209,7 +209,6 @@ h1.mainheadone {
   color: #ed3a50;
 }
 
-
 .request-txt {
   display: flex;
   align-items: center;
@@ -248,8 +247,9 @@ img.extra-image {
   transition: 0.4s;
 }
 
-.active, .accordion:hover {
-  background-color: #ccc; 
+.active,
+.accordion:hover {
+  background-color: #ccc;
 }
 
 .panel {
@@ -267,14 +267,40 @@ input.cust_radio {
   margin-right: -5px;
 }
 
-
 .slect-picks img:nth-child(1) {
   margin: 0px 20px;
 }
 
-.extra-media{
+.extra-media {
   margin: 15px 0;
   border: dashed 1px #000;
   border-radius: 5px;
   padding: 5px 0;
+}
+
+section#accords {
+  background: none;
+}
+
+.collapse_title ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 16px;
+    margin: 0;
+}
+
+.collapse_title ul li {
+    list-style-type: none;
+    color: #fff;
+}
+
+.card-header {
+    text-decoration: none;
+    border: 0;
+    background: #363636;
+    padding: 0;
+    margin: 0;
 }
